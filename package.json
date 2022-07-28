@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kolourr/All-My-Life-She-Sacrificied#readme",
   "dependencies": {
+    "bootstrap": "^5.2.0",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
@@ -29,4 +30,4 @@
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0"
   }
-} 
+}
