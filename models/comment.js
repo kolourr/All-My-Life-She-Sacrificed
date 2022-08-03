@@ -4,6 +4,7 @@ const commentSchema = new mongoose.Schema({
     body: {
         type: String,
         trim: true,
+        maxLength: 280,
         required: true
     },
     user: {
@@ -12,7 +13,7 @@ const commentSchema = new mongoose.Schema({
     },
     post: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post'
+        ref: 'Post',
     },
     createdAt: {
         type: Date,

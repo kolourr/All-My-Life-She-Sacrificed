@@ -9,6 +9,7 @@ const postSchema = new mongoose.Schema({
     body: {
         type: String,
         required: true,
+        maxLength: 400,
         trim: true,
     },
     postType: {
@@ -22,7 +23,7 @@ const postSchema = new mongoose.Schema({
       },
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
+        ref: 'Comment',
     }],
     createdAt: {
         type: Date,
