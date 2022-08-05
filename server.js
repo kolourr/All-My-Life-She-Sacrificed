@@ -46,5 +46,5 @@ app.use('/auth', authRoutes)
 app.use('/post', postRoutes)
  
 app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`Server running on PORT ${process.env.PORT}`)
+    console.log(`Server is running on PORT ${process.env.PORT}`)
 })    

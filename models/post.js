@@ -17,10 +17,10 @@ const postSchema = new mongoose.Schema({
         default: 'aww',
         enum: ['aww', 'thankful', 'blessing', 'heartbroken', 'remorseful', 'cranky', 'free', 'fortunate', 'humbled'],  
       },
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-      },
+      loginID: {
+        type: String,
+        required: true,
+    },
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment',

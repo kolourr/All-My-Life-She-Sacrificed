@@ -7,9 +7,9 @@ const commentSchema = new mongoose.Schema({
         maxLength: 280,
         required: true
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    loginID: {
+        type: String,
+        required: true,
     },
     post: {
         type: mongoose.Schema.Types.ObjectId,

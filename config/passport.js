@@ -11,11 +11,11 @@ module.exports = function (passport) {
         callbackURL: '/auth/google/callback',
       },
       async (accessToken, refreshToken, profile, done) => {
-        // console.log(profile)
+        // console.log(profile.emails[0].value)
         const newUser = {
           loginID: profile.id,
           displayName: profile.displayName,
-          email: profile.email,
+          email: profile.emails[0].value,
           image: profile.photos[0].value,
         }
 
