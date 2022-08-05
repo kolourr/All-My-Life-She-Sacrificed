@@ -17,6 +17,16 @@ const postSchema = new mongoose.Schema({
         default: 'aww',
         enum: ['aww', 'thankful', 'blessing', 'heartbroken', 'remorseful', 'cranky', 'free', 'fortunate', 'humbled'],  
       },
+      heart: {
+        type: Number,
+        default: 0,
+        required: true,
+    },
+    heartBreak: {
+        type: Number,
+        default: 0,
+        required: true,
+    },
       loginID: {
         type: String,
         required: true,

@@ -8,6 +8,8 @@ const connectDB = require('./config/database')
 const authRoutes = require('./routes/auth')
 const homeRoutes = require('./routes/home')
 const postRoutes = require('./routes/post')
+const commentRoutes = require('./routes/comment')
+
 
 //Dotenv -- Passport -- Connect Database 
 require('dotenv').config({path: './config/.env'})
@@ -44,6 +46,8 @@ app.use(passport.session())
 app.use('/', homeRoutes)
 app.use('/auth', authRoutes)
 app.use('/post', postRoutes)
+app.use('/comment', commentRoutes)
+
  
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server is running on PORT ${process.env.PORT}`)
