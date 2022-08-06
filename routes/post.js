@@ -1,16 +1,26 @@
 const express = require('express')
 const router = express.Router()
-// const postController = require('../controllers/post') 
-// const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const postController = require('../controllers/post') 
+const { ensureAuth } = require('../middleware/auth')
 
-// router.get('/', ensureAuth, postController.getTodos)
+router.get('/userPosts', ensureAuth, postController.userPosts)
 
-// router.post('/createTodo', postController.createTodo)
+router.get('/allPosts', ensureAuth, postController.allPosts)
 
-// router.put('/markComplete', postController.markComplete)
+router.get('/userPostsComments', ensureAuth, postController.userPostsComments)
 
-// router.put('/markIncomplete', postController.markIncomplete)
+router.get('/userPostsHearts', ensureAuth, postController.userPostsHearts)
 
-// router.delete('/deleteTodo', postController.deleteTodo)
+router.get('/userPostsHeartBreaks', ensureAuth, postController.userPostsHeartBreaks)
+
+router.post('/createPost', ensureAuth, postController.createPost)
+
+router.put('/updatePost', ensureAuth, postController.updatePost)
+
+router.put('/updateHearts', ensureAuth, postController.updateHearts)
+
+router.put('/updateHeartBreaks', ensureAuth, postController.updateHeartBreaks)
+
+router.delete('/deletePost', ensureAuth, postController.deletePost)
 
 module.exports = router
