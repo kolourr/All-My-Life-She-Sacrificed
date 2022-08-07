@@ -1,4 +1,19 @@
 <%- include('partials/header') %>
 <h1>Click to Logout</h1>
 <a href="/auth/logout">Logout</a>
+
+
+<h1>User Posts</h1>
+<ul>
+<% posts.forEach(post => { %>
+        <li><%=post.title%></li>
+        <li><%=post.body%></li>
+        <li><%=post.postType%></li>
+        <br>
+
+<% }) %>    
+</ul>
+
+
+
 <%- include('partials/footer') %>

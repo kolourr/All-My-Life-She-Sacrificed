@@ -20,17 +20,15 @@ const postSchema = new mongoose.Schema({
       heart: {
         type: Number,
         default: 0,
-        required: true,
     },
     heartBreak: {
         type: Number,
         default: 0,
-        required: true,
     },
-      loginID: {
-        type: String,
-        required: true,
-    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment',

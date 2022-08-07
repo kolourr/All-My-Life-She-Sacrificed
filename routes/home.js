@@ -5,6 +5,7 @@ const homeController = require('../controllers/home')
 
 router.get('/', ensureGuest, homeController.getHome) 
 router.get('/dashboard', ensureAuth, homeController.dashboard) 
+router.get('/updatedindex', ensureAuth, homeController.updatedindex)
 router.get('/about',  homeController.about) 
 router.get('/cover',  homeController.cover) 
 router.get('/termsofuse',  homeController.termsofuse) 
