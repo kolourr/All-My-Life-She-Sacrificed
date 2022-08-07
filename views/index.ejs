@@ -1,4 +1,17 @@
 <%- include('partials/header') %>
 <h1>Login to All My Life She Sacrificed</h1>
-<a href="/auth/google">Login</a>
+<a href="/auth/google">Login</a><br><br>
+
+<h1>This will be all the Public Posts Made</h1>
+<ul>
+<% allPosts.forEach(post => { %>
+        <li><%=post.title%></li>
+        <li><%=post.body%></li>
+        <li><%=post.postType%></li>
+        <br>
+
+<% }) %>    
+</ul>
+
+
 <%- include('partials/footer') %>

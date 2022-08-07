@@ -25,10 +25,10 @@ const postSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-      },
+    loginID: {
+        type: String,
+        required: true,
+    },
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment',

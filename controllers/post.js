@@ -4,38 +4,32 @@ const Comments = require('../models/comment')
 
 
 module.exports = {
-    allPosts: async(req,res)=>{
+    dashboard: async(req,res)=>{
         try {
-            const allPosts = await Post.find({}).populate('user').lean()
-
-            console.log(allPosts)
-
+            const allUserPosts = await Post.find({loginID: req.user.loginID})
+            const allUserComments = await Comments.find({loginID: req.user.loginID}) 
+            
             res.render('dashboard.ejs', {
-                allPosts: allPosts
+                allUserPosts: allUserPosts,
+                allUserComments: allUserComments
             })
         } catch (err) {
             console.log(err)
             res.render('error/500')
         }        
     },
-
-    userData: async(req,res)=>{
-        try {
-            const userPosts = await Post.find({}).lean()
-            res.render('index.ejs', {
-                userPosts: userPosts
-            })
-        } catch (err) {
-            console.log(err)
-            res.render('error/500')
-        }        
-    },
-
 
     createPost: async(req,res)=>{
         try {
-            console.log(req.body)
-            await Post.create(req.body)
+            await Post.create({
+                title: req.body.title, 
+                body: req.body.body, 
+                postType: req.body.postType, 
+                heart: req.body.heart, 
+                heartBreak: req.body.heartBreak, 
+                loginID: req.user.loginID
+        })
+
             console.log('Post created')
             res.redirect('/updatedindex')
         } catch (err) {

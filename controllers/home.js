@@ -5,31 +5,16 @@ const Comments = require('../models/comment')
 module.exports = {
     getHome: async(req,res)=>{
         try {
-            const post = await Post.find({}).lean()
-            const comment = await Comments.find({}).lean()
+            const allPosts = await Post.find({}).lean()
             res.render('index.ejs', {
-                posts: post, 
-                comments: comment
+                allPosts: allPosts, 
             })
         } catch (err) {
             console.log(err)
             res.render('error/500')
         }        
     },
-    dashboard: async (req, res) => {
-        try {
-            // console.log(req.user)
-            const post = await Post.find({}).populate('user') 
-            console.log(req.user.loginID)
-            res.render('dashboard.ejs', {
-            posts: post
-          })
-        } catch (err) {
-          console.error(err)
-          res.render('error/500')  
-        }
-      },   
-      
+    
     updatedindex: (req,res)=>{
         res.render('updatedindex.ejs')
     },

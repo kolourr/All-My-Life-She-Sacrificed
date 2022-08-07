@@ -1,11 +1,14 @@
 <%- include('partials/header') %>
 <h1>Click to Logout</h1>
-<a href="/auth/logout">Logout</a>
+<a href="/auth/logout">Logout</a><br><br>
+
+<a href="/updatedindex">Make a Post</a>
 
 
-<h1>User Posts</h1>
+
+<h1>This will be Just the User Posts</h1>
 <ul>
-<% posts.forEach(post => { %>
+<% allUserPosts.forEach(post => { %>
         <li><%=post.title%></li>
         <li><%=post.body%></li>
         <li><%=post.postType%></li>
@@ -14,6 +17,16 @@
 <% }) %>    
 </ul>
 
+
+<h1>This will be Just the User's Comments</h1>
+<ul>
+<% allUserComments.forEach(comment => { %>
+        <li><%=post.body%></li>
+        <li><%=post.post%></li>
+        <br>
+
+<% }) %>    
+</ul>
 
 
 <%- include('partials/footer') %>

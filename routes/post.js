@@ -3,21 +3,18 @@ const router = express.Router()
 const postController = require('../controllers/post') 
 const { ensureAuth } = require('../middleware/auth')
 
-
-
-router.get('/allPosts', ensureAuth, postController.allPosts)
-
-router.get('/userData', ensureAuth, postController.userData)
-
+router.get('/dashboard', ensureAuth, postController.dashboard) 
 
 router.post('/createPost', ensureAuth, postController.createPost)
 
-// router.put('/updatePost', ensureAuth, postController.updatePost)
+// router.put('/editPost', ensureAuth, postController.updatePost)
+
+// router.delete('/deletePost', ensureAuth, postController.deletePost)
 
 // router.put('/updateHearts', ensureAuth, postController.updateHearts)
 
 // router.put('/updateHeartBreaks', ensureAuth, postController.updateHeartBreaks) 
 
-// router.delete('/deletePost', ensureAuth, postController.deletePost)
+
 
 module.exports = router
