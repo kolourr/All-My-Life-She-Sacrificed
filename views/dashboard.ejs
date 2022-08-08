@@ -9,10 +9,17 @@
 <h1>This will be Just the User Posts</h1>
 <ul>
 <% allUserPosts.forEach(post => { %>
+
+ 
+ 
         <li><%=post.title%></li>
         <li><%=post.body%></li>
         <li><%=post.postType%></li>
-        <br>
+
+        <button class='deleteButton' data-id="<%=post._id%>"><%=post._id%></button>
+
+        <br> <br>
+
 
 <% }) %>    
 </ul>

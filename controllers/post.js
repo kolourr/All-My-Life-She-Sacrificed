@@ -9,7 +9,7 @@ module.exports = {
             const allUserPosts = await Post.find({loginID: req.user.loginID})
             const allUserComments = await Comments.find({loginID: req.user.loginID}) 
             
-            res.render('dashboard.ejs', {
+             res.render('dashboard.ejs', {
                 allUserPosts: allUserPosts,
                 allUserComments: allUserComments
             })
@@ -38,10 +38,22 @@ module.exports = {
         }        
     },
 
+    deletePost: async(req,res)=>{
+        try{
 
+            console.log(req.body.deletePostID)
 
+            await Post.findOneAndDelete({_id:req.body.deletePostID})
 
- 
+            console.log('Deleted Post')
+            res.json('Deleted Post')
+
+        }catch(err){
+            console.log(err)
+            res.render('error/500')
+        }
+    },
+
 
  
 }

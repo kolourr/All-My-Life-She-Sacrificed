@@ -7,9 +7,10 @@ router.get('/dashboard', ensureAuth, postController.dashboard)
 
 router.post('/createPost', ensureAuth, postController.createPost)
 
+router.delete('/deletePost', ensureAuth, postController.deletePost)
+
 // router.put('/editPost', ensureAuth, postController.updatePost)
 
-// router.delete('/deletePost', ensureAuth, postController.deletePost)
 
 // router.put('/updateHearts', ensureAuth, postController.updateHearts)
 
