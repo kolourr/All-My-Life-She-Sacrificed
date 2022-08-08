@@ -40,12 +40,8 @@ module.exports = {
 
     deletePost: async(req,res)=>{
         try{
-
-            console.log(req.body.deletePostID)
-
             await Post.findOneAndDelete({_id:req.body.deletePostID})
-
-            console.log('Deleted Post')
+            console.log('Deleted Post') 
             res.json('Deleted Post')
 
         }catch(err){

@@ -1,15 +1,13 @@
-const deleteBtn = document.querySelectorAll('.deleteButton')
+const deleteButton = document.querySelectorAll('.deleteButton')
  
-Array.from(deleteBtn).forEach((el)=>{
+Array.from(deleteButton).forEach((el)=>{
     el.addEventListener('click', deletePost)
 })
 
 async function deletePost(){
-    const postID = document.querySelectorAll(".deleteButton").getAttribute("data-id");
-
- 
+    const postID = this.getAttribute('data-id') 
     try{
-        const response = await fetch('post/deletePost', {
+        const response = await fetch('deletePost', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
