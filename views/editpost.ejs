@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+<h1>Edit a Post About Your Mom!</h1>
+
+
+<form action="/post/editPost" method='POST'>
+    <input type="text" placeholder="Title" name='title'> <br><br>
+    <input type="text" placeholder="Body" name='body'><br><br>
+
+    <select id="postType" name="postType">
+        <option value="aww" selected>Aww</option>
+        <option value="thankful">Thankful</option>
+        <option value="blessing">Blessing</option>
+        <option value="heartbroken">Heartbroken</option>
+        <option value="remorseful">Remorseful</option>  
+        <option value="cranky">Cranky</option>
+        <option value="free">Free</option>
+        <option value="fortunate">Fortunate</option>
+        <option value="humbled">Humbled</option>
+    </select><br><br>
+    <input type="number" placeholder="heart" name='heart' ><br><br>
+    <input type="number" placeholder="heartBreak" name='heartBreak' ><br><br>
+
+ 
+
+    <input type="submit">
+</form>
+
+<a href="/auth/logout">Logout</a>
+
+<%- include('partials/footer') %>

@@ -4,52 +4,72 @@ const Comments = require('../models/comment')
 
 
 module.exports = {
-    dashboard: async(req,res)=>{
+    dashboard: async (req, res) => {
         try {
-            const allUserPosts = await Post.find({loginID: req.user.loginID})
-            const allUserComments = await Comments.find({loginID: req.user.loginID}) 
-            
-             res.render('dashboard.ejs', {
+            const allUserPosts = await Post.find({
+                loginID: req.user.loginID
+            })
+            const allUserComments = await Comments.find({
+                loginID: req.user.loginID
+            })
+
+            res.render('dashboard.ejs', {
                 allUserPosts: allUserPosts,
                 allUserComments: allUserComments
             })
         } catch (err) {
             console.log(err)
             res.render('error/500')
-        }        
+        }
     },
 
-    createPost: async(req,res)=>{
+    createPost: async (req, res) => {
         try {
             await Post.create({
-                title: req.body.title, 
-                body: req.body.body, 
-                postType: req.body.postType, 
-                heart: req.body.heart, 
-                heartBreak: req.body.heartBreak, 
+                title: req.body.title,
+                body: req.body.body,
+                postType: req.body.postType,
+                heart: req.body.heart,
+                heartBreak: req.body.heartBreak,
                 loginID: req.user.loginID
-        })
+            })
 
             console.log('Post created')
             res.redirect('/updatedindex')
         } catch (err) {
             console.log(err)
             res.render('error/500')
-        }        
+        }
     },
 
-    deletePost: async(req,res)=>{
-        try{
-            await Post.findOneAndDelete({_id:req.body.deletePostID})
-            console.log('Deleted Post') 
+    deletePost: async (req, res) => {
+        try {
+            await Post.findOneAndDelete({
+                _id: req.body.deletePostID
+            })
+            console.log('Deleted Post')
             res.json('Deleted Post')
 
-        }catch(err){
+        } catch (err) {
+            console.log(err)
+            res.render('error/500')
+        }
+    },
+
+    editPostPage: async (req, res) => {
+        try {
+            await Post.findOneAndDelete({
+                _id: req.body.editPostID
+            })
+            console.log('Deleted Post')
+            res.json('Deleted Post')
+
+        } catch (err) {
             console.log(err)
             res.render('error/500')
         }
     },
 
 
- 
+
 }
