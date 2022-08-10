@@ -6,10 +6,10 @@ const Comments = require('../models/comment')
 module.exports = {
     dashboard: async (req, res) => {
         try {
-            const allUserPosts = await Post.find({
+            let allUserPosts = await Post.find({
                 loginID: req.user.loginID
             })
-            const allUserComments = await Comments.find({
+            let allUserComments = await Comments.find({
                 loginID: req.user.loginID
             })
 
@@ -59,7 +59,7 @@ module.exports = {
     editButton: async (req, res) => {
         try {
 
-            const post = await Post.findById({
+            let post = await Post.findById({
               _id: req.params.id,
             }).lean()
             console.log(post.loginID)
@@ -85,7 +85,7 @@ module.exports = {
 
     editPost: async (req, res) => {
         try {
-            const post = await Post.findOne({
+            let post = await Post.findOne({
                 _id: req.params.id,
               }).lean()
 
