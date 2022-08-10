@@ -62,9 +62,6 @@ module.exports = {
             let post = await Post.findById({
               _id: req.params.id,
             }).lean()
-            console.log(post.loginID)
-            console.log(req.user.loginID)
-
         
             if (!post) {
               return res.render('error/404')
