@@ -5,6 +5,7 @@ const session = require('express-session')
 const mongoose = require("mongoose")
 const MongoStore = require("connect-mongo")
 const connectDB = require('./config/database')
+const methodOverride = require('method-override')
 const authRoutes = require('./routes/auth')
 const homeRoutes = require('./routes/home')
 const postRoutes = require('./routes/post')
@@ -22,8 +23,18 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-
-  
+// Method override
+app.use(
+  methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+      // look in urlencoded POST bodies and delete it
+      let method = req.body._method
+      delete req.body._method
+      return method
+    }
+  })
+)
+ 
 
 // Sessions Middleware
 app.use(

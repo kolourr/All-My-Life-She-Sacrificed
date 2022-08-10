@@ -56,19 +56,60 @@ module.exports = {
         }
     },
 
-    editPostPage: async (req, res) => {
+    editButton: async (req, res) => {
         try {
-            await Post.findOneAndDelete({
-                _id: req.body.editPostID
-            })
-            console.log('Deleted Post')
-            res.json('Deleted Post')
 
-        } catch (err) {
-            console.log(err)
-            res.render('error/500')
-        }
+            const post = await Post.findById({
+              _id: req.params.id,
+            }).lean()
+            console.log(post.loginID)
+            console.log(req.user.loginID)
+
+        
+            if (!post) {
+              return res.render('error/404')
+            }
+                
+            if (post.loginID !== req.user.loginID) {
+              res.redirect('/post/dashboard')
+            } else {}
+              res.render('editPost', {
+                post
+              })
+       
+          } catch (err) {
+            console.error(err)
+            return res.render('error/500')
+          }
     },
+
+    editPost: async (req, res) => {
+        try {
+            const post = await Post.findOne({
+                _id: req.params.id,
+              }).lean()
+
+
+        
+            if (!post) {
+              return res.render('error/404')
+            }
+        
+            if (post.loginID !== req.user.loginID) {
+              res.redirect('/post/dashboard')
+            } else {
+              post = await Post.findOneAndUpdate({ _id: req.params.id }, req.body, {
+                new: true,
+                runValidators: true,
+              })
+              res.redirect('/post/dashboard')
+            }
+          } catch (err) {
+            console.error(err)
+            return res.render('error/500')
+          }
+    },
+
 
 
 

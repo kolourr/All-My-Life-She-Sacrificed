@@ -9,7 +9,9 @@ router.post('/createPost', ensureAuth, postController.createPost)
 
 router.delete('/deletePost', ensureAuth, postController.deletePost)
 
-router.get('/editPostPage', ensureAuth, postController.editPostPage)
+router.get('/editButton/:id', ensureAuth, postController.editButton)
+
+router.put('/editPost/:id', ensureAuth, postController.editPost)
 
 
 // router.put('/updateHearts', ensureAuth, postController.updateHearts)

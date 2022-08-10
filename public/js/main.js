@@ -27,21 +27,24 @@ async function deletePost(){
         console.log(err)
     }
 }
+ 
 
-async function editPost(){
-    const postID = this.getAttribute('data-editPostID') 
-    try{
-        const response = await fetch('editPostPage', {
-            method: 'get',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'editPostID': postID
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()
-    }catch(err){
-        console.log(err)
-    }
-}
+// async function editPost(){
+//     const postID = this.getAttribute('data-editPostID') 
+//     console.log(postID)
+//     try{
+//         const response = await fetch('editPostPage', {
+//             method: 'put',
+//             headers: {'Content-type': 'application/json'},
+//             body: JSON.stringify({
+//                 'editPostID': postID
+//             }),
+  
+//         })
+//         const data = await response.json()
+//         console.log(data)
+//         location.reload()
+//     }catch(err){
+//         console.log(err)
+//     }
+// }
