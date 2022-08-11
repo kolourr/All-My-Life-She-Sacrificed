@@ -18,10 +18,11 @@ module.exports = {
     getHomeLoggedIn: async(req,res)=>{
         try {
             let allPosts = await Post.find({}).lean()
-            let allComments = await Comments.find({}).lean()
+            let allComments = await Comments.find({})
+
             res.render('loggedinindex.ejs', {
                 allPosts: allPosts, 
-                allComments: allComments,
+                allComments: allComments
             })
         } catch (err) {
             console.log(err)

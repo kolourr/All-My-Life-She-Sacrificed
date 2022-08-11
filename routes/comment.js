@@ -3,6 +3,6 @@ const router = express.Router()
 const commentController = require('../controllers/comment') 
 const { ensureAuth } = require('../middleware/auth')
 
-// router.get('/userComments', ensureAuth, commentController.userPosts)
+router.post('/:id/createComment', ensureAuth, commentController.createComment)
 
 module.exports = router
