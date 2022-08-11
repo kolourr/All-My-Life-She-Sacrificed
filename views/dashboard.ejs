@@ -4,7 +4,7 @@
 
 <a href="/loggedinindex">Home</a><br> 
 <a href="/updatedindex">Make a Post</a>
-<h1>This will be Just the User Posts</h1>
+<h1>All User's Posts</h1>
 <ul>
         <% allUserPosts.forEach(post => { %>
         <li><%=post.title%></li>
@@ -19,12 +19,11 @@
 
         <% }) %>
 </ul>
-<h1>This will be Just the User's Comments</h1>
+<h1>All User's Comments</h1>
 <ul>
         <% allUserComments.forEach(comment => { %>
-        <li><%=post.body%></li>
-        <li><%=post.post%></li>
-        <br />
+        <li><%=comment.body%></li>
+     
 
         <% }) %>
 </ul>
