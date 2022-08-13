@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+<h1>Home Page</h1>
+<a href="/auth/google">Login</a><br><br>
+<a href="/updatedindex">Make a Post</a>
+
+
+<h1>This will be all the Public Posts and Comments.</h1>
+<h2>The Logged in User Should Be able to Comment on any Post.</h2>
+
+<ul>
+<% allPosts.forEach(post => { %>
+        <li><%=post.title%></li>
+        <li><%=post.body%></li>
+        <li><%=post.postType%></li>
+        <!-- Can also add a get request link here that once the user clicks on, only then are comments shown -->
+        <li><%=post.comments%></li>
+        <br>
+
+
+<form action="/comment/createComment" method='POST'>
+        <input type="text" placeholder="Body" name='body'><br><br>
+        <input type="number" placeholder="heart" name='heart' ><br><br>
+        <input type="number" placeholder="heartBreak" name='heartBreak' ><br><br>
+       
+        <input type="submit">
+    </form>
+
+    <% }) %>    
+    <br><br>
+</ul>
+
+
+
+<a href="/post/dashboard">Dashboard</a>
+<%- include('partials/footer') %>

@@ -4,6 +4,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 const homeController = require('../controllers/home')
 
 router.get('/', homeController.getHome) 
+router.get('/loggedinindex', ensureAuth, homeController.getHomeLoggedIn) 
 router.get('/updatedindex', ensureAuth, homeController.updatedindex)
 router.get('/about',  homeController.about) 
 router.get('/cover',  homeController.cover) 

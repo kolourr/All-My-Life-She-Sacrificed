@@ -5,9 +5,23 @@ const Comments = require('../models/comment')
 module.exports = {
     getHome: async(req,res)=>{
         try {
-            const allPosts = await Post.find({}).lean()
+            let allPosts = await Post.find({}).lean()
             res.render('index.ejs', {
                 allPosts: allPosts, 
+            })
+        } catch (err) {
+            console.log(err)
+            res.render('error/500')
+        }        
+    },
+
+    getHomeLoggedIn: async(req,res)=>{
+        try {
+            let allPosts = await Post.find({}).lean()
+            let allComments = await Comments.find({}).lean()
+            res.render('loggedinindex.ejs', {
+                allPosts: allPosts, 
+                allComments: allComments,
             })
         } catch (err) {
             console.log(err)
