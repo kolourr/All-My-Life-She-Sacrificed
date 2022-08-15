@@ -18,7 +18,7 @@
         <li><%=reply.body%></li>
 
         <% } %> <% })%>
-
+                <span><b>Add a Comment</b></span>
         <form action="/comment/<%=post._id%>/createComment" method="POST">
                 <input type="text" placeholder="Body" name="body" /><br /><br />
                 <input type="number" placeholder="heart" name="heart" /><br /><br />

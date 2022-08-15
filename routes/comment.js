@@ -5,4 +5,11 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.post('/:id/createComment', ensureAuth, commentController.createComment)
 
+router.delete('/deleteComment', ensureAuth, commentController.deleteComment)
+
+router.get('/editCommentButton/:id', ensureAuth, commentController.editCommentButton)
+
+router.put('/editComment/:id', ensureAuth, commentController.editComment)
+
+
 module.exports = router
