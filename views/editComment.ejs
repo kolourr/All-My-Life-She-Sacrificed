@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+<h1>Edit a Post About Your Mom!</h1>
+
+<form action="/comment/editComment/<%=comment._id%>" method='POST'>
+    <input type="hidden" name="_method" value="PUT">
+
+    <input type="text" placeholder="Body" name='body' value="<%=comment.body%>"><br><br>
+    <input type="number" placeholder="heart" name='heart' value="<%=comment.heart%>"><br><br>
+    <input type="number" placeholder="heartBreak" name='heartBreak' value="<%=comment.heartBreak%>"><br><br>
+    <input type="submit">
+</form>
+
+<a href="/post/dashboard">Dashboard</a>
+
+<a href="/auth/logout">Logout</a>
+
+<%- include('partials/footer') %>

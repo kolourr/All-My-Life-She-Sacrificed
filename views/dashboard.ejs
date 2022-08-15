@@ -16,22 +16,24 @@
         <button class="deletePost" data-DeleteID="<%=post._id%>">Delete</button>
         <br />
         <br />
-
         <% }) %>
+     
 </ul>
 <h1>All User's Comments</h1>
 <ul>
         <% allUserComments.forEach(comment => { %>
+        <li><%=comment.post.toString()%>  </li>
         <li><%=comment.body%>   
                 <a href="../comment/editCommentButton/<%=comment._id%>">Edit</a>
 
                 <button class="deleteComment" data-DeleteCommentID="<%=comment._id%>">Delete</button>
-        
-        
         </li>
+ 
+
       
 
 
         <% }) %>
+    
 </ul>
 <%- include('partials/footer') %>

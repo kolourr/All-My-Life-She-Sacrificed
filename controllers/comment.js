@@ -48,6 +48,7 @@ createComment: async (req, res) => {
       let comment = await Comments.findById({
         _id: req.params.id,
       }).lean()
+      let allPosts = await Post.find({}).lean()
 
       if (!comment) {
         return res.render('error/404')
@@ -57,7 +58,8 @@ createComment: async (req, res) => {
         res.redirect('/post/dashboard')
       } else {}
       res.render('editComment', {
-        comment
+        comment: comment,
+        allPosts: allPosts,
       })
 
     } catch (err) {
