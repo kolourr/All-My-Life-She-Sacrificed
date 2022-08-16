@@ -12,10 +12,31 @@ module.exports = {
       let allUserComments = await Comments.find({
         loginID: req.user.loginID
       })
+    
 
+     let ids = []
+     
+     allUserComments.forEach(comment => {
+      ids.push(comment.post.toString())
+      })
+
+      let SinglePost = await Post.findById({
+        _id: ids[1]
+      }).lean()
+
+      console.log(SinglePost)
+
+ 
+  
+ 
+     
+ 
+
+ 
       res.render('dashboard.ejs', {
         allUserPosts: allUserPosts,
-        allUserComments: allUserComments
+        allUserComments: allUserComments,
+     
       })
     } catch (err) {
       console.log(err)
