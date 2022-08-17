@@ -9,34 +9,14 @@ module.exports = {
       let allUserPosts = await Post.find({
         loginID: req.user.loginID
       })
-      let allUserComments = await Comments.find({
+      let postsWithUserComments = await Comments.find({
         loginID: req.user.loginID
-      })
-    
-
-     let ids = []
-     
-     allUserComments.forEach(comment => {
-      ids.push(comment.post.toString())
-      })
-
-      let SinglePost = await Post.findById({
-        _id: ids[1]
-      }).lean()
-
-      console.log(SinglePost)
-
- 
-  
- 
-     
- 
-
- 
+      }).populate('post')
+   
       res.render('dashboard.ejs', {
-        allUserPosts: allUserPosts,
-        allUserComments: allUserComments,
-     
+        allUserPosts, 
+        postsWithUserComments,
+         
       })
     } catch (err) {
       console.log(err)
@@ -68,8 +48,13 @@ module.exports = {
       await Post.findOneAndDelete({
         _id: req.body.deletePostID
       })
-      console.log('Deleted Post')
-      res.json('Deleted Post')
+
+      await Comments.deleteMany({
+        post: req.body.deletePostID
+      })
+
+      console.log('Deleted Post and all its Comments')
+      res.json('Deleted Post and all its Comments')
 
     } catch (err) {
       console.log(err)

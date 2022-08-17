@@ -2,7 +2,7 @@
 <h1>Click to Logout</h1>
 <a href="/auth/logout">Logout</a><br /><br />
 
-<a href="/loggedinindex">Home</a><br> 
+<a href="/loggedinindex">Home</a><br />
 <a href="/updatedindex">Make a Post</a>
 <h1>All User's Posts</h1>
 <ul>
@@ -17,23 +17,24 @@
         <br />
         <br />
         <% }) %>
-     
 </ul>
 <h1>All User's Comments</h1>
 <ul>
-        <% allUserComments.forEach(comment => { %>
-        <li><%=comment.post.toString()%>  </li>
-        <li><%=comment.body%>   
-                <a href="../comment/editCommentButton/<%=comment._id%>">Edit</a>
+        <% postsWithUserComments.forEach(postWithComment => { %>
+               
 
-                <button class="deleteComment" data-DeleteCommentID="<%=comment._id%>">Delete</button>
+                <li><%=postWithComment.post.title%></li>
+
+        <li>
+                <%=postWithComment.body%>
+
+                <a href="../comment/editCommentButton/<%=postWithComment._id%>">Edit</a>
+
+                <button class="deleteComment" data-DeleteCommentID="<%=postWithComment._id%>">
+                        Delete
+                </button>
         </li>
 
-    
-
- 
-
         <% }) %>
-    
 </ul>
 <%- include('partials/footer') %>
