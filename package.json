@@ -19,6 +19,7 @@
   "homepage": "https://github.com/kolourr/All-My-Life-She-Sacrificied#readme",
   "dependencies": {
     "bootstrap": "^5.2.0",
+    "bootstrap-icons": "^1.9.1",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
