@@ -13,10 +13,9 @@ router.get('/editButton/:id', ensureAuth, postController.editButton)
 
 router.put('/editPost/:id', ensureAuth, postController.editPost)
 
+router.put('/postHeartDecrease', ensureAuth, postController.postHeartDecrease)
 
-// router.put('/updateHearts', ensureAuth, postController.updateHearts)
-
-// router.put('/updateHeartBreaks', ensureAuth, postController.updateHeartBreaks) 
+router.put('/postHeartIncrease', ensureAuth, postController.postHeartIncrease) 
 
 
 

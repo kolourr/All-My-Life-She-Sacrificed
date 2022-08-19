@@ -29,7 +29,9 @@
         <li><%=postWithComment.post.title%></li>
 
         <li>
-                <%=postWithComment.body%>
+                <%=postWithComment.body%><br>
+                <button><i class="bi bi-heart-fill"></i> <%=postWithComment.heart%></button>
+                <button><i class="bi bi-heartbreak-fill"></i> <%=postWithComment.heartBreak%></button>
 
                 <button>
                         <a style="color: black; text-decoration: none"

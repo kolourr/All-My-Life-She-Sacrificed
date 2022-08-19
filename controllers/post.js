@@ -32,9 +32,10 @@ module.exports = {
         postType: req.body.postType,
         heart: req.body.heart,
         heartBreak: req.body.heartBreak,
-        loginID: req.user.loginID
+        loginID: req.user.loginID,
+        heartIncrement: true,
+        heartBreakIncrement: true,
       })
-
       console.log('Post created')
       res.redirect('/updatedindex')
     } catch (err) {
@@ -113,5 +114,52 @@ module.exports = {
     }
   },
 
+  postHeartDecrease: async (req, res) => {
+    try {
+      
+      await Post.findOneAndUpdate({
+        _id: req.body.decreasePostHeartID,
+      },  
+      {
+        $inc: {heart: -1},
+        heartIncrement: true,
+      }, 
+        {
+        new: true,
+        runValidators: true,
+      })
+       console.log(`Post ${req.body.decreasePostHeartID} heart's decreased`)
+      res.json(`Post ${req.body.decreasePostHeartID} heart's decreased`)
+
+    } catch (err) {
+      console.log(err)
+      res.render('error/500')
+    }
+  },
+
+  postHeartIncrease: async (req, res) => {
+    try {
+
+      await Post.findOneAndUpdate({
+        _id: req.body.increasePostHeartID,
+      },      
+      {$inc: {heart: +1},
+      heartIncrement: false},
+        {
+        new: true,
+        runValidators: true,
+      })
+
+       console.log(`Post ${req.body.increasePostHeartID} heart's increased`)
+      res.json(`Post ${req.body.increasePostHeartID} heart's increased`)
+
+    } catch (err) {
+      console.log(err)
+      res.render('error/500')
+    }
+  },
+
 
 }   
+
+ 
