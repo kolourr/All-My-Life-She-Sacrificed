@@ -15,16 +15,10 @@ const commentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post',
     },
-    heart: {
-        type: Number,
-        default: 0,
-        required: true,
-    },
-    heartBreak: {
-        type: Number,
-        default: 0,
-        required: true,
-    },
+    heart: [],
+
+    heartBreak: [],
+    
     createdAt: {
         type: Date,
         default: Date.now,

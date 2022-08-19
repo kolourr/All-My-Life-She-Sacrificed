@@ -14,16 +14,15 @@
         <li><%=post.postType%></li>
         
 
-        <button class='<%=post.heartIncrement === true ? 'increase' : 'decrease' %>' data-PostHeartID='<%=post._id%>'  > <i class="bi bi-heart-fill"></i>   <%=post.heart%>
+        <button class='heartIncreaseDecrease' data-PostHeartID='<%=post._id%>'  > 
+                <i class="bi bi-heart-fill"></i>   <%=post.heart.length%>
+        </button>
+ 
+        <button class='heartBreakIncreaseDecrease' data-PostHeartBreakID='<%=post._id%>'  > 
+                <i class="bi bi-heartbreak-fill"></i>   <%=post.heartBreak.length%>
         </button>
 
-        <%=console.log(post.heartIncrement) %>
  
-
-
-
-        <button><i class="bi bi-heartbreak-fill"></i>   <%=post.heartBreak%></button>
-
     
 
         <!-- Can also add a get request link here that once the user clicks on, only then are comments shown -->

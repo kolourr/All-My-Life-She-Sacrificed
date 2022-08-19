@@ -1,7 +1,8 @@
 const deletePostButton = document.querySelectorAll('.deletePost')
 const deleteCommentButton = document.querySelectorAll('.deleteComment')
-const postHeartDecrease = document.querySelectorAll('button.decrease')
-const postHeartIncrease = document.querySelectorAll('button.increase')
+const heartIncreaseDecrease = document.querySelectorAll('.heartIncreaseDecrease')
+
+const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreaseDecrease')
 
  
  
@@ -13,12 +14,13 @@ Array.from(deleteCommentButton).forEach(comment => {
     comment.addEventListener('click', deleteComment)
 })
 
-Array.from(postHeartDecrease).forEach(heart => {
-    heart.addEventListener('click', decreasePostHeart)
+
+Array.from(heartIncreaseDecrease).forEach(heart => {
+    heart.addEventListener('click', postHeartIncreaseDecrease)
 })
 
-Array.from(postHeartIncrease).forEach(heart => {
-    heart.addEventListener('click', increasePostHeart)
+Array.from(heartBreakIncreaseDecrease).forEach(heartBreak => {
+    heartBreak.addEventListener('click', postHeartBreakIncreaseDecrease)
 })
 
  
@@ -61,14 +63,14 @@ async function deleteComment(){
 }
 
 
-async function decreasePostHeart(){
-    const postHeartID = this.getAttribute('data-PostHeartID') 
+async function postHeartIncreaseDecrease(){
+    const postHeartIncreaseDecreaseID = this.getAttribute('data-PostHeartID') 
     try{
-        const response = await fetch('post/postHeartDecrease', {
+        const response = await fetch('post/postHeartIncreaseDecreaseID', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'decreasePostHeartID': postHeartID
+                'postHeartIncreaseDecreaseID': postHeartIncreaseDecreaseID
             })
         })
         const data = await response.json()
@@ -81,15 +83,14 @@ async function decreasePostHeart(){
 }
 
 
-
-async function increasePostHeart(){
-    const postHeartID = this.getAttribute('data-PostHeartID') 
+async function postHeartBreakIncreaseDecrease(){
+    const postHeartBreakIncreaseDecreaseID = this.getAttribute('data-PostHeartBreakID') 
     try{
-        const response = await fetch('post/postHeartIncrease', {
+        const response = await fetch('post/postHeartBreakIncreaseDecreaseID', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'increasePostHeartID': postHeartID
+                'postHeartBreakIncreaseDecreaseID': postHeartBreakIncreaseDecreaseID
             })
         })
         const data = await response.json()
