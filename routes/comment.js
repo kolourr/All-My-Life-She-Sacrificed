@@ -11,5 +11,9 @@ router.get('/editCommentButton/:id', ensureAuth, commentController.editCommentBu
 
 router.put('/editComment/:id', ensureAuth, commentController.editComment)
 
+router.put('/commentHeartIncreaseDecreaseID', ensureAuth, commentController.commentHeartIncreaseDecreaseID) 
+
+router.put('/commentHeartBreakIncreaseDecreaseID', ensureAuth, commentController.commentHeartBreakIncreaseDecreaseID) 
+
 
 module.exports = router

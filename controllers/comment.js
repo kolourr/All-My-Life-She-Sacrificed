@@ -96,5 +96,120 @@ createComment: async (req, res) => {
   },
 
 
+  commentHeartIncreaseDecreaseID: async (req, res) => {
+    try {
+      let comment = await Comments.find({
+        _id: req.body.commentHeartIncreaseDecreaseID,
+      });
+      let check;
+      comment.forEach((com) => {
+        check = com.heart.includes(req.user.loginID);
+      });
+
+      if (!check) {
+        await Comments.findOneAndUpdate(
+          {
+            _id: req.body.commentHeartIncreaseDecreaseID,
+          },
+          {
+            $push: {
+              heart: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        console.log(
+          `Comment ${req.body.commentHeartIncreaseDecreaseID} heart's increased`
+        );
+      } else {
+        await Comments.findOneAndUpdate(
+          {
+            _id: req.body.commentHeartIncreaseDecreaseID,
+          },
+          {
+            $pull: {
+              heart: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        console.log(
+          `Comment ${req.body.commentHeartIncreaseDecreaseID} heart's decreased`
+        );
+      }
+
+      res.json(`Post ${req.body.commentHeartIncreaseDecreaseID} heart's updated`);
+    } catch (err) {
+      console.log(err);
+      res.render("error/500");
+    }
+  },
+
+  commentHeartBreakIncreaseDecreaseID: async (req, res) => {
+    try {
+      let comment = await Comments.find({
+        _id: req.body.commentHeartBreakIncreaseDecreaseID,
+      });
+      let check;
+      comment.forEach((com) => {
+        check = com.heartBreak.includes(req.user.loginID);
+      });
+
+      if (!check) {
+        await Comments.findOneAndUpdate(
+          {
+            _id: req.body.commentHeartBreakIncreaseDecreaseID,
+          },
+          {
+            $push: {
+              heartBreak: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        console.log(
+          `Comment ${req.body.commentHeartBreakIncreaseDecreaseID} heartbreak's increased`
+        );
+      } else {
+        await Post.findOneAndUpdate(
+          {
+            _id: req.body.commentHeartBreakIncreaseDecreaseID,
+          },
+          {
+            $pull: {
+              heartBreak: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        console.log(
+          `Comment ${req.body.commentHeartBreakIncreaseDecreaseID} heartbreak's decreased`
+        );
+      }
+
+      res.json(
+        `Comment ${req.body.commentHeartBreakIncreaseDecreaseID} heartbreak's updated`
+      );
+    } catch (err) {
+      console.log(err);
+      res.render("error/500");
+    }
+  },
+
+
 
 }

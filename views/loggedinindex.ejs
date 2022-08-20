@@ -22,16 +22,22 @@
                 <i class="bi bi-heartbreak-fill"></i>   <%=post.heartBreak.length%>
         </button>
 
- 
-    
 
         <!-- Can also add a get request link here that once the user clicks on, only then are comments shown -->
         <% allComments.forEach(reply => {%> 
         <% if(post._id.toString() === reply.post.toString()){%>
 
         <li><%=reply.body%></li>
-        <button><i class="bi bi-heart-fill"></i>   <%=reply.heart%></button>
-        <button><i class="bi bi-heartbreak-fill"></i>   <%=reply.heartBreak%></button>
+
+
+        <button class='heartIncreaseDecreaseComment' data-CommentHeartID='<%=reply._id%>'  > 
+                <i class="bi bi-heart-fill"></i>   <%=reply.heart.length%>
+        </button>
+ 
+        <button class='heartBreakIncreaseDecreaseComment' data-CommentHeartBreakID='<%=reply._id%>'  > 
+                <i class="bi bi-heartbreak-fill"></i>   <%=reply.heartBreak.length%>
+        </button>
+
 
         <% } %> <% })%>
             <br>    <span><b>Add a Comment</b></span>

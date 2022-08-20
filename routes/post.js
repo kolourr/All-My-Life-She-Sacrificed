@@ -18,6 +18,4 @@ router.put('/postHeartIncreaseDecreaseID', ensureAuth, postController.postHeartI
 router.put('/postHeartBreakIncreaseDecreaseID', ensureAuth, postController.postHeartBreakIncreaseDecreaseID) 
 
 
-
-
 module.exports = router
