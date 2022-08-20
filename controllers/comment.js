@@ -182,7 +182,7 @@ createComment: async (req, res) => {
           `Comment ${req.body.commentHeartBreakIncreaseDecreaseID} heartbreak's increased`
         );
       } else {
-        await Post.findOneAndUpdate(
+        await Comments.findOneAndUpdate(
           {
             _id: req.body.commentHeartBreakIncreaseDecreaseID,
           },
@@ -200,6 +200,8 @@ createComment: async (req, res) => {
           `Comment ${req.body.commentHeartBreakIncreaseDecreaseID} heartbreak's decreased`
         );
       }
+
+      
 
       res.json(
         `Comment ${req.body.commentHeartBreakIncreaseDecreaseID} heartbreak's updated`
