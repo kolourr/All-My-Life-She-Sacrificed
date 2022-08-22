@@ -4,6 +4,12 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 const homeController = require('../controllers/home')
 
 router.get('/', homeController.getHome) 
+router.get('/profile', ensureAuth, homeController.getProfile) 
+router.get('/editprofile/:id', ensureAuth, homeController.editProfileButton) 
+router.put('/editprofile/:id', ensureAuth, homeController.editProfile)
+
+
+
 router.get('/loggedinindex', ensureAuth, homeController.getHomeLoggedIn) 
 router.get('/updatedindex', ensureAuth, homeController.updatedindex)
 router.get('/about',  homeController.about) 

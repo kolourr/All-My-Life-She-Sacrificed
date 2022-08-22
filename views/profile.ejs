@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+<h1>Login to All My Life She Sacrificed</h1>
+<a href="/auth/google">Login</a><br><br>
+
+
+<% user.forEach(us => { %>
+<a href="/post/dashboard">Dashboard</a> <a href='/editprofile/<%=us.loginID%>'>Edit Profile</a>
+
+<h1>User Profile</h1>
+
+<ul>  
+        <li><img src='<%=us.image%>' alt=""></li>
+      <li><%=us.firstName%></li>
+        <li><%=us.lastName%></li>
+        <li><%=us.displayName%></li>
+        <li><%=us.email%></li>
+        <br>
+
+<% }) %>    
+</ul>
+
+<%- include('partials/footer') %>

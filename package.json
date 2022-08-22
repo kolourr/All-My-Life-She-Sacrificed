@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kolourr/All-My-Life-She-Sacrificied#readme",
   "dependencies": {
+    "aws-sdk": "^2.1199.0",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "connect-mongo": "^4.6.0",
@@ -28,6 +29,8 @@
     "method-override": "^3.0.0",
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-s3": "^3.0.1",
     "nodemon": "^2.0.19",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0"
