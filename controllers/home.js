@@ -1,8 +1,7 @@
 const User = require('../models/user')
 const Post = require('../models/post')
 const Comments = require('../models/comment')
-const upload = require('../middleware/upload')
-
+ 
 
 module.exports = {
     getHome: async(req,res)=>{
@@ -31,29 +30,58 @@ module.exports = {
             res.render('error/500')
         }        
     },
+    
 
     editProfileButton: async (req, res) => {
         try {
-          let post = await Post.findById({
-            _id: req.params.id,
-          }).lean();
-    
-          if (!post) {
+          let user = await User.find({
+            loginID: req.user.loginID,
+          })
+
+          if (!user) {
             return res.render("error/404");
           }
-    
-          if (post.loginID !== req.user.loginID) {
-            res.redirect("/post/dashboard");
-          } else {
-          }
-          res.render("editPost", {
-            post,
-          });
+          res.render("editProfile", {
+            user,
+          })
         } catch (err) {
           console.error(err);
           return res.render("error/500");
         }
       },
+
+      editProfile: async (req, res) => {
+        try {
+            let user = await User.find({
+                _id: req.user.id,
+              })
+    
+          if (!user) {
+            return res.render("error/404");
+          }
+    
+            user = await User.findOneAndUpdate(
+              {
+                _id: req.user.id,
+              },
+              req.body,
+              {
+                new: true,
+                runValidators: true,
+              }
+            );
+            res.redirect("/post/dashboard");
+          }
+         catch (err) {
+          console.error(err);
+          return res.render("error/500");
+        }
+      },
+
+
+
+
+ 
 
     getHomeLoggedIn: async(req,res)=>{
         try {
@@ -94,5 +122,5 @@ module.exports = {
     ,    
     error500: (req,res)=>{
         res.render('error/500.ejs')
-    }
+    },
 }

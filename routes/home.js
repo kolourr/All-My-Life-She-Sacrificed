@@ -5,8 +5,10 @@ const homeController = require('../controllers/home')
 
 router.get('/', homeController.getHome) 
 router.get('/profile', ensureAuth, homeController.getProfile) 
-router.get('/editprofile/:id', ensureAuth, homeController.editProfileButton) 
-router.put('/editprofile/:id', ensureAuth, homeController.editProfile)
+router.get('/editButton', ensureAuth, homeController.editProfileButton) 
+router.put('/editProfile', ensureAuth, homeController.editProfile) 
+
+ 
 
 
 

@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+<h1>Edit your Profile</h1>
+
+<% user.forEach(user => { %>
+<form action="/editProfile/<%=user._id%>" method='POST' encType="multipart/form-data">
+    <input type="hidden" name="_method" value="PUT">
+
+
+    <img src='<%=user.image%>' alt=""><br><br>
+
+
+    <input type="text" placeholder="First Name" name='firstName' value="<%=user.firstName%>" required> <br><br>
+
+    <input type="text" placeholder="Last Name" name='lastName' value="<%=user.lastName%>" required><br><br>
+
+    <input type="text" placeholder="Display Name" name='displayName' value="<%=user.displayName%>" required> <br><br>
+
+    <input type="text" placeholder="Email" name='email' value="<%=user.email%>" required><br><br>
+
+
+    <input type="submit">
+</form>
+<% }) %>    
+<a href="/post/dashboard">Dashboard</a>
+
+<a href="/auth/logout">Logout</a>
+
+<%- include('partials/footer') %>
