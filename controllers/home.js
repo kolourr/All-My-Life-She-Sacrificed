@@ -1,7 +1,7 @@
 const User = require('../models/user')
 const Post = require('../models/post')
 const Comments = require('../models/comment')
- 
+const upload = require("../middleware/upload"); 
 
 module.exports = {
     getHome: async(req,res)=>{
@@ -50,27 +50,30 @@ module.exports = {
         }
       },
 
-      editProfile: async (req, res) => {
+      editProfile:  async (req, res) => {
         try {
-            let user = await User.find({
-                _id: req.user.id,
-              })
+        //     let user = await User.find({
+        //         _id: req.user.id,
+        //       })
     
-          if (!user) {
-            return res.render("error/404");
-          }
-    
-            user = await User.findOneAndUpdate(
-              {
-                _id: req.user.id,
-              },
-              req.body,
-              {
-                new: true,
-                runValidators: true,
-              }
-            );
-            res.redirect("/post/dashboard");
+        //   if (!user) {
+        //     return res.render("error/404");
+        //   }
+
+            
+
+     
+            // user = await User.findOneAndUpdate(
+            //   {
+            //     _id: req.user.id,
+            //   },
+            //   req.body,
+            //   {
+            //     new: true,
+            //     runValidators: true,
+            //   }
+            // );
+            // res.redirect("/post/dashboard");
           }
          catch (err) {
           console.error(err);

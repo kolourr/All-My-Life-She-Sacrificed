@@ -2,11 +2,14 @@
 <h1>Edit your Profile</h1>
 
 <% user.forEach(user => { %>
-<form action="/editProfile/<%=user._id%>" method='POST' encType="multipart/form-data">
-    <input type="hidden" name="_method" value="PUT">
+<form action="/editProfile/<%=user._id%>" method='POST' enctype="multipart/form-data">
+    <!-- <input type="hidden" name="_method" value="PUT"> -->
+<label for="image">Select New Profile Picture</label><br><br>
+<input type="file" name="image" /><br><br>
+<img class="img-thumbnail profile-picture"  src='<%=user.image%>' ><br><br>
 
+<input type="hidden" value="<%=user.image%>" name="old_image"/>
 
-    <img src='<%=user.image%>' alt=""><br><br>
 
 
     <input type="text" placeholder="First Name" name='firstName' value="<%=user.firstName%>" required> <br><br>

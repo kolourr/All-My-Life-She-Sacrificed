@@ -2,11 +2,13 @@ const express = require('express')
 const router = express.Router()
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 const homeController = require('../controllers/home')
+const upload = require("../middleware/upload"); 
+
 
 router.get('/', homeController.getHome) 
 router.get('/profile', ensureAuth, homeController.getProfile) 
 router.get('/editButton', ensureAuth, homeController.editProfileButton) 
-router.put('/editProfile', ensureAuth, homeController.editProfile) 
+router.post('/editProfile/:id', upload.single('image'), ensureAuth, homeController.editProfile) 
 
  
 
