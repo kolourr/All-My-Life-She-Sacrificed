@@ -52,28 +52,38 @@ module.exports = {
 
       editProfile:  async (req, res) => {
         try {
-        //     let user = await User.find({
-        //         _id: req.user.id,
-        //       })
+            let user = await User.find({
+                _id: req.user.id,
+              })
     
-        //   if (!user) {
-        //     return res.render("error/404");
-        //   }
+          if (!user) {
+            return res.render("error/404");
+          }
 
-            
+        let newImage 
+        if(req.file){
+            newImage = req.file.location
+        }else{
+            newImage = req.body.image
+        }
 
-     
-            // user = await User.findOneAndUpdate(
-            //   {
-            //     _id: req.user.id,
-            //   },
-            //   req.body,
-            //   {
-            //     new: true,
-            //     runValidators: true,
-            //   }
-            // );
-            // res.redirect("/post/dashboard");
+        user = await User.findOneAndUpdate(
+            {
+            _id: req.user.id,
+            },
+            {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            displayName: req.body.displayName,
+            email: req.body.email,
+            image: newImage
+            },
+            {
+            new: true,
+            runValidators: true,
+            }
+        );
+        res.redirect("/profile");
           }
          catch (err) {
           console.error(err);
