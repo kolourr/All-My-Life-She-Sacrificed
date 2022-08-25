@@ -4,7 +4,64 @@ const heartIncreaseDecrease = document.querySelectorAll('.heartIncreaseDecrease'
 const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreaseDecrease')
 const heartIncreaseDecreaseComment = document.querySelectorAll('.heartIncreaseDecreaseComment')
 const heartBreakIncreaseDecreaseComment = document.querySelectorAll('.heartBreakIncreaseDecreaseComment')
+// const imageUploaded = document.getElementById('imageUploaded')
+
+
+
+// imageUploaded.onchange = event => {
+//     const [image] = imageUploaded.files
+//     if (image) {
+//         imageUploadedDisplay.src = URL.createObjectURL(image)
+//     }
+//   }
+
+
+$(document).ready(function(){
+    $image_crop = $('#image_demo').croppie({
+       enableExif: true,
+       viewport: {
+         width:200,
+         height:200,
+         type:'circle' //circle
+       },
+       boundary:{
+         width:300,
+         height:300
+       }
+     });
+     $('#upload_image').on('change', function(){
+       var reader = new FileReader();
+       reader.onload = function (event) {
+         $image_crop.croppie('bind', {
+           url: event.target.result
+         }) 
+       }
+       reader.readAsDataURL(this.files[0]);
+       $('#uploadimage').show();
+     });
+     $('.crop_image').click(function(event){
+       $image_crop.croppie('result', {
+         type: 'canvas',
+         size: 'viewport'
+       }).then(function(response){
+         $.ajax({
+           url:"upload.php",
+           type: "POST",
+           data:{"image": response},
+           success:function(data)
+           {
+              $('#uploaded_image').html(data)
+           }
+         });
+       })
+     });
+   });  
+
+
  
+
+
+
  
 Array.from(deletePostButton).forEach((post)=>{
     post.addEventListener('click', deletePost)
