@@ -60,29 +60,37 @@ module.exports = {
             return res.render("error/404");
           }
 
-        let newImage 
-        if(req.file){
-            newImage = req.file.location
-        }else{
-            newImage = req.body.image
-        }
 
-        user = await User.findOneAndUpdate(
-            {
-            _id: req.user.id,
-            },
-            {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            displayName: req.body.displayName,
-            email: req.body.email,
-            image: newImage
-            },
-            {
-            new: true,
-            runValidators: true,
-            }
-        );
+          console.log(req.file)
+
+
+ 
+
+ 
+
+        // let newImage 
+        // if(req.file){
+        //     newImage = req.file.location
+        // }else{
+        //     newImage = req.body.image
+        // }
+
+        // user = await User.findOneAndUpdate(
+        //     {
+        //     _id: req.user.id,
+        //     },
+        //     {
+        //     firstName: req.body.firstName,
+        //     lastName: req.body.lastName,
+        //     displayName: req.body.displayName,
+        //     email: req.body.email,
+        //     image: newImage
+        //     },
+        //     {
+        //     new: true,
+        //     runValidators: true,
+        //     }
+        // );
         res.redirect("/profile");
           }
          catch (err) {

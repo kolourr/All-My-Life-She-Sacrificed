@@ -4,62 +4,102 @@ const heartIncreaseDecrease = document.querySelectorAll('.heartIncreaseDecrease'
 const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreaseDecrease')
 const heartIncreaseDecreaseComment = document.querySelectorAll('.heartIncreaseDecreaseComment')
 const heartBreakIncreaseDecreaseComment = document.querySelectorAll('.heartBreakIncreaseDecreaseComment')
-// const imageUploaded = document.getElementById('imageUploaded')
 
 
+var el = document.getElementById('image_demo');
 
-// imageUploaded.onchange = event => {
-//     const [image] = imageUploaded.files
-//     if (image) {
-//         imageUploadedDisplay.src = URL.createObjectURL(image)
-//     }
-//   }
+var vanilla = new Croppie(el, {
+    enableExif: true,
+    showZoomer: true,
+    enableOrientation: true,
+    viewport: {
+        width:200, 
+        height:200,
+        type:'circle' //circle
+    },
+    boundary:{
+        width:300,
+        height:300 
+    }
+})
 
+document.getElementById('upload_image').addEventListener('change', displayImage)
 
-$(document).ready(function(){
-    $image_crop = $('#image_demo').croppie({
-       enableExif: true,
-       viewport: {
-         width:200,
-         height:200,
-         type:'circle' //circle
-       },
-       boundary:{
-         width:300,
-         height:300
-       }
-     });
-     $('#upload_image').on('change', function(){
-       var reader = new FileReader();
-       reader.onload = function (event) {
-         $image_crop.croppie('bind', {
-           url: event.target.result
-         }) 
-       }
-       reader.readAsDataURL(this.files[0]);
-       $('#uploadimage').show();
-     });
-     $('.crop_image').click(function(event){
-       $image_crop.croppie('result', {
-         type: 'canvas',
-         size: 'viewport'
-       }).then(function(response){
-         $.ajax({
-           url:"upload.php",
-           type: "POST",
-           data:{"image": response},
-           success:function(data)
-           {
-              $('#uploaded_image').html(data)
-           }
-         });
-       })
-     });
-   });  
+function displayImage(){
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        vanilla.bind({
+        url: event.target.result
+      }) 
+    }
+    reader.readAsDataURL(this.files[0]); 
+    document.getElementById('uploadimage').style.display = 'block' 
 
+}
+
+ 
+   $('.crop_image').click(function(event){
+    vanilla.result({
+      type: 'blob',
+      size: 'viewport'
+    }).then(function(response){
+
+ 
+        const blob = response
+        const form = document.getElementById('updateProfile');
+        const formData = new FormData(form);
+        // formData.append('imageCroppied', blob)
+
+        alert(formData)
 
  
 
+    
+    })
+  })
+
+ 
+    
+ 
+
+//   $('.crop_image').click(function(event){
+//     vanilla.result({
+//       type: 'canvas',
+//       size: 'viewport'
+//     }).then(function(response){
+//       $.ajax({
+//         url:"upload.php",
+//         type: "POST",
+//         data:{"image": response},
+//         success:function(data)
+//         {
+//            $('#uploaded_image').html(data)
+//         }
+//       });
+//     })
+//   });
+
+
+
+
+
+// let imagedisplay = document.getElementById("upload_image").addEventListener("change", myFunction);
+
+
+// function myFunction(){
+
+//     var reader = new FileReader();
+//     reader.onload = function (event) {
+//         vanilla.bind({
+//             url: event.target.result
+//       }) 
+//     }
+//     reader.readAsDataURL(this.files[0])
+
+//     $('#uploadimage').show();
+
+// }
+ 
 
 
  
@@ -204,4 +244,3 @@ async function commentHeartBreakIncreaseDecrease(){
 
 }
 
- 
