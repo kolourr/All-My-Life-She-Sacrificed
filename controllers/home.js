@@ -2,6 +2,10 @@ const User = require('../models/user')
 const Post = require('../models/post')
 const Comments = require('../models/comment')
 const upload = require("../middleware/upload"); 
+const uploadbase64 = require("../middleware/uploadbase64"); 
+var fs = require('fs')
+
+
 
 module.exports = {
     getHome: async(req,res)=>{
@@ -61,36 +65,22 @@ module.exports = {
           }
 
 
-          console.log(req.file)
 
-
- 
-
- 
-
-        // let newImage 
-        // if(req.file){
-        //     newImage = req.file.location
-        // }else{
-        //     newImage = req.body.image
-        // }
-
-        // user = await User.findOneAndUpdate(
-        //     {
-        //     _id: req.user.id,
-        //     },
-        //     {
-        //     firstName: req.body.firstName,
-        //     lastName: req.body.lastName,
-        //     displayName: req.body.displayName,
-        //     email: req.body.email,
-        //     image: newImage
-        //     },
-        //     {
-        //     new: true,
-        //     runValidators: true,
-        //     }
-        // );
+        user = await User.findOneAndUpdate(
+            {
+            _id: req.user.id,
+            },
+            {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            displayName: req.body.displayName,
+            email: req.body.email,
+            },
+            {
+            new: true,
+            runValidators: true,
+            }
+        );
         res.redirect("/profile");
           }
          catch (err) {
@@ -99,10 +89,32 @@ module.exports = {
         }
       },
 
+      editProfilePicture:  async (req, res) => {
+        try {
 
+        let name = Date.now().toString() + Math.floor(Math.random() * 1250) + '.jpg'
+        let uploadedImageUrl = uploadbase64(req.body.base64, name)
 
+        await User.findOneAndUpdate(
+            {
+            _id: req.user.id,
+            },
+            {
+            image: uploadedImageUrl
+            },
+            {
+            new: true,
+            runValidators: true,
+            }
+            )
 
- 
+        res.redirect("/editprofile")
+          }
+         catch (err) {
+          console.error(err);
+          return res.render("error/500");
+        }
+      },
 
     getHomeLoggedIn: async(req,res)=>{
         try {

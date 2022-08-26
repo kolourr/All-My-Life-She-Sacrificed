@@ -9,9 +9,7 @@ router.get('/', homeController.getHome)
 router.get('/profile', ensureAuth, homeController.getProfile) 
 router.get('/editButton', ensureAuth, homeController.editProfileButton) 
 router.post('/editProfile/:id', upload.single('image'), ensureAuth, homeController.editProfile) 
-
- 
-
+router.post('/editProfilePicture', ensureAuth, homeController.editProfilePicture) 
 
 
 router.get('/loggedinindex', ensureAuth, homeController.getHomeLoggedIn) 

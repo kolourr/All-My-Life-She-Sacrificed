@@ -1,14 +1,8 @@
-const deletePostButton = document.querySelectorAll('.deletePost')
-const deleteCommentButton = document.querySelectorAll('.deleteComment')
-const heartIncreaseDecrease = document.querySelectorAll('.heartIncreaseDecrease')
-const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreaseDecrease')
-const heartIncreaseDecreaseComment = document.querySelectorAll('.heartIncreaseDecreaseComment')
-const heartBreakIncreaseDecreaseComment = document.querySelectorAll('.heartBreakIncreaseDecreaseComment')
+//Cropping Profile Picture using Croppie
 
-
-var el = document.getElementById('image_demo');
-
-var vanilla = new Croppie(el, {
+let el = document.getElementById('image_demo');
+//initialize Croppie
+let vanilla = new Croppie(el, {
     enableExif: true,
     showZoomer: true,
     enableOrientation: true,
@@ -24,7 +18,7 @@ var vanilla = new Croppie(el, {
 })
 
 document.getElementById('upload_image').addEventListener('change', displayImage)
-
+//Display Image
 function displayImage(){
     var reader = new FileReader();
     reader.onload = function (event) {
@@ -37,72 +31,36 @@ function displayImage(){
 
 }
 
- 
-   $('.crop_image').click(function(event){
+document.getElementById('crop_image').addEventListener('click', uploadBase64)
+//Upload base64 of Cropped Image for Server Side rendering and upload to S3
+
+function uploadBase64(){
     vanilla.result({
-      type: 'blob',
-      size: 'viewport'
-    }).then(function(response){
+        type: 'base64',
+        size: 'viewport'
+      }).then(function(response){
+              fetch('/editProfilePicture', {
+                  method: 'post',
+                  headers: {'Content-type': 'application/json'},
+                  body: JSON.stringify({
+                      'base64': response
+                  })
+  
+              })
+              location.reload()
+  
+      })
+}
 
- 
-        const blob = response
-        const form = document.getElementById('updateProfile');
-        const formData = new FormData(form);
-        // formData.append('imageCroppied', blob)
+//Adding and removing hearts, and deleting posts/comments 
 
-        alert(formData)
+const deletePostButton = document.querySelectorAll('.deletePost')
+const deleteCommentButton = document.querySelectorAll('.deleteComment')
+const heartIncreaseDecrease = document.querySelectorAll('.heartIncreaseDecrease')
+const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreaseDecrease')
+const heartIncreaseDecreaseComment = document.querySelectorAll('.heartIncreaseDecreaseComment')
+const heartBreakIncreaseDecreaseComment = document.querySelectorAll('.heartBreakIncreaseDecreaseComment')
 
- 
-
-    
-    })
-  })
-
- 
-    
- 
-
-//   $('.crop_image').click(function(event){
-//     vanilla.result({
-//       type: 'canvas',
-//       size: 'viewport'
-//     }).then(function(response){
-//       $.ajax({
-//         url:"upload.php",
-//         type: "POST",
-//         data:{"image": response},
-//         success:function(data)
-//         {
-//            $('#uploaded_image').html(data)
-//         }
-//       });
-//     })
-//   });
-
-
-
-
-
-// let imagedisplay = document.getElementById("upload_image").addEventListener("change", myFunction);
-
-
-// function myFunction(){
-
-//     var reader = new FileReader();
-//     reader.onload = function (event) {
-//         vanilla.bind({
-//             url: event.target.result
-//       }) 
-//     }
-//     reader.readAsDataURL(this.files[0])
-
-//     $('#uploadimage').show();
-
-// }
- 
-
-
- 
 Array.from(deletePostButton).forEach((post)=>{
     post.addEventListener('click', deletePost)
 })
@@ -116,7 +74,6 @@ Array.from(heartIncreaseDecrease).forEach(heart => {
 Array.from(heartBreakIncreaseDecrease).forEach(heartBreak => {
     heartBreak.addEventListener('click', postHeartBreakIncreaseDecrease)
 })
-
 
 Array.from(heartIncreaseDecreaseComment).forEach(heart => {
     heart.addEventListener('click', commentHeartIncreaseDecrease)
