@@ -2,7 +2,9 @@ const User = require('../models/user')
 const Post = require('../models/post')
 const Comments = require('../models/comment')
 const upload = require("../middleware/upload"); 
-const uploadbase64 = require("../middleware/uploadbase64"); 
+const uploadbase64 = require("../middleware/uploadbase64")
+const ContactUs = require('../models/contactus')
+
 var fs = require('fs')
 
 
@@ -130,7 +132,32 @@ module.exports = {
             res.render('error/500')
         }        
     },
-    
+
+    sendmessage: async (req,res)=>{
+
+        try {
+            await ContactUs.create({
+              name: req.body.name,
+              email: req.body.email,
+              message: req.body.message,
+            });
+            let confirmation = `Thank You for contacting us. We will try to get back to you as soon as possible.`
+            console.log("Message Added in MongoDB");
+            res.render("message", {
+                confirmation }
+            )
+          } catch (err) {
+            console.log(err);
+            res.render("error/500");
+          }
+         
+    },
+
+    message: (req,res)=>{
+        res.render('message')
+    },
+
+
     updatedindex: (req,res)=>{
         res.render('updatedindex.ejs')
     },

@@ -11,6 +11,10 @@ router.get('/editButton', ensureAuth, homeController.editProfileButton)
 router.post('/editProfile/:id', upload.single('image'), ensureAuth, homeController.editProfile) 
 router.post('/editProfilePicture', ensureAuth, homeController.editProfilePicture) 
 
+router.get('/message',  homeController.message) 
+router.post('/sendmessage',  homeController.sendmessage) 
+
+
 
 router.get('/loggedinindex', ensureAuth, homeController.getHomeLoggedIn) 
 router.get('/updatedindex', ensureAuth, homeController.updatedindex)
