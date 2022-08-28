@@ -4,6 +4,7 @@ const Comments = require('../models/comment')
 const upload = require("../middleware/upload"); 
 const uploadbase64 = require("../middleware/uploadbase64")
 const ContactUs = require('../models/contactus')
+const mailOptions = require('../middleware/nodemailer')
 
 var fs = require('fs')
 
@@ -136,11 +137,28 @@ module.exports = {
     sendmessage: async (req,res)=>{
 
         try {
+            let userName = req.body.name
+            let userEmail = req.body.email
+            let userMessageReceived = req.body.message
+
+            let userMessage = `
+                <h3>Contact Details</h3>
+                <ul>  
+                <li>Name: ${userName}</li>
+                <li>Email: ${userEmail}</li>
+                </ul>
+                <h3>Message</h3>
+                <p>${userMessageReceived}</p>
+            `
+
             await ContactUs.create({
-              name: req.body.name,
-              email: req.body.email,
-              message: req.body.message,
+              name: userName,
+              email: userEmail,
+              message: userMessageReceived,
             });
+
+            mailOptions(userName, userMessage)
+
             let confirmation = `Thank You for contacting us. We will try to get back to you as soon as possible.`
             console.log("Message Added in MongoDB");
             res.render("message", {

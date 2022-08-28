@@ -52,6 +52,9 @@ function uploadBase64(){
       })
 }
 
+
+ 
+
 //Adding and removing hearts, and deleting posts/comments 
 
 const deletePostButton = document.querySelectorAll('.deletePost')

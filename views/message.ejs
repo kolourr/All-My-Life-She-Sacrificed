@@ -5,7 +5,7 @@
 <div class="sendmessage">
 
     <h2>Contact Us</h2>
-        <form action="/sendmessage" method='POST'>
+        <form id="contact-us" action="/sendmessage" method='POST'>
  
         <label>Name</label>
         <input type="text" name="name" required><br><br>
@@ -16,7 +16,9 @@
         <label>Message</label>
         <textarea name="message" rows="10"></textarea required><br><br>
  
-        <button type="submit">Submit</button>
+            <input type="submit">
+
+            
  
     </form>
     <h3><%=typeof confirmation == 'undefined' ? '' : confirmation%></h3>
