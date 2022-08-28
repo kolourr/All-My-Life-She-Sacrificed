@@ -159,11 +159,8 @@ module.exports = {
 
             mailOptions(userName, userMessage)
 
-            let confirmation = `Thank You for contacting us. We will try to get back to you as soon as possible.`
-            console.log("Message Added in MongoDB");
-            res.render("message", {
-                confirmation }
-            )
+
+            res.redirect("messageSentSuccessfully")
           } catch (err) {
             console.log(err);
             res.render("error/500");
@@ -175,6 +172,11 @@ module.exports = {
         res.render('message')
     },
 
+    messageSentSuccessfully: (req,res)=>{
+ 
+        res.render('messageSentSuccessfully' , {
+            confirmation: `Thank You for contacting us. We will try to get back to you as soon as possible.` })
+    },
 
     updatedindex: (req,res)=>{
         res.render('updatedindex.ejs')
