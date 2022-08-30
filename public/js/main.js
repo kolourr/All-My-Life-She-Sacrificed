@@ -1,26 +1,28 @@
 //Cropping Profile Picture using Croppie
 
-let el = document.getElementById('image_demo');
 //initialize Croppie
-let vanilla = new Croppie(el, {
-    enableExif: true,
-    showZoomer: true,
-    enableOrientation: true,
-    viewport: {
-        width:200, 
-        height:200,
-        type:'circle' //circle
-    },
-    boundary:{
-        width:300,
-        height:300 
-    }
-})
+ 
+ let vanilla =  new Croppie(document.getElementById('image_demo'), {
+        enableExif: true,
+        showZoomer: true,
+        enableOrientation: true,
+        viewport: {
+            width:200, 
+            height:200,
+            type:'circle' //circle
+        },
+        boundary:{
+            width:300,
+            height:300 
+        }
+    })
+
+
 
 document.getElementById('upload_image').addEventListener('change', displayImage)
 //Display Image
-function displayImage(){
-    var reader = new FileReader();
+ function displayImage(){
+    let reader =  new FileReader();
     reader.onload = function (event) {
         vanilla.bind({
         url: event.target.result
@@ -34,12 +36,12 @@ function displayImage(){
 document.getElementById('crop_image').addEventListener('click', uploadBase64)
 //Upload base64 of Cropped Image for Server Side rendering and upload to S3
 
-function uploadBase64(){
+ function uploadBase64(){
     vanilla.result({
         type: 'base64',
         size: 'viewport'
-      }).then(function(response){
-              fetch('/editProfilePicture', {
+      }).then( function(response){
+               fetch('/editProfilePicture', {
                   method: 'post',
                   headers: {'Content-type': 'application/json'},
                   body: JSON.stringify({
