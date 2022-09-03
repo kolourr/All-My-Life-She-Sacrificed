@@ -17,7 +17,7 @@ module.exports = {
         postsWithUserComments,
       });
     } catch (err) {
-      console.log(err);
+      console.log(err);  
       res.render("error/500");
     }
   },
