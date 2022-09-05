@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const wallStoryCommentSchema = new mongoose.Schema({
+const wallCommentSchema = new mongoose.Schema({
     captionComment: {
         type: String,
         trim: true,
@@ -11,9 +11,9 @@ const wallStoryCommentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    wallStory: {
+    wall: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'WallStory',
+        ref: 'Wall',
     },
     heart: [],
 
@@ -25,4 +25,4 @@ const wallStoryCommentSchema = new mongoose.Schema({
     },
  })
 
- module.exports = mongoose.model('WallStoryComments', wallStoryCommentSchema)
+ module.exports = mongoose.model('WallComments', wallCommentSchema)

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const wallStorySchema = new mongoose.Schema({
+const wallSchema = new mongoose.Schema({
     image: {
         type: String,
     },
@@ -18,9 +18,9 @@ const wallStorySchema = new mongoose.Schema({
 
       heartBreak: [],
 
-    wallStoryComments: [{
+    wallComments: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'WallStoryComments',
+        ref: 'WallComments',
     }],  
     createdAt: {  
         type: Date,
@@ -29,4 +29,4 @@ const wallStorySchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('WallStory', wallStorySchema)
+module.exports = mongoose.model('Wall', wallSchema)

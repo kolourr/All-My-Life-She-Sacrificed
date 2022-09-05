@@ -12,6 +12,7 @@ const multerS3 = require('multer-s3')
 const authRoutes = require('./routes/auth')
 const homeRoutes = require('./routes/home')
 const postRoutes = require('./routes/post')
+const wallRoutes = require('./routes/wall')
 const commentRoutes = require('./routes/comment')
 
 
@@ -61,8 +62,10 @@ app.use('/', homeRoutes)
 app.use('/auth', authRoutes)
 app.use('/post', postRoutes)
 app.use('/comment', commentRoutes)
+app.use('/wall', wallRoutes)
 
- 
+
+
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server is running on PORT ${process.env.PORT}`)
 })    
