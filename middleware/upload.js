@@ -2,6 +2,7 @@ const aws = require('@aws-sdk/client-s3')
 const multer = require('multer')
 const multerS3 = require('multer-s3')
 const { defaultProvider } = require("@aws-sdk/credential-provider-node")
+const sharp = require('sharp');
 
 
 const s3 = new aws.S3({
@@ -28,12 +29,33 @@ const upload = multer({
     metadata: (req, file, cb) => {
       cb(null, {fileName: file.fieldname})
     },
+    
     key: (req, file, cb) => {
       cb(null, Date.now().toString() + '-' + file.originalname)
     },
+
+    transforms: [
+      {
+        id: 'mom-child',
+        transform: function(req, file, cb) {
+          //Perform desired transformations
+          cb(
+            null,
+            sharp()
+              .resize(600, 800)
+              .max()
+          );
+        }
+      }
+    ],
+
     
   })
 });
+
+
+ 
+
 
 
 
