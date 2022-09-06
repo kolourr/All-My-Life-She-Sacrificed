@@ -4,16 +4,14 @@
 
 <form action="/post/createWallPost" method='POST' enctype="multipart/form-data">
 
-    <input type="file" name="mom-image" /><br><br>
-
-    <input type="file" name="imageUploaded" id="upload_image" />
-
-
-    
+    <input type="file" name="mom-image" id="mom-image" accept="image/*"  required /><br><br>
     <textarea type="text" rows="4" cols="40" placeholder="caption" name='caption' required></textarea><br><br>
 
     <input type="submit">
 </form>
+
+
+
 <a href="/post/dashboard">Dashboard</a>
 <a href="/wall">Wall</a>
 <a href="/auth/logout">Logout</a>
