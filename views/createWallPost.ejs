@@ -2,14 +2,21 @@
 <h1>Share a Picture & Story About Your Mom!</h1>
 
 
-<form action="/post/createWallPost" method='POST' enctype="multipart/form-data">
 
-    <input type="file" name="mom-image" id="mom-image" accept="image/*"  required /><br><br>
+
+<form action="/wall/createWallPost" method='POST' enctype="multipart/form-data">
+
+
+    <input type="file" name="image" id="image"   required /><br><br>
+
+    <img type="hidden"   />
+
+
+
     <textarea type="text" rows="4" cols="40" placeholder="caption" name='caption' required></textarea><br><br>
 
     <input type="submit">
 </form>
-
 
 
 <a href="/post/dashboard">Dashboard</a>

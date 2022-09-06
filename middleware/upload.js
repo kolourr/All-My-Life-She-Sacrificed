@@ -1,12 +1,13 @@
 const aws = require('@aws-sdk/client-s3')
 const multer = require('multer')
 const multerS3 = require('multer-s3')
-const { defaultProvider } = require("@aws-sdk/credential-provider-node");
+const { defaultProvider } = require("@aws-sdk/credential-provider-node")
+
 
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_DEFAULT_REGION,
+  region: 'ca-central-1',
   defaultProvider
 })
 
@@ -29,7 +30,8 @@ const upload = multer({
     },
     key: (req, file, cb) => {
       cb(null, Date.now().toString() + '-' + file.originalname)
-    }
+    },
+    
   })
 });
 
