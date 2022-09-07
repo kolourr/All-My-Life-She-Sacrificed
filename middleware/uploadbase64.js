@@ -2,8 +2,6 @@ const aws = require('@aws-sdk/client-s3')
 const fs = require('fs')
 let { defaultProvider } = require("@aws-sdk/credential-provider-node");
 
-
-
 const s3 = new aws.S3({
   region: process.env.AWS_DEFAULT_REGION,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,

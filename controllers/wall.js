@@ -2,6 +2,8 @@ const User = require("../models/user");
 const Wall = require("../models/wall");
 const WallComments = require("../models/wallComments");
 const upload = require("../middleware/upload"); 
+const imageCompressionUpload = require("../middleware/imageCompressionUpload"); 
+
 
 module.exports = {
   getHome: async(req,res)=>{
@@ -24,25 +26,23 @@ module.exports = {
 
   createWallPost: async(req,res)=>{
     try {
-
-      console.log(req.file)
-      // await Post.create({
-      //   title: req.body.title,
-      //   body: req.body.body,
-      //   postType: req.body.postType,
-      //   loginID: req.user.loginID,
-      // });
-      // console.log("Post created");
+    
+      let imageUrl = await imageCompressionUpload(req.file.key, 600, 800)   
+      await Wall.create({
+        image: imageUrl,
+        caption: req.body.caption,
+        loginID: req.user.loginID,
+      });
+      console.log("Wall Post created");
       // res.redirect("/updatedindex");
+
+ 
     } catch (err) {
       console.log(err);
       res.render("error/500");
     }
 },
 
-
  
- 
-
 
 }
