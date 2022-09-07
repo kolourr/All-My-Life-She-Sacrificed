@@ -2,6 +2,7 @@ const aws = require('@aws-sdk/client-s3')
 const multer = require('multer')
 const multerS3 = require('multer-s3')
 const { defaultProvider } = require("@aws-sdk/credential-provider-node")
+const path = require('path');
 const sharp = require('sharp');
 
 
@@ -20,38 +21,38 @@ const fileFilter = (req, file, cb) => {
   }
   cb(null, true);
 }
-
-const upload = multer({
-  storage: multerS3({
+ 
+const storage2 = multerS3({
     fileFilter,
     s3: s3,
     bucket: 'ilovguitars-amlss-mom' ,
     metadata: (req, file, cb) => {
       cb(null, {fileName: file.fieldname})
     },
-    
     key: (req, file, cb) => {
       cb(null, Date.now().toString() + '-' + file.originalname)
     },
 
-    transforms: [
-      {
-        id: 'mom-child',
-        transform: function(req, file, cb) {
-          //Perform desired transformations
-          cb(
-            null,
-            sharp()
-              .resize(600, 800)
-              .max()
-          );
-        }
-      }
-    ],
+})
 
-    
-  })
-});
+
+console.log(storage2.key)
+
+const upload = multer({ storage:storage2 })
+
+
+
+
+// const originalImage =  s3.getObject({
+//   Bucket: 'ilovguitars-amlss-mom',
+//   Key: storage2,
+// }).promise();
+
+ 
+// const originalImage = await s3.getObject({
+//   Bucket: 'ilovguitars-amlss-mom' ,
+//   Key: key,
+// }).promise();
 
 
  
