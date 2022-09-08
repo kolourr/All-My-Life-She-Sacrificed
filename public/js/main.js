@@ -60,11 +60,11 @@ async function deletePost(){
 async function deleteWallPost(){
     const wallPostID = this.getAttribute('data-DeleteWallPostID') 
     try{
-        const response = await fetch('deletePost', {
+        const response = await fetch('/wall/deleteWallPost', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'data-DeleteWallPostID': wallPostID
+                'deleteWallPostID': wallPostID
             })
         })
         const data = await response.json()

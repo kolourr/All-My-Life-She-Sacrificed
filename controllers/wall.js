@@ -34,7 +34,7 @@ module.exports = {
         loginID: req.user.loginID,
       });
       console.log("Wall Post created");
-      // res.redirect("/updatedindex");
+      res.redirect("/post/dashboard");
 
  
     } catch (err) {
