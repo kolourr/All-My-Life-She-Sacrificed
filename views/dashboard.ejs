@@ -49,4 +49,26 @@
 
         <% }) %>
 </ul>
+
+<h1>Wall Posts</h1>
+<ul>
+        <% wallPosts.forEach(wallPost => { %>
+ 
+         <img src="<%=wallPost.image%>" width="225" height="300" /><br /><br />
+        <li> <%=wallPost.caption%><br>
+                <button><i class="bi bi-heart-fill"></i> <%=wallPost.heart%></button>
+                <button><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak%></button>
+
+                <button>
+                        <a style="color: black; text-decoration: none"
+                                href="../wall/editWallPostButton/<%=wallPost._id%>">Edit</a>
+                </button>
+
+                <button class="deleteWallPost" data-DeleteWallPostID="<%=wallPost._id%>">
+                        Delete
+                </button><br /><br />
+        </li>
+
+        <% }) %>
+</ul>
 <%- include('partials/footer') %>

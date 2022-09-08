@@ -1,6 +1,9 @@
 //Adding and removing hearts, and deleting posts/comments 
 
 const deletePostButton = document.querySelectorAll('.deletePost')
+
+const deleteWallPostButton = document.querySelectorAll('.deleteWallPost')
+
 const deleteCommentButton = document.querySelectorAll('.deleteComment')
 const heartIncreaseDecrease = document.querySelectorAll('.heartIncreaseDecrease')
 const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreaseDecrease')
@@ -10,6 +13,12 @@ const heartBreakIncreaseDecreaseComment = document.querySelectorAll('.heartBreak
 Array.from(deletePostButton).forEach((post)=>{
     post.addEventListener('click', deletePost)
 })
+
+Array.from(deleteWallPostButton).forEach((wallpost)=>{
+    wallpost.addEventListener('click', deleteWallPost)
+})
+
+
 Array.from(deleteCommentButton).forEach(comment => {
     comment.addEventListener('click', deleteComment)
 })
@@ -38,6 +47,24 @@ async function deletePost(){
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
                 'deletePostID': postID
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function deleteWallPost(){
+    const wallPostID = this.getAttribute('data-DeleteWallPostID') 
+    try{
+        const response = await fetch('deletePost', {
+            method: 'delete',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'data-DeleteWallPostID': wallPostID
             })
         })
         const data = await response.json()

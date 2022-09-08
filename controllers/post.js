@@ -1,6 +1,10 @@
 const User = require("../models/user");
 const Post = require("../models/post");
-const Comments = require("../models/comment");
+const Comments = require("../models/comment")
+const Wall = require("../models/wall");
+const WallComments = require("../models/wallComments");
+const upload = require("../middleware/upload"); 
+const imageCompressionUpload = require("../middleware/imageCompressionUpload"); 
 
 module.exports = {
   dashboard: async (req, res) => {
@@ -12,9 +16,14 @@ module.exports = {
         loginID: req.user.loginID,
       }).populate("post");
 
+      let wallPosts = await Wall.find({
+        loginID: req.user.loginID,
+      }) 
+
       res.render("dashboard.ejs", {
         allUserPosts,
         postsWithUserComments,
+        wallPosts
       });
     } catch (err) {
       console.log(err);  

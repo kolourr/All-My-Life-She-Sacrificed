@@ -26,7 +26,7 @@ module.exports = {
 
   createWallPost: async(req,res)=>{
     try {
-    
+      //All images uploaded to the wall will be compressed to 600 x 800 for uniform viewing across application. 
       let imageUrl = await imageCompressionUpload(req.file.key, 600, 800)   
       await Wall.create({
         image: imageUrl,
@@ -41,6 +41,24 @@ module.exports = {
       console.log(err);
       res.render("error/500");
     }
+},
+
+deleteWallPost: async (req, res) => {
+  try {
+    await Wall.findOneAndDelete({
+      _id: req.body.deleteWallPostID,
+    });
+
+    await WallComments.deleteMany({
+      post: req.body.deleteWallPostID,
+    });
+
+    console.log("Deleted Wall Post and all its Comments");
+    res.json("Deleted Wall Post and all its Comments");
+  } catch (err) {
+    console.log(err);
+    res.render("error/500");
+  }
 },
 
  
