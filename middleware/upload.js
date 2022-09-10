@@ -22,7 +22,7 @@ const fileFilter = (req, file, cb) => {
   cb(null, true);
 }
       
-  
+      
 const storage2 = multerS3({
     fileFilter,
     s3: s3,
