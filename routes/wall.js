@@ -15,7 +15,7 @@ router.delete('/deleteWallPost', ensureAuth, wallController.deleteWallPost)
 
 router.get('/editWallPostButton/:id', ensureAuth, wallController.editWallPostButton)
 
-// router.put('/editPost/:id', ensureAuth, wallController.editPost)
+router.post('/editWallPost/:id', upload.single('updatedimage'), ensureAuth, wallController.editWallPost)
 
 // router.put('/postHeartIncreaseDecreaseID', ensureAuth, wallController.postHeartIncreaseDecreaseID) 
 

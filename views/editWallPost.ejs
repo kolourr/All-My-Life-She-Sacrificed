@@ -1,24 +1,18 @@
 <%- include('partials/header') %>
 <h1>Edit a Post About Your Mom!</h1>
 
-
- 
-
-<form action="/wall/editWallPost/<%=wallPost._id%>" method='POST'>
+<form action="/wall/editWallPost/<%=wallPost._id%>" method='POST' enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PUT">
  
-  
+    <input type="file" name="updatedimage" id="updatedimage" /><br><br>
 
-    <input type="file" name="image" id="image"   required /><br><br>
+    <img src="<%=wallPost.image%>"    />
 
-    <img src="<%=wallPost.image%>"    /><br><br>
+    <input type="text"  name='caption'   value="<%=wallPost.caption%>" >  <br><br>
 
-    <textarea type="text" rows="4" cols="40"   name='caption' value="<%=wallPost.caption%>" required></textarea><br><br>
-
-    
     <input type="submit">
 </form>
-
+ 
  <a href="/post/dashboard">Dashboard</a>
 
 <a href="/auth/logout">Logout</a>

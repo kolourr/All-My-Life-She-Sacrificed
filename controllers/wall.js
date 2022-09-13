@@ -84,6 +84,41 @@ editWallPostButton: async (req, res) => {
   }
 },
 
+
+editWallPost:  async (req, res) => {
+  try {
+
+    let wallPost = await Wall.findById({
+      _id: req.params.id,
+    }).lean();
+
+  let imageUrl
+  if(req.file === undefined){
+    imageUrl = wallPost.image
+  }else{
+    imageUrl = await imageCompressionUpload(req.file.key, 600, 800)   
+  }
  
+  await Wall.findOneAndUpdate(
+      {
+      _id: req.params.id,
+      },
+      {
+      image: imageUrl
+      },
+      {
+      new: true,
+      runValidators: true,
+      }
+      )
+
+      res.redirect("/post/dashboard");
+    }
+   catch (err) {
+    console.error(err);
+    return res.render("error/500");
+  }
+},
+
 
 }
