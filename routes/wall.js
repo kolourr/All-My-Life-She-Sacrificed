@@ -13,7 +13,7 @@ router.post('/createWallPost', upload.single('image'), ensureAuth, wallControlle
 
 router.delete('/deleteWallPost', ensureAuth, wallController.deleteWallPost)
 
-// router.get('/editButton/:id', ensureAuth, wallController.editButton)
+router.get('/editWallPostButton/:id', ensureAuth, wallController.editWallPostButton)
 
 // router.put('/editPost/:id', ensureAuth, wallController.editPost)
 

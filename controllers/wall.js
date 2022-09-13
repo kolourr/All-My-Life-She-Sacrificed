@@ -61,6 +61,29 @@ deleteWallPost: async (req, res) => {
   }
 },
 
+editWallPostButton: async (req, res) => {
+  try {
+    let wallPost = await Wall.findById({
+      _id: req.params.id,
+    }).lean();
+
+    if (!wallPost) {
+      return res.render("error/404");
+    }
+
+    if (wallPost.loginID !== req.user.loginID) {
+      res.redirect("/post/dashboard");
+    } else {
+    }
+    res.render("editWallPost", {
+      wallPost,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.render("error/500");
+  }
+},
+
  
 
 }
