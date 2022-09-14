@@ -21,6 +21,8 @@ router.get('/feed', ensureAuth, wallController.feed)
 
 router.get('/:id', ensureAuth, wallController.getWallPost) 
 
+router.post('/:id/createComment',   ensureAuth, wallController.createComment)
+
 
 
 // router.put('/postHeartIncreaseDecreaseID', ensureAuth, wallController.postHeartIncreaseDecreaseID) 

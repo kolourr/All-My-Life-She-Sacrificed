@@ -15,10 +15,36 @@
                 
         <button><i class="bi bi-heart-fill"></i> <%=wallPost.heart%></button>
         <button><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak%></button><br><br> 
+
+
+          <% wallPostComments.forEach(reply => {%> 
+                <% if(wallPost._id.toString() === reply.wall.toString()){%>
+        
+                <li><%=reply.captionComment%></li>
+        
+        
+                <button class='heartIncreaseDecreaseComment' data-CommentHeartID='<%=reply._id%>'  > 
+                        <i class="bi bi-heart-fill"></i>   <%=reply.heart.length%>
+                </button>
+         
+                <button class='heartBreakIncreaseDecreaseComment' data-CommentHeartBreakID='<%=reply._id%>'  > 
+                        <i class="bi bi-heartbreak-fill"></i>   <%=reply.heartBreak.length%>
+                </button>
+        
+
+
+                <% } %>   <% })%>
+   
+                   <span><b>Add a Comment</b></span>
+ 
+<form action="/wall/<%=wallPost._id%>/createComment"  method="POST">
+<input type="text" placeholder="Body" name="captionComment" />
+<input type="submit" />  
+</form>
+            
+
      
 
-
-                
           
 </ul>
 

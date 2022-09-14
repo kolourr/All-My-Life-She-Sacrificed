@@ -139,18 +139,11 @@ getWallPost: async(req,res)=>{
       _id: req.params.id,
     }).lean();
 
+    let wallPostComments = await WallComments.find().lean()
 
-    let wallPostComments = await WallComments.findById(
-      req.params.id,
-    ).lean()
-
-    console.log(wallPostComments)
-
- 
- 
       res.render('wallPost', {
         wallPost: wallPost,
-        // wallPostComments: wallPostComments
+        wallPostComments: wallPostComments
        })
   } catch (err) {
       console.log(err)
@@ -158,6 +151,28 @@ getWallPost: async(req,res)=>{
   }        
 },
 
+createComment: async (req, res) => {
+    try {
+    //  let comment =  await Comments.create({
+    //         body: req.body.body,
+    //         heart: req.body.heart,
+    //         heartBreak: req.body.heartBreak,
+    //         post: req.params.id,
+    //         loginID: req.user.loginID
+    //       })
+    // await comment.save()
+    // let post = await Post.findById({
+    //     _id: req.params.id,
+    //   }).lean()
 
+    // post.comments.push(comment)
+
+    //   console.log(`Comment added to post ${req.params.id}`)
+    //   res.redirect('/wallPost')
+    } catch (err) {
+      console.log(err)
+      res.render('error/500')
+    }
+  },
 
 }
