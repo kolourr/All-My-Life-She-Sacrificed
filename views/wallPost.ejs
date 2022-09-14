@@ -10,37 +10,44 @@
  
 <ul>
  
-         <img src="<%=wallPost.image%>" width="225" height="300" /><br />
-         <li> <%=wallPost.caption%></li>
-                
-        <button><i class="bi bi-heart-fill"></i> <%=wallPost.heart%></button>
-        <button><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak%></button><br><br> 
+<img  src="<%=wallPost.image%>" width="225" height="300" />
+ 
 
 
-          <% wallPostComments.forEach(reply => {%> 
-                <% if(wallPost._id.toString() === reply.wall.toString()){%>
-        
-                <li><%=reply.captionComment%></li>
-        
-        
-                <button class='heartIncreaseDecreaseComment' data-CommentHeartID='<%=reply._id%>'  > 
-                        <i class="bi bi-heart-fill"></i>   <%=reply.heart.length%>
-                </button>
-         
-                <button class='heartBreakIncreaseDecreaseComment' data-CommentHeartBreakID='<%=reply._id%>'  > 
-                        <i class="bi bi-heartbreak-fill"></i>   <%=reply.heartBreak.length%>
-                </button>
-        
+<br />
+<li> <%=wallPost.caption%></li>
+
+<button><i class="bi bi-heart-fill"></i> <%=wallPost.heart%></button>
+<button><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak%></button><br><br> 
 
 
-                <% } %>   <% })%>
-   
-                   <span><b>Add a Comment</b></span>
+<span><b>Add a Comment</b></span>
  
 <form action="/wall/<%=wallPost._id%>/createComment"  method="POST">
-<input type="text" placeholder="Body" name="captionComment" />
+<input type="text" placeholder="Body" name="captionComment" required/>
 <input type="submit" />  
-</form>
+</form><br><br>
+        
+<span><b>Comments</b></span>
+
+<% wallPostComments.forEach(reply => {%> 
+<% if(wallPost._id.toString() === reply.wall.toString()){%>
+
+<li><%=reply.captionComment%></li>
+
+
+<button class='heartIncreaseDecreaseComment' data-CommentHeartID='<%=reply._id%>'  > 
+<i class="bi bi-heart-fill"></i>   <%=reply.heart.length%>
+</button>
+
+<button class='heartBreakIncreaseDecreaseComment' data-CommentHeartBreakID='<%=reply._id%>'  > 
+<i class="bi bi-heartbreak-fill"></i>   <%=reply.heartBreak.length%>
+</button>
+
+
+<% } %>   <% })%>
+
+
             
 
      

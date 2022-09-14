@@ -50,7 +50,7 @@ deleteWallPost: async (req, res) => {
     });
 
     await WallComments.deleteMany({
-      post: req.body.deleteWallPostID,
+      wall: req.body.deleteWallPostID,
     });
 
     console.log("Deleted Wall Post and all its Comments");
@@ -153,22 +153,22 @@ getWallPost: async(req,res)=>{
 
 createComment: async (req, res) => {
     try {
-    //  let comment =  await Comments.create({
-    //         body: req.body.body,
-    //         heart: req.body.heart,
-    //         heartBreak: req.body.heartBreak,
-    //         post: req.params.id,
-    //         loginID: req.user.loginID
-    //       })
-    // await comment.save()
-    // let post = await Post.findById({
-    //     _id: req.params.id,
-    //   }).lean()
+     let wallPostComment =  await WallComments.create({
+            captionComment: req.body.captionComment,
+            heart: req.body.heart,
+            heartBreak: req.body.heartBreak,
+            wall: req.params.id,
+            loginID: req.user.loginID
+          })
+    await wallPostComment.save()
+    let wallPost = await Wall.findById({
+        _id: req.params.id,
+      }).lean()
 
-    // post.comments.push(comment)
+    wallPost.wallComments.push(wallPostComment)
 
-    //   console.log(`Comment added to post ${req.params.id}`)
-    //   res.redirect('/wallPost')
+      console.log(`Comment added to wallPost ${req.params.id}`)
+      res.redirect(`/wall/${req.params.id}`)
     } catch (err) {
       console.log(err)
       res.render('error/500')

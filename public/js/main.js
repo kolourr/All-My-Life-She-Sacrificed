@@ -1,9 +1,23 @@
 //Adding and removing hearts, and deleting posts/comments 
 
+
+// uploadedImage.onchange = evt => {
+//     const [file] = uploadedImage.files
+//      if (file) {
+//       blah.src = URL.createObjectURL(file)
+//       blah.width = 225
+//       blah.height = 300
+//       blah.class ="filter-brooklyn"
+//       console.log(blah.src )
+
+//     }
+//   }
+
+
+ 
+
 const deletePostButton = document.querySelectorAll('.deletePost')
-
 const deleteWallPostButton = document.querySelectorAll('.deleteWallPost')
-
 const deleteCommentButton = document.querySelectorAll('.deleteComment')
 const heartIncreaseDecrease = document.querySelectorAll('.heartIncreaseDecrease')
 const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreaseDecrease')
