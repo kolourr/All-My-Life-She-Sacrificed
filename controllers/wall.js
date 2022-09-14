@@ -120,5 +120,44 @@ editWallPost:  async (req, res) => {
   }
 },
 
+feed: async(req,res)=>{
+  try {
+      let allWallPosts = await Wall.find({}).lean()
+
+      res.render('feed', {
+        allWallPosts: allWallPosts
+      })
+  } catch (err) {
+      console.log(err)
+      res.render('error/500')
+  }        
+},
+
+getWallPost: async(req,res)=>{
+  try {
+    let wallPost = await Wall.findById({
+      _id: req.params.id,
+    }).lean();
+
+
+    let wallPostComments = await WallComments.findById(
+      req.params.id,
+    ).lean()
+
+    console.log(wallPostComments)
+
+ 
+ 
+      res.render('wallPost', {
+        wallPost: wallPost,
+        // wallPostComments: wallPostComments
+       })
+  } catch (err) {
+      console.log(err)
+      res.render('error/500')
+  }        
+},
+
+
 
 }

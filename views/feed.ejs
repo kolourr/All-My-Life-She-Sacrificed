@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+<h1>Home Page</h1>
+
+<br><br>
+<a href="/loggedinindex">Home</a>
+<a href="/wall/feed">Feed</a>
+<a href="/profile">Profile</a>
+<a href="/updatedindex">Make a Post</a>
+<a href="/wall">Wall</a>
+<a href="/message">Contact Us</a><br><br>
+
+
+<h1>Feed</h1>
+<p>Click on a post to comment. Heart or Heartbreak the posts you think are interesting!</p>
+
+<ul>
+        <% allWallPosts.forEach(wallPost => { %>
+        
+        <a href="/wall/<%= wallPost._id%>">
+         <img src="<%=wallPost.image%>" width="225" height="300" /></a><br />
+                
+                <button><i class="bi bi-heart-fill"></i> <%=wallPost.heart%></button>
+                <button><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak%></button><br><br>
+                <li> <%=wallPost.caption%><br><br>
+                
+        </li>
+
+        <% }) %>
+</ul>
+
+<%- include('partials/footer') %>

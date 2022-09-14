@@ -17,6 +17,12 @@ router.get('/editWallPostButton/:id', ensureAuth, wallController.editWallPostBut
 
 router.post('/editWallPost/:id', upload.single('updatedimage'), ensureAuth, wallController.editWallPost)
 
+router.get('/feed', ensureAuth, wallController.feed) 
+
+router.get('/:id', ensureAuth, wallController.getWallPost) 
+
+
+
 // router.put('/postHeartIncreaseDecreaseID', ensureAuth, wallController.postHeartIncreaseDecreaseID) 
 
 // router.put('/postHeartBreakIncreaseDecreaseID', ensureAuth, wallController.postHeartBreakIncreaseDecreaseID) 

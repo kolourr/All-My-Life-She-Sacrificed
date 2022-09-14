@@ -44,7 +44,7 @@
         <% } %> <% })%>
             <br>    <span><b>Add a Comment</b></span>
         <form action="/comment/<%=post._id%>/createComment" method="POST">
-                <input type="text" placeholder="Body" name="body" /><br /><br />
+                <input type="text" placeholder="Body" name="body" required/><br /><br />
                 <input type="submit" /> <br /><br />
                 <br /><br />
         </form>

@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<h1>Home Page</h1>
+<a href="/auth/logout">Logout</a><br /><br />
+<a href="/updatedindex">Make a Post</a>
+<a href="/post/dashboard">Dashboard</a>
+<a href="/wall">Wall</a>
+
+
+<h1>Wall Post</h1>
+ 
+<ul>
+ 
+         <img src="<%=wallPost.image%>" width="225" height="300" /><br />
+         <li> <%=wallPost.caption%></li>
+                
+        <button><i class="bi bi-heart-fill"></i> <%=wallPost.heart%></button>
+        <button><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak%></button><br><br> 
+     
+
+
+                
+          
+</ul>
+
+
+
+<%- include('partials/footer') %>
