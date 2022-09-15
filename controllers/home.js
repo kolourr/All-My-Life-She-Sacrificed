@@ -5,6 +5,7 @@ const upload = require("../middleware/upload");
 const uploadbase64 = require("../middleware/uploadbase64")
 const ContactUs = require('../models/contactus')
 const mailOptions = require('../middleware/nodemailer')
+const imageCompressionUpload = require("../middleware/imageCompressionUpload"); 
 
 var fs = require('fs')
 
@@ -97,6 +98,7 @@ module.exports = {
 
         let name = Date.now().toString() + Math.floor(Math.random() * 1250) + '.jpg'
         let uploadedImageUrl = uploadbase64(req.body.base64, name)
+
 
         await User.findOneAndUpdate(
             {

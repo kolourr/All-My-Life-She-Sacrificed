@@ -27,6 +27,7 @@ module.exports = {
   createWallPost: async(req,res)=>{
     try {
       //All images uploaded to the wall will be compressed to 600 x 800 for uniform viewing across application. 
+  
       let imageUrl = await imageCompressionUpload(req.file.key, 600, 800)   
       await Wall.create({
         image: imageUrl,

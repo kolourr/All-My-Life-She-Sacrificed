@@ -31,7 +31,7 @@ const uploadbase64 = function(image,FileName) {
     }
   }); 
         let returnUrl = `https://${data.Bucket}.s3.${process.env.AWS_DEFAULT_REGION}.amazonaws.com/${data.Key}` 
-        return returnUrl  
+        return returnUrl
 };
 
 

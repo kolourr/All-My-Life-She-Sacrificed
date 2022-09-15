@@ -11,10 +11,27 @@
 
 
 <form action="/wall/createWallPost" method='POST' enctype="multipart/form-data">
-    <input type="file" name="image" id="uploadedImage"    required /><br><br>
+    <input type="file" name="image" id="wallImage"    required /><br><br>
+    <canvas id="canvas"></canvas>
 
-    <img  type="hidden" id="displayUploadedImage" width="50%"     /><br><br>
+    <h4 class="text-center my-3">Effects</h4>
 
+    <button class="filters vintage">Vintage</button>
+    <button class="filters concentrate">Concentrate</button>
+    <button class="filters sinCity">Sin City</button>
+    <button class="filters sunrise">Sunrise</button><br><br>
+    <button class="filters crossProcess">Cross Process</button>
+    <button class="filters orangePeel">Orange Peel</button>
+    <button class="filters love">Love</button>
+    <button class="filters hemingway">Hemingway</button><br><br>
+    <button class="filters jargues">Jargues</button>
+    <button class="filters pinhole">Pinhole</button>
+    <button class="filters oldBoot">Old Boot</button>
+    <button class="filters glowingSun">Glowing Sun</button><br><br>
+    <button class="filters hazyDays">Hazy Days</button>
+    <button class="filters herMajesty">Her Majesty</button>
+    <button class="filters nostalgia">Nostalgia</button>
+    <button class="filters clarity">Clarity</button><br><br>
 
 
     <textarea type="text" rows="4" cols="40" placeholder="caption" name='caption' required></textarea><br><br>
