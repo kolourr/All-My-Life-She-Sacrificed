@@ -8,13 +8,17 @@
 <a href="/wall">Wall</a>
 <a href="/message">Contact Us</a><br><br>
 
+<h4 class="text-center my-3">Images will be resized to 1000px x 1000px</h4>
 
 
-<form action="/wall/createWallPost" method='POST' enctype="multipart/form-data">
+<!-- <form action="/wall/createWallPost" method='POST' enctype="multipart/form-data"> -->
+
     <input type="file" name="image" id="wallImage"    required /><br><br>
+    <span style='color: red;' type="hidden" id="msgFile"></span><br><br>
+    
     <canvas id="canvas"></canvas>
 
-    <h4 class="text-center my-3">Effects</h4>
+    <h4 class="text-center my-3">Filter Effects</h4>
 
     <button class="filters vintage">Vintage</button>
     <button class="filters concentrate">Concentrate</button>
@@ -24,7 +28,7 @@
     <button class="filters orangePeel">Orange Peel</button>
     <button class="filters love">Love</button>
     <button class="filters hemingway">Hemingway</button><br><br>
-    <button class="filters jargues">Jargues</button>
+    <button class="filters jarques">Jarques</button>
     <button class="filters pinhole">Pinhole</button>
     <button class="filters oldBoot">Old Boot</button>
     <button class="filters glowingSun">Glowing Sun</button><br><br>
@@ -33,11 +37,22 @@
     <button class="filters nostalgia">Nostalgia</button>
     <button class="filters clarity">Clarity</button><br><br>
 
+    <div class="col-md-6">
+        <button id="remove-filters" class="btn btn-danger btn-block">Clear Filter</button><br><br>
+      </div>
 
-    <textarea type="text" rows="4" cols="40" placeholder="caption" name='caption' required></textarea><br><br>
+      <h4 class="text-center my-3">Add a Caption</h4>
+      <span>Required</span>
 
-    <input type="submit">
-</form>
+    <textarea type="text" rows="4" cols="40" placeholder="Enter your caption..." name='caption' id='caption' required></textarea><br><br>
+
+<span style='color: red;' type="hidden" id="msg"></span><br><br>
+
+
+    <button id="submit-wallImage">Submit</button><br><br>
+
+  
+
 
 
 <a href="/post/dashboard">Dashboard</a>

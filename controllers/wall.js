@@ -3,6 +3,8 @@ const Wall = require("../models/wall");
 const WallComments = require("../models/wallComments");
 const upload = require("../middleware/upload"); 
 const imageCompressionUpload = require("../middleware/imageCompressionUpload"); 
+const uploadbase64 = require("../middleware/uploadbase64")
+
 
 
 module.exports = {
@@ -26,16 +28,21 @@ module.exports = {
 
   createWallPost: async(req,res)=>{
     try {
-      //All images uploaded to the wall will be compressed to 600 x 800 for uniform viewing across application. 
-  
-      let imageUrl = await imageCompressionUpload(req.file.key, 600, 800)   
+    
+      
+      let name = Date.now().toString() + Math.floor(Math.random() * 1250) + '.jpg'
+      let imageUrl = uploadbase64(req.body.imageBase64, name)
+
       await Wall.create({
         image: imageUrl,
         caption: req.body.caption,
         loginID: req.user.loginID,
       });
-      console.log("Wall Post created");
-      res.redirect("/post/dashboard");
+      console.log("Wall Post created")
+
+
+      res.sendStatus(200);
+ 
 
  
     } catch (err) {

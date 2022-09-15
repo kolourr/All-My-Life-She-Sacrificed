@@ -9,7 +9,7 @@ router.get('/', ensureAuth, wallController.getHome)
 
 router.get('/create', ensureAuth, wallController.create) 
 
-router.post('/createWallPost', upload.single('image'), ensureAuth, wallController.createWallPost)
+router.post('/createWallPost', ensureAuth, wallController.createWallPost)
 
 router.delete('/deleteWallPost', ensureAuth, wallController.deleteWallPost)
 
