@@ -1,17 +1,12 @@
 //Adding and removing hearts, and deleting posts/comments 
 
-
-// uploadedImage.onchange = evt => {
-//     const [file] = uploadedImage.files
-//      if (file) {
-//       blah.src = URL.createObjectURL(file)
-//       blah.width = 225
-//       blah.height = 300
-//       blah.class ="filter-brooklyn"
-//       console.log(blah.src )
-
-//     }
-//   }
+//Display image upon being selected 
+uploadedImage.onchange = e => {
+    const [file] = uploadedImage.files
+     if (file) {
+        displayUploadedImage.src = URL.createObjectURL(file)
+    }
+  }
 
 
  

@@ -25,6 +25,8 @@
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "cairo": "^0.1.0-alpha.3",
+    "caman": "^4.1.2",
+    "canvas": "^2.10.1",
     "connect-mongo": "^4.6.0",
     "croppie": "^2.6.5",
     "dotenv": "^16.0.1",
