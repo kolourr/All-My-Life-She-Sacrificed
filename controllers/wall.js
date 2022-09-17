@@ -381,7 +381,7 @@ createComment: async (req, res) => {
         );
 
         console.log(
-          `Comment ${req.body.wallPostCommentHeartBreakIncreaseDecreaseID} heartbreak's increased`
+          `Wall Post Comment ${req.body.wallPostCommentHeartBreakIncreaseDecreaseID} heartbreak's increased`
         );
       } else {
         await WallComments.findOneAndUpdate(

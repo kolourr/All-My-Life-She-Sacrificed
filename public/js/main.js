@@ -6,15 +6,6 @@ const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreas
 const heartIncreaseDecreaseComment = document.querySelectorAll('.heartIncreaseDecreaseComment')
 const heartBreakIncreaseDecreaseComment = document.querySelectorAll('.heartBreakIncreaseDecreaseComment')
 
-const wallPostHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartIncreaseDecrease')
-
-const wallPostHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartBreakIncreaseDecrease')
-
-const wallPostCommentHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartIncreaseDecrease')
-
-
-const wallPostCommentHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartBreakIncreaseDecrease')
-
 
 
 Array.from(deletePostButton).forEach((post)=>{
@@ -46,6 +37,17 @@ Array.from(heartBreakIncreaseDecreaseComment).forEach(heartBreak => {
 })
 
 
+
+
+const wallPostHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartIncreaseDecrease')
+
+const wallPostHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartBreakIncreaseDecrease')
+
+const wallPostCommentHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartIncreaseDecrease')
+
+const wallPostCommentHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartBreakIncreaseDecrease')
+
+
 Array.from(wallPostHeartIncreaseDecreaseButton).forEach((post)=>{
     post.addEventListener('click', wallPostHeartIncreaseDecrease)
 })
@@ -65,10 +67,6 @@ Array.from(wallPostCommentHeartBreakIncreaseDecreaseButton).forEach((post)=>{
     post.addEventListener('click', wallPostCommentHeartBreakIncreaseDecrease)
 })
 
-
- 
-
- 
 
 
 async function wallPostCommentHeartBreakIncreaseDecrease(){
@@ -108,25 +106,6 @@ async function wallPostCommentHeartIncreaseDecrease(){
 }
 
 
-async function wallPostHeartBreakIncreaseDecrease(){
-    const postID = this.getAttribute('data-wallPostHeartBreakID') 
-    try{
-        const response = await fetch('/wall/wallPostHeartBreakIncreaseDecreaseID', {
-            method: 'put',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'wallPostHeartBreakIncreaseDecreaseID': postID
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()
-    }catch(err){
-        console.log(err)
-    }
-}
-
-
 
 async function wallPostHeartIncreaseDecrease(){
     const postID = this.getAttribute('data-WallPostHeartID') 
@@ -146,6 +125,23 @@ async function wallPostHeartIncreaseDecrease(){
     }
 }
 
+async function wallPostHeartBreakIncreaseDecrease(){
+    const postID = this.getAttribute('data-wallPostHeartBreakID') 
+    try{
+        const response = await fetch('/wall/wallPostHeartBreakIncreaseDecreaseID', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'wallPostHeartBreakIncreaseDecreaseID': postID
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
 
  
 
