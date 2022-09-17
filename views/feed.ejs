@@ -1,13 +1,12 @@
 <%- include('partials/header') %>
 <h1>Home Page</h1>
-
 <br><br>
 <a href="/loggedinindex">Home</a>
 <a href="/wall/feed">Feed</a>
 <a href="/profile">Profile</a>
 <a href="/updatedindex">Make a Post</a>
 <a href="/wall">Wall</a>
-<a href="/message">Contact Us</a><br><br>
+<a href="/message">Contact Us</a>
 
 
 <h1>Feed</h1>
@@ -17,10 +16,19 @@
         <% allWallPosts.forEach(wallPost => { %>
         
         <a href="/wall/<%= wallPost._id%>">
-         <img src="<%=wallPost.image%>" width="500" height="500" /></a><br />
+         <img src="<%=wallPost.image%>" width="50%"   /></a><br />
                 
-                <button><i class="bi bi-heart-fill"></i> <%=wallPost.heart%></button>
-                <button><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak%></button><br><br>
+     
+         
+         <button  class='wallPostHeartIncreaseDecrease' data-WallPostHeartID='<%=wallPost._id%>' ><i class="bi bi-heart-fill"></i> <%=wallPost.heart.length%>
+        
+        </button>
+
+
+        <button class='wallPostHeartBreakIncreaseDecrease' data-wallPostHeartBreakID='<%=wallPost._id%>'><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak.length%>
+        </button><br><br>
+
+
                 <li> <%=wallPost.caption%><br><br>
                 
         </li>

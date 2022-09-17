@@ -15,7 +15,7 @@ router.delete('/deleteWallPost', ensureAuth, wallController.deleteWallPost)
 
 router.get('/editWallPostButton/:id', ensureAuth, wallController.editWallPostButton)
 
-router.post('/editWallPost/:id', upload.single('updatedimage'), ensureAuth, wallController.editWallPost)
+// router.post('/editWallPost/:id', upload.single('updatedimage'), ensureAuth, wallController.editWallPost)
 
 router.get('/feed', ensureAuth, wallController.feed) 
 
@@ -23,11 +23,14 @@ router.get('/:id', ensureAuth, wallController.getWallPost)
 
 router.post('/:id/createComment',   ensureAuth, wallController.createComment)
 
+router.put('/wallPostHeartIncreaseDecreaseID', ensureAuth, wallController.wallPostHeartIncreaseDecreaseID) 
+
+router.put('/wallPostHeartBreakIncreaseDecreaseID', ensureAuth, wallController.wallPostHeartBreakIncreaseDecreaseID) 
 
 
-// router.put('/postHeartIncreaseDecreaseID', ensureAuth, wallController.postHeartIncreaseDecreaseID) 
+router.put('/wallPostCommentHeartIncreaseDecreaseID', ensureAuth, wallController.wallPostCommentHeartIncreaseDecreaseID) 
 
-// router.put('/postHeartBreakIncreaseDecreaseID', ensureAuth, wallController.postHeartBreakIncreaseDecreaseID) 
+router.put('/wallPostCommentHeartBreakIncreaseDecreaseID', ensureAuth, wallController.wallPostCommentHeartBreakIncreaseDecreaseID) 
 
 
 module.exports = router

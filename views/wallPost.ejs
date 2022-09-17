@@ -1,24 +1,34 @@
 <%- include('partials/header') %>
 <h1>Home Page</h1>
-<a href="/auth/logout">Logout</a><br /><br />
+<br><br>
+<a href="/loggedinindex">Home</a>
+<a href="/wall/feed">Feed</a>
+<a href="/profile">Profile</a>
 <a href="/updatedindex">Make a Post</a>
-<a href="/post/dashboard">Dashboard</a>
 <a href="/wall">Wall</a>
+<a href="/message">Contact Us</a><br><br>
 
 
 <h1>Wall Post</h1>
  
 <ul>
  
-<img  src="<%=wallPost.image%>" width="225" height="300" />
+<img  src="<%=wallPost.image%>" width="50%"   />
  
 
 
 <br />
 <li> <%=wallPost.caption%></li>
 
-<button><i class="bi bi-heart-fill"></i> <%=wallPost.heart%></button>
-<button><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak%></button><br><br> 
+ 
+
+<button  class='wallPostHeartIncreaseDecrease' data-WallPostHeartID='<%=wallPost._id%>' ><i class="bi bi-heart-fill"></i> <%=wallPost.heart.length%>
+        
+</button>
+
+
+<button class='wallPostHeartBreakIncreaseDecrease' data-wallPostHeartBreakID='<%=wallPost._id%>'><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak.length%>
+</button> <br><br>
 
 
 <span><b>Add a Comment</b></span>
@@ -36,13 +46,14 @@
 <li><%=reply.captionComment%></li>
 
 
-<button class='heartIncreaseDecreaseComment' data-CommentHeartID='<%=reply._id%>'  > 
-<i class="bi bi-heart-fill"></i>   <%=reply.heart.length%>
+ 
+
+
+<button  class='wallPostCommentHeartIncreaseDecrease' data-WallPostCommentHeartID='<%=reply._id%>' ><i class="bi bi-heart-fill"></i> <%=reply.heart.length%>  
 </button>
 
-<button class='heartBreakIncreaseDecreaseComment' data-CommentHeartBreakID='<%=reply._id%>'  > 
-<i class="bi bi-heartbreak-fill"></i>   <%=reply.heartBreak.length%>
-</button>
+<button class='wallPostCommentHeartBreakIncreaseDecrease' data-wallPostCommentHeartBreakID='<%=reply._id%>'><i class="bi bi-heartbreak-fill"></i> <%=reply.heartBreak.length%>
+</button> <br><br>
 
 
 <% } %>   <% })%>

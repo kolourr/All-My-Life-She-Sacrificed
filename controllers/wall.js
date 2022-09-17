@@ -93,40 +93,40 @@ editWallPostButton: async (req, res) => {
 },
 
 
-editWallPost:  async (req, res) => {
-  try {
+// editWallPost:  async (req, res) => {
+//   try {
 
-    let wallPost = await Wall.findById({
-      _id: req.params.id,
-    }).lean();
+//     let wallPost = await Wall.findById({
+//       _id: req.params.id,
+//     }).lean();
 
-  let imageUrl
-  if(req.file === undefined){
-    imageUrl = wallPost.image
-  }else{
-    imageUrl = await imageCompressionUpload(req.file.key, 600, 800)   
-  }
+//   let imageUrl
+//   if(req.file === undefined){
+//     imageUrl = wallPost.image
+//   }else{
+//     imageUrl = await imageCompressionUpload(req.file.key, 600, 800)   
+//   }
  
-  await Wall.findOneAndUpdate(
-      {
-      _id: req.params.id,
-      },
-      {
-      image: imageUrl
-      },
-      {
-      new: true,
-      runValidators: true,
-      }
-      )
+//   await Wall.findOneAndUpdate(
+//       {
+//       _id: req.params.id,
+//       },
+//       {
+//       image: imageUrl
+//       },
+//       {
+//       new: true,
+//       runValidators: true,
+//       }
+//       )
 
-      res.redirect("/post/dashboard");
-    }
-   catch (err) {
-    console.error(err);
-    return res.render("error/500");
-  }
-},
+//       res.redirect("/post/dashboard");
+//     }
+//    catch (err) {
+//     console.error(err);
+//     return res.render("error/500");
+//   }
+// },
 
 feed: async(req,res)=>{
   try {
@@ -182,5 +182,236 @@ createComment: async (req, res) => {
       res.render('error/500')
     }
   },
+  wallPostHeartIncreaseDecreaseID: async (req, res) => {
+    try {
+      let wallPost = await Wall.find({
+        _id: req.body.wallPostHeartIncreaseDecreaseID,
+      });
+
+      let check;
+      wallPost.forEach((post) => {
+        check = post.heart.includes(req.user.loginID);
+      });
+
+      if (!check) {
+        await Wall.findOneAndUpdate(
+          {
+            _id: req.body.wallPostHeartIncreaseDecreaseID,
+          },
+          {
+            $push: {
+              heart: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        console.log(
+          `Wall Post ${req.body.wallPostHeartIncreaseDecreaseID} heart's increased`
+        );
+      } else {
+        await Wall.findOneAndUpdate(
+          {
+            _id: req.body.wallPostHeartIncreaseDecreaseID,
+          },
+          {
+            $pull: {
+              heart: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        console.log(
+          `Wall Post ${req.body.wallPostHeartIncreaseDecreaseID} heart's decreased`
+        );
+      }
+
+      res.json(`Wall Post ${req.body.wallPostHeartIncreaseDecreaseID} heart's updated`);
+    } catch (err) {
+      console.log(err);
+      res.render("error/500");
+    }
+  },
+
+  wallPostHeartBreakIncreaseDecreaseID: async (req, res) => {
+    try {
+      let wallPost = await Wall.find({
+        _id: req.body.wallPostHeartBreakIncreaseDecreaseID,
+      });
+      let check;
+      wallPost.forEach((post) => {
+        check = post.heartBreak.includes(req.user.loginID);
+      });
+
+      if (!check) {
+        await Wall.findOneAndUpdate(
+          {
+            _id: req.body.wallPostHeartBreakIncreaseDecreaseID,
+          },
+          {
+            $push: {
+              heartBreak: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        console.log(
+          `Wall Post ${req.body.wallPostHeartBreakIncreaseDecreaseID} heartbreak's increased`
+        );
+      } else {
+        await Wall.findOneAndUpdate(
+          {
+            _id: req.body.wallPostHeartBreakIncreaseDecreaseID,
+          },
+          {
+            $pull: {
+              heartBreak: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        console.log(
+          `Wall Post ${req.body.wallPostHeartBreakIncreaseDecreaseID} heartbreak's decreased`
+        );
+      }
+
+      res.json(
+        `Wall Post ${req.body.wallPostHeartBreakIncreaseDecreaseID} heartbreak's updated`
+      );
+    } catch (err) {
+      console.log(err);
+      res.render("error/500");
+    }
+  },
+
+
+  wallPostCommentHeartIncreaseDecreaseID: async (req, res) => {
+    try {
+      let comment = await WallComments.find({
+        _id: req.body.wallPostCommentHeartIncreaseDecreaseID,
+      });
+      let check;
+      comment.forEach((com) => {
+        check = com.heart.includes(req.user.loginID);
+      });
+
+      if (!check) {
+        await WallComments.findOneAndUpdate(
+          {
+            _id: req.body.wallPostCommentHeartIncreaseDecreaseID,
+          },
+          {
+            $push: {
+              heart: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        console.log(
+          `Wall Post Comment ${req.body.wallPostCommentHeartIncreaseDecreaseID} heart's increased`
+        );
+      } else {
+        await WallComments.findOneAndUpdate(
+          {
+            _id: req.body.wallPostCommentHeartIncreaseDecreaseID,
+          },
+          {
+            $pull: {
+              heart: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        console.log(
+          `Wall Post Comment ${req.body.wallPostCommentHeartIncreaseDecreaseID} heart's decreased`
+        );
+      }
+
+      res.json(`Wall Post Comment ${req.body.wallPostCommentHeartIncreaseDecreaseID} heart's updated`);
+    } catch (err) {
+      console.log(err);
+      res.render("error/500");
+    }
+  },
+
+  wallPostCommentHeartBreakIncreaseDecreaseID: async (req, res) => {
+    try {
+      let comment = await WallComments.find({
+        _id: req.body.wallPostCommentHeartBreakIncreaseDecreaseID,
+      });
+      let check;
+      comment.forEach((com) => {
+        check = com.heartBreak.includes(req.user.loginID);
+      });
+
+      if (!check) {
+        await WallComments.findOneAndUpdate(
+          {
+            _id: req.body.wallPostCommentHeartBreakIncreaseDecreaseID,
+          },
+          {
+            $push: {
+              heartBreak: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        console.log(
+          `Comment ${req.body.wallPostCommentHeartBreakIncreaseDecreaseID} heartbreak's increased`
+        );
+      } else {
+        await WallComments.findOneAndUpdate(
+          {
+            _id: req.body.wallPostCommentHeartBreakIncreaseDecreaseID,
+          },
+          {
+            $pull: {
+              heartBreak: req.user.loginID,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        console.log(
+          `Wall Post Comment ${req.body.wallPostCommentHeartBreakIncreaseDecreaseID} heartbreak's decreased`
+        );
+      }
+
+      res.json(
+        `Wall Post Comment ${req.body.wallPostCommentHeartBreakIncreaseDecreaseID} heartbreak's updated`
+      );
+    } catch (err) {
+      console.log(err);
+      res.render("error/500");
+    }
+  },
+
+
 
 }

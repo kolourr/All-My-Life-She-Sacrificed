@@ -6,7 +6,7 @@ h1 {
     border-radius: 50%
  }
  
- canvas {
+ #canvas {
     margin: auto;
     background: #cec9c9;
     width: 100%;
