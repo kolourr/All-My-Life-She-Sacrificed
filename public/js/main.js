@@ -5,8 +5,10 @@ const heartIncreaseDecrease = document.querySelectorAll('.heartIncreaseDecrease'
 const heartBreakIncreaseDecrease = document.querySelectorAll('.heartBreakIncreaseDecrease')
 const heartIncreaseDecreaseComment = document.querySelectorAll('.heartIncreaseDecreaseComment')
 const heartBreakIncreaseDecreaseComment = document.querySelectorAll('.heartBreakIncreaseDecreaseComment')
-
-
+const wallPostHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartIncreaseDecrease')
+const wallPostHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartBreakIncreaseDecrease')
+const wallPostCommentHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartIncreaseDecrease')
+const wallPostCommentHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartBreakIncreaseDecrease')
 
 Array.from(deletePostButton).forEach((post)=>{
     post.addEventListener('click', deletePost)
@@ -15,7 +17,6 @@ Array.from(deletePostButton).forEach((post)=>{
 Array.from(deleteWallPostButton).forEach((wallpost)=>{
     wallpost.addEventListener('click', deleteWallPost)
 })
-
 
 Array.from(deleteCommentButton).forEach(comment => {
     comment.addEventListener('click', deleteComment)
@@ -35,17 +36,6 @@ Array.from(heartIncreaseDecreaseComment).forEach(heart => {
 Array.from(heartBreakIncreaseDecreaseComment).forEach(heartBreak => {
     heartBreak.addEventListener('click', commentHeartBreakIncreaseDecrease)
 })
-
-
-
-
-const wallPostHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartIncreaseDecrease')
-
-const wallPostHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartBreakIncreaseDecrease')
-
-const wallPostCommentHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartIncreaseDecrease')
-
-const wallPostCommentHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartBreakIncreaseDecrease')
 
 
 Array.from(wallPostHeartIncreaseDecreaseButton).forEach((post)=>{

@@ -47,6 +47,7 @@
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "sharp": "^0.31.0",
-    "stream": "^0.0.2"
+    "stream": "^0.0.2",
+    "web-push": "^3.5.0"
   }
 }

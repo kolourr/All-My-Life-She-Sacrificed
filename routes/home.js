@@ -14,7 +14,7 @@ router.post('/editProfilePicture', ensureAuth, homeController.editProfilePicture
 router.get('/message',  homeController.message) 
 router.post('/sendmessage',  homeController.sendmessage) 
 router.get('/messageSentSuccessfully',  homeController.messageSentSuccessfully) 
-
+router.post('/subscribe',  homeController.subscribe) 
 
 
 
