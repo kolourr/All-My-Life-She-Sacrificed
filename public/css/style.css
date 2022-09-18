@@ -11,3 +11,8 @@ h1 {
     background: #cec9c9;
     width: 100%;
   }
+
+  #push-notify{
+   color: rebeccapurple;
+   font-weight: 400;
+  }

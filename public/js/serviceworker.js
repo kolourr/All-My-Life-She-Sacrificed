@@ -1,19 +1,21 @@
-self.addEventListener("push", e => {
+//Service Worker - can also listen for the install, activate, fetch and message events - extendable events 
+  self.addEventListener("push", e => {
     const data = e.data.json();
     const options = {
-      body: "This is Bruce Rebllo!",
+      body: `You have ${data.messages} new messages from Johnny Boy`,
       icon: "https://www.kolourr.com/content/images/2022/06/K.png",
     }
 
-  const promiseChain = Promise.all([
-    self.registration.update(),
     self.registration.showNotification(data.title, options)
-  ])
-  self.skipWaiting();
-  e.waitUntil(promiseChain)
     
+    // e.waitUntil(promiseChain)n 
+    // Skip waiting to activate but the page will not be using the new service worker
+    self.skipWaiting();
 
-    console.log("Push Recieved...");
-
-  });
+    //Claim means to tell the webpages to start using the new service worker 
+      clients.claim().then(() => {
+        console.log("Push Recieved..");
+      })
   
+  });
+

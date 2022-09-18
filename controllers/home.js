@@ -192,15 +192,13 @@ module.exports = {
           res.status(201).json({});
 
           // Create payload
-          const payload = JSON.stringify({ title: "Bruceeee's Test" })
+          const payload = JSON.stringify({ title: "All My Life She Sacrificed", messages: 5 })
 
 
           // Pass object into sendNotification
           webpush.sendNotification(subscription, payload).catch(err => console.log(err))
           
-          
-          console.log("It's working")
-
+        
     },
 
     message: (req,res)=>{
