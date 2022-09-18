@@ -5,7 +5,8 @@ const upload = require("../middleware/upload");
 const uploadbase64 = require("../middleware/uploadbase64")
 const ContactUs = require('../models/contactus')
 const mailOptions = require('../middleware/nodemailer')
-const imageCompressionUpload = require("../middleware/imageCompressionUpload"); 
+const imageCompressionUpload = require("../middleware/imageCompressionUpload")
+const webpush = require("web-push")
 
 var fs = require('fs')
 
@@ -169,6 +170,36 @@ module.exports = {
             res.render("error/500");
           }
          
+    },
+
+    subscribe:(req,res)=>{
+      const vapidKeys = {
+        publicKey: process.env.VAPID_PUBLIC_KEY,
+        privateKey: process.env.VAPID_PRIVATE_KEY,
+        }
+
+        webpush.setVapidDetails(
+          `mailto:!${process.env.APP_EMAIL}`,
+          vapidKeys.publicKey,
+          vapidKeys.privateKey
+        )
+
+          // Get pushSubscription object
+          const subscription = req.body
+
+          // Resource created successfully 
+          res.status(201).json({});
+
+          // Create payload
+          const payload = JSON.stringify({ title: "Push Test" })
+
+
+          // Pass object into sendNotification
+          webpush.sendNotification(subscription, payload).catch(err => console.log(err))
+          
+          
+          console.log("It's working")
+
     },
 
     message: (req,res)=>{
