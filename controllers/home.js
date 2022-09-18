@@ -187,11 +187,12 @@ module.exports = {
           // Get pushSubscription object
           const subscription = req.body
 
+ 
           // Resource created successfully 
           res.status(201).json({});
 
           // Create payload
-          const payload = JSON.stringify({ title: "Push Test" })
+          const payload = JSON.stringify({ title: "Bruceeee's Test" })
 
 
           // Pass object into sendNotification

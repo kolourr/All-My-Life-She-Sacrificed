@@ -4,9 +4,10 @@ const publicVapidKey =
 // Check for service worker
 if ("serviceWorker" in navigator) {
   send().catch(err => console.error(err));
+ 
 }
 
-// Register SW, Register Push, Send Push
+// // Register SW, Register Push, Send Push
 async function send() {
   const register = await navigator.serviceWorker.register("/js/serviceworker.js", {
     // scope: "/js/"
