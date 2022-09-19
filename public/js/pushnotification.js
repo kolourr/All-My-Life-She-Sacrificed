@@ -5,7 +5,7 @@ document.querySelector(".checkMe").addEventListener("click", checkMe);
 
 async function checkMe() {
   document.getElementById("push-notify").innerHTML =
-    "Ensure Your Push Notifications are turned on";
+    "Ensure Your Browser Push Notifications are turned on";
   // Check for service worker
   if ("serviceWorker" in navigator) {
     send().catch((err) => console.error(err));

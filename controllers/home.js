@@ -1,4 +1,6 @@
-const User = require('../models/user')
+const User = require("../models/user");
+const Wall = require("../models/wall");
+const WallComments = require("../models/wallComments");
 const Post = require('../models/post')
 const Comments = require('../models/comment')
 const upload = require("../middleware/upload"); 
@@ -15,7 +17,7 @@ var fs = require('fs')
 module.exports = {
     getHome: async(req,res)=>{
         try {
-            let allPosts = await Post.find({}).lean()
+            let allPosts = await Post.find({}).lean().sort({createdAt: "desc"}).lean();
             res.render('index.ejs', {
                 allPosts: allPosts, 
             })
@@ -172,7 +174,57 @@ module.exports = {
          
     },
 
-    subscribe:(req,res)=>{
+    subscribe: async (req,res)=>{
+  
+      //Checking to see how many user posts have been made since yesterday 
+      let userWallPosts = await Wall.find(
+        { 
+          createdAt : { 
+            $lt: new Date(), 
+            $gte: new Date(new Date() - 1 * 60 * 60 * 24 * 1000)
+          },
+    
+        },
+        {
+          loginID: req.user.loginID,
+        },   
+        )
+
+        let allWallPosts = await Wall.find(
+          { 
+            createdAt : { 
+              $lt: new Date(), 
+              $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000)
+            },
+      
+          },
+          )
+
+        let userTextPosts = await Post.find(
+          { 
+            createdAt : { 
+              $lt: new Date(), 
+              $gte: new Date(new Date() - 1 * 60 * 60 * 24 * 1000)
+            },
+      
+          },
+          {
+            loginID: req.user.loginID,
+          },   
+          )
+
+          let allTextPosts = await Post.find(
+            { 
+              createdAt : { 
+                $lt: new Date(), 
+                $gte: new Date(new Date() - 1 * 60 * 60 * 24 * 1000)
+              },
+        
+            },
+            )
+
+
+
       const vapidKeys = {
         publicKey: process.env.VAPID_PUBLIC_KEY,
         privateKey: process.env.VAPID_PRIVATE_KEY,
@@ -192,7 +244,7 @@ module.exports = {
           res.status(201).json({});
 
           // Create payload
-          const payload = JSON.stringify({ title: "All My Life She Sacrificed", messages: 5 })
+          const payload = JSON.stringify({ title: "All My Life She Sacrificed", userWallPosts: userWallPosts.length,allWallPosts: allWallPosts.length, userTextPosts: userTextPosts.length, allTextPosts: allTextPosts.length  })
 
 
           // Pass object into sendNotification
