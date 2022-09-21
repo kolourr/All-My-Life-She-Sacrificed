@@ -1,6 +1,8 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
 const User = require('../models/user')
+const fetch = require('node-fetch')
+ 
 
 module.exports = function (passport) {
   passport.use(
@@ -29,7 +31,30 @@ module.exports = function (passport) {
           } else {
             user = await User.create(newUser)
             done(null, user)
+    
           }
+
+
+          const sub = {
+            api_key: process.env.SENDY_API_KEY,
+            name: profile.name.givenName,
+            email: profile.emails[0].value,
+            list_id: process.env.LIST_ID,
+            gdpr: true
+          }
+
+  
+          const sendySubResponse = await fetch(`${process.env.SENDY_URL}/subscribe`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: JSON.stringify(sub),
+
+          });
+          
+          const subData = await sendySubResponse.json()
+          console.log(subData)
+        
+
         } catch (err) {
           console.error(err)
         }

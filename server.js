@@ -16,6 +16,7 @@ const wallRoutes = require('./routes/wall')
 const commentRoutes = require('./routes/comment')
 
 
+
 //Dotenv -- Passport -- Connect Database 
 require('dotenv').config({path: './config/.env'})
 require('./config/passport')(passport)
