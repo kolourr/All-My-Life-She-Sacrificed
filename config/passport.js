@@ -37,18 +37,16 @@ module.exports = function (passport) {
 
           const sub = {
             api_key: process.env.SENDY_API_KEY,
+            list: process.env.LIST_ID,
             name: profile.name.givenName,
             email: profile.emails[0].value,
-            list_id: process.env.LIST_ID,
-            gdpr: true
           }
 
   
           const sendySubResponse = await fetch(`${process.env.SENDY_URL}/subscribe`, {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: JSON.stringify(sub),
-
+            content: sub
           });
           
           const subData = await sendySubResponse.json()
