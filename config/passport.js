@@ -30,28 +30,52 @@ module.exports = function (passport) {
             done(null, user)
           } else {
             user = await User.create(newUser)
-            done(null, user)
-    
+            done(null, user)  
           }
 
+            //Subcribing the user to a Mailing List using the Sendy API (self-hosted) 
+            //A Welcome email is sent to the user  followed by an email from the auto-responded (emails sent through AWS SES)
 
-          const sub = {
-            api_key: process.env.SENDY_API_KEY,
-            list: process.env.LIST_ID,
-            name: profile.name.givenName,
-            email: profile.emails[0].value,
-          }
-
+            const params = {
+              'api_key': process.env.SENDY_API_KEY,
+              'list': process.env.LIST_ID,
+              'name': profile.name.givenName,
+              'email': profile.emails[0].value,
+              'boolean': true,
+            }
   
-          const sendySubResponse = await fetch(`${process.env.SENDY_URL}/subscribe`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            content: sub
-          });
-          
-          const subData = await sendySubResponse.json()
-          console.log(subData)
-        
+            function convert(params){
+              return Object.keys(params).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key])).join('&');
+            }
+  
+            const formBody = convert(params)
+            const sendySubResponse = await fetch(`${process.env.SENDY_URL}/subscribe`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+              },
+              body: formBody
+            });
+   
+            const data = await sendySubResponse.text();
+            console.log(data)
+  
+            const subParams = {
+              'api_key': process.env.SENDY_API_KEY,
+              'list_id': process.env.LIST_ID,           
+            }
+  
+            const formBodyCount = convert(subParams)
+            const sendySubCount = await fetch(`${process.env.SENDY_URL}/api/subscribers/active-subscriber-count.php`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+              },
+              body: formBodyCount
+            });
+            const dataSubCount = await sendySubCount.text();
+            console.log(`Subscriber count is ${dataSubCount}`)
+
 
         } catch (err) {
           console.error(err)
