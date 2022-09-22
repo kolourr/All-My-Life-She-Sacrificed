@@ -1,3 +1,4 @@
+require('dotenv').config({path: './config/.env'})
 const aws = require('@aws-sdk/client-s3')
 const fs = require('fs')
 let { defaultProvider } = require("@aws-sdk/credential-provider-node");

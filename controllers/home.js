@@ -1,3 +1,4 @@
+require('dotenv').config({path: './config/.env'})
 const User = require("../models/user");
 const Wall = require("../models/wall");
 const WallComments = require("../models/wallComments");
@@ -9,11 +10,12 @@ const ContactUs = require("../models/contactus");
 const mailOptions = require("../middleware/nodemailer");
 const imageCompressionUpload = require("../middleware/imageCompressionUpload");
 const webpush = require("web-push")
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
-var fs = require("fs")
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
+
+ var fs = require("fs")
 
 const storeItems = new Map([
-  [1, { priceInCents: 1999, name: "Always Wish My Mom for Mother's Day" }],
+  [1, { priceInCents: 1999, name: "Wish My Mom Every Year for Mother's Day" }],
 ])
 
 
@@ -243,12 +245,57 @@ module.exports = {
   },
 
 
-  mothersday: (req, res) => {
+
+
+  createcheckoutsession: async (req, res) => {
+    try {
+
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        customer_email: req.user.email,
+        mode: "payment",
+        billing_address_collection: 'auto',
+        line_items: req.body.items.map(item => {
+          const storeItem = storeItems.get(item.id)
+          return {
+            price_data: {
+              currency: "usd",
+              product_data: {
+                name: storeItem.name,
+              },
+              unit_amount: storeItem.priceInCents,
+            },
+            quantity: item.quantity,
+          }
+        }),
+        success_url: `${process.env.SERVER_URL}/mothersdaysuccess`,
+        cancel_url: `${process.env.SERVER_URL}/mothersdayfailure`,
+      })
+      res.json({ url: session.url })
+  
+        
+    } catch (err) {
+      console.error(err);
+      return res.render("error/500");
+    }
+    
+   },
+
+   mothersday: (req, res) => {
     res.render("mothersday");
   },
 
-  createcheckoutsession: (req, res) => {
-   },
+  mothersdaysuccess: (req, res) => {
+
+    //Need to add details of the email and they can work with it here 
+
+    res.render("mothersdaysuccess");
+  },
+
+  mothersdayfailure: (req, res) => {
+    res.render("mothersdayfailure");
+  },
 
   message: (req, res) => {
     res.render("message");

@@ -17,6 +17,9 @@ router.get('/messageSentSuccessfully',  homeController.messageSentSuccessfully)
 router.post('/subscribe',  homeController.subscribe) 
 
 router.get('/mothersday', ensureAuth, homeController.mothersday) 
+router.get('/mothersdayfailure', ensureAuth, homeController.mothersdayfailure) 
+router.get('/mothersdaysuccess', ensureAuth, homeController.mothersdaysuccess) 
+
 router.post('/create-checkout-session', ensureAuth, homeController.createcheckoutsession) 
 
 

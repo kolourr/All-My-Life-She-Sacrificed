@@ -14,6 +14,8 @@ const homeRoutes = require('./routes/home')
 const postRoutes = require('./routes/post')
 const wallRoutes = require('./routes/wall')
 const commentRoutes = require('./routes/comment')
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
+
 
 
 

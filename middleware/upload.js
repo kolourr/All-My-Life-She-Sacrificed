@@ -1,3 +1,4 @@
+require('dotenv').config({path: './config/.env'})
 const aws = require('@aws-sdk/client-s3')
 const multer = require('multer')
 const multerS3 = require('multer-s3')

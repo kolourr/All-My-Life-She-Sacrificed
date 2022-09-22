@@ -1,3 +1,4 @@
+require('dotenv').config({path: './config/.env'})
 const aws = require('@aws-sdk/client-ses')
 const nodemailer = require("nodemailer");
 const { defaultProvider } = require("@aws-sdk/credential-provider-node");
