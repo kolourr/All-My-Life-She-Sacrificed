@@ -8,9 +8,14 @@ const uploadbase64 = require("../middleware/uploadbase64");
 const ContactUs = require("../models/contactus");
 const mailOptions = require("../middleware/nodemailer");
 const imageCompressionUpload = require("../middleware/imageCompressionUpload");
-const webpush = require("web-push");
+const webpush = require("web-push")
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
+var fs = require("fs")
 
-var fs = require("fs");
+const storeItems = new Map([
+  [1, { priceInCents: 1999, name: "Always Wish My Mom for Mother's Day" }],
+])
+
 
 module.exports = {
   getHome: async (req, res) => {
@@ -236,6 +241,14 @@ module.exports = {
       .sendNotification(subscription, payload)
       .catch((err) => console.log(err));
   },
+
+
+  mothersday: (req, res) => {
+    res.render("mothersday");
+  },
+
+  createcheckoutsession: (req, res) => {
+   },
 
   message: (req, res) => {
     res.render("message");
