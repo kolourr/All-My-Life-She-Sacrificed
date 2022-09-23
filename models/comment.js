@@ -4,7 +4,6 @@ const commentSchema = new mongoose.Schema({
     body: {
         type: String,
         trim: true,
-        maxLength: 280,
         required: true
     },
     loginID: {

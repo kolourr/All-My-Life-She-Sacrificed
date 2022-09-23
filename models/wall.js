@@ -7,7 +7,6 @@ const wallSchema = new mongoose.Schema({
     caption: {
         type: String,
         required: true,
-        maxLength: 400,
         trim: true,
     },
     loginID: {

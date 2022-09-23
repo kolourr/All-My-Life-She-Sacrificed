@@ -10,6 +10,7 @@ const uploadbase64 = require("../middleware/uploadbase64");
 const ContactUs = require("../models/contactus");
 const mailOptions = require("../middleware/nodemailer");
 const imageCompressionUpload = require("../middleware/imageCompressionUpload");
+const sendMomtoSendy = require("../middleware/sendyMom");
 const webpush = require("web-push");
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 let fs = require("fs");
@@ -311,75 +312,22 @@ module.exports = {
 
   mothersdaysuccess: async (req, res) => {
 
-    //Getting Payment information and receeipt from Stripe
+    //Getting Payment information and receipt from Stripe
     const session = await stripe.checkout.sessions.retrieve(
       req.query.session_id
     );
     const customer = await stripe.customers.retrieve(session.customer);
 
-
     //Getting the mom's information from the database
-
     let mom = await Mom.findOne(
       {
         childEmail: req.user.email,
         childFirstName: req.user.firstName,
       }
     )
-
+    
     //Subscribing the mom to the Sendy Email List and sending payment confirmation to the child
-
-    const params = {
-      'api_key': process.env.SENDY_API_KEY,
-      'list': process.env.MOTHERS_DAY_LIST,
-      'name': mom.momName,
-      'email': mom.momEmail,
-      'childEmail': mom.childEmail,
-      'childName': mom.childName,
-      'childFirstName': mom.childFirstName,
-      'boolean': true,
-    };
-
-    function convert(params) {
-      return Object.keys(params)
-        .map(
-          (key) =>
-            encodeURIComponent(key) + "=" + encodeURIComponent(params[key])
-        )
-        .join("&");
-    }
-
-    const sendySubResponse = await fetch(`${process.env.SENDY_URL}/subscribe`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-      },
-      body: convert(params),
-    });
-
-    const data = await sendySubResponse.text();
-    console.log(data);
-
-    const subParams = {
-      'api_key': process.env.SENDY_API_KEY,
-      'list_id': process.env.MOTHERS_DAY_LIST,
-    };
-
-    const sendySubCount = await fetch(
-      `${process.env.SENDY_URL}/api/subscribers/active-subscriber-count.php`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        },
-        body: convert(subParams),
-      }
-    );
-    const dataSubCount = await sendySubCount.text();
-    console.log(
-      `Subscriber count for Mother's Day email list is ${dataSubCount}`
-    );
-    console.log(customer)
+    sendMomtoSendy(mom.momName,mom.momEmail,mom.childEmail,mom.childName, mom.childFirstName)
 
     res.render("mothersdaysuccess", {
       mom,

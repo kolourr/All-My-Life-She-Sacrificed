@@ -4,7 +4,6 @@ const wallCommentSchema = new mongoose.Schema({
     captionComment: {
         type: String,
         trim: true,
-        maxLength: 280,
         required: true
     },
     loginID: {
