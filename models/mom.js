@@ -1,36 +1,35 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const momSchema = new mongoose.Schema({
-    momName: {
-        type: String,
-        required: true,
-    },
+  momName: {
+    type: String,
+    required: true,
+  },
 
-    momEmail: {
-        type: String,
-        required: true,
-    },
+  momEmail: {
+    type: String,
+    required: true,
+  },
 
-    childName: {
-        type: String,
-        required: true,
-    },
+  childName: {
+    type: String,
+    required: true,
+  },
 
-    childFirstName: {
-        type: String,
-        required: true,
-    },
+  childEmail: {
+    type: String,
+    required: true,
+  },
 
-    paymentEmail: {
-        type: String,
-        required: true,
-    },
- 
-    createdAt: {  
-        type: Date,
-        default: Date.now,
-      },
-})
+  childFirstName: {
+    type: String,
+    required: true,
+  },
 
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-module.exports = mongoose.model('Mom', momSchema)
+module.exports = mongoose.model("Mom", momSchema);

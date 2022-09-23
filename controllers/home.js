@@ -1,4 +1,4 @@
-require('dotenv').config({path: './config/.env'})
+require("dotenv").config({ path: "./config/.env" });
 const User = require("../models/user");
 const Wall = require("../models/wall");
 const WallComments = require("../models/wallComments");
@@ -10,14 +10,13 @@ const uploadbase64 = require("../middleware/uploadbase64");
 const ContactUs = require("../models/contactus");
 const mailOptions = require("../middleware/nodemailer");
 const imageCompressionUpload = require("../middleware/imageCompressionUpload");
-const webpush = require("web-push")
-const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
-let fs = require("fs")
+const webpush = require("web-push");
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
+let fs = require("fs");
 
 const storeItems = new Map([
   [1, { priceInCents: 2000, name: "Wish My Mom Every Year for Mother's Day" }],
-])
-
+]);
 
 module.exports = {
   getHome: async (req, res) => {
@@ -244,52 +243,46 @@ module.exports = {
       .catch((err) => console.log(err));
   },
 
-
-
-
   createcheckoutsession: async (req, res) => {
     try {
+      //Checking to see if the mom and child already exist in the database
+      //If not, then adding the mom and the child to the database
 
-      //Checking to see if the mom and child already exist in the database 
-      //If not, then adding the mom and the child to the database 
+      let mom = await Mom.findOne(
+        {
+          momEmail: req.body.momEmail,
+          childFirstName: req.user.firstName,
+        },
+      );
 
-      let mom = await Mom.find({
-        paymentEmail: req.body.paymentEmail,
-      },
-      {
-        childFirstName: req.user.firstName,
-      }
-      )
+      let momCreation;
 
-      let momCreation
-
-      if(mom === undefined){
-         momCreation = await Mom.create({
+      if (mom === null) {
+        momCreation = await Mom.create({
           momName: req.body.momName,
           momEmail: req.body.momEmail,
           childName: req.body.childName,
+          childEmail: req.user.email,
           childFirstName: req.user.firstName,
-        })
-      }
-      else{
-        momCreation = Mom.find({
-          paymentEmail: req.body.paymentEmail,
-        },
-        {
-          childFirstName: req.user.firstName,
-        }
-        )
+        });
+      } else {
+        momCreation = Mom.findOne(
+          {
+            momEmail: req.body.momEmail,
+            childFirstName: req.user.firstName,
+          },
+        );
       }
 
-      //User's Information is then sent to stripe to complete payment 
+      //User's Information is then sent to stripe to complete payment
 
-       const session = await stripe.checkout.sessions.create({
+      const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         customer_email: req.user.email,
         mode: "payment",
-        billing_address_collection: 'auto',
-        line_items: req.body.items.map(item => {
-          const storeItem = storeItems.get(item.id)
+        billing_address_collection: "auto",
+        line_items: req.body.items.map((item) => {
+          const storeItem = storeItems.get(item.id);
           return {
             price_data: {
               currency: "usd",
@@ -299,51 +292,98 @@ module.exports = {
               unit_amount: storeItem.priceInCents,
             },
             quantity: item.quantity,
-          }
+          };
         }),
         success_url: `${process.env.SERVER_URL}/mothersdaysuccess?session_id={CHECKOUT_SESSION_ID}`,
 
         cancel_url: `${process.env.SERVER_URL}/mothersdayfailure`,
-      })
-       res.json({ url: session.url })
-  
-        
+      });
+      res.json({ url: session.url });
     } catch (err) {
       console.error(err);
       return res.render("error/500");
     }
-    
-   },
+  },
 
-   mothersday: (req, res) => {
+  mothersday: (req, res) => {
     res.render("mothersday");
   },
 
-  mothersdaysuccess: async(req, res) => {
+  mothersdaysuccess: async (req, res) => {
 
-    //Getting the mom's information from the database 
-
-    let mom = await Mom.find({
-      paymentEmail: req.body.paymentEmail,
-    },
-    {
-      childFirstName: req.user.firstName,
-    }
-    )
-
-    //Getting Payment information and receeipt from Stripe 
-    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+    //Getting Payment information and receeipt from Stripe
+    const session = await stripe.checkout.sessions.retrieve(
+      req.query.session_id
+    );
     const customer = await stripe.customers.retrieve(session.customer);
 
-  
 
- 
+    //Getting the mom's information from the database
+
+    let mom = await Mom.findOne(
+      {
+        childEmail: req.user.email,
+        childFirstName: req.user.firstName,
+      }
+    )
+
+    //Subscribing the mom to the Sendy Email List and sending payment confirmation to the child
+
+    const params = {
+      'api_key': process.env.SENDY_API_KEY,
+      'list': process.env.MOTHERS_DAY_LIST,
+      'name': mom.momName,
+      'email': mom.momEmail,
+      'childEmail': mom.childEmail,
+      'childName': mom.childName,
+      'childFirstName': mom.childFirstName,
+      'boolean': true,
+    };
+
+    function convert(params) {
+      return Object.keys(params)
+        .map(
+          (key) =>
+            encodeURIComponent(key) + "=" + encodeURIComponent(params[key])
+        )
+        .join("&");
+    }
+
+    const sendySubResponse = await fetch(`${process.env.SENDY_URL}/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+      body: convert(params),
+    });
+
+    const data = await sendySubResponse.text();
+    console.log(data);
+
+    const subParams = {
+      'api_key': process.env.SENDY_API_KEY,
+      'list_id': process.env.MOTHERS_DAY_LIST,
+    };
+
+    const sendySubCount = await fetch(
+      `${process.env.SENDY_URL}/api/subscribers/active-subscriber-count.php`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: convert(subParams),
+      }
+    );
+    const dataSubCount = await sendySubCount.text();
+    console.log(
+      `Subscriber count for Mother's Day email list is ${dataSubCount}`
+    );
+    console.log(customer)
 
     res.render("mothersdaysuccess", {
       mom,
-      email: customer.email,
-      id: customer.id,
-      invoice_prefix: customer.invoice_prefix,
+      customer,
     });
   },
 
