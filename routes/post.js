@@ -17,5 +17,8 @@ router.put('/postHeartIncreaseDecreaseID', ensureAuth, postController.postHeartI
 
 router.put('/postHeartBreakIncreaseDecreaseID', ensureAuth, postController.postHeartBreakIncreaseDecreaseID) 
 
+router.get('/:id', ensureAuth, postController.getSinglePost) 
+
+
 
 module.exports = router

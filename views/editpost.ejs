@@ -1,36 +1,33 @@
 <%- include('partials/header') %>
 <h1>Edit a Post About Your Mom!</h1>
 
-<br><br>
+<br /><br />
 <a href="/loggedinindex">Home</a>
 <a href="/wall/feed">Feed</a>
 <a href="/profile">Profile</a>
 <a href="/updatedindex">Make a Post</a>
 <a href="/wall">Wall</a>
-<a href="/message">Contact Us</a><br><br>
+<a href="/message">Contact Us</a><br /><br />
 <a class="count" href="/post/dashboard">Dashboard</a>
-<br><br>
-<button class="checkMe">CHECK ME</button> 
-<span id="push-notify"></span><br><br>
+<br /><br />
+<button class="checkMe">CHECK ME</button>
+<span id="push-notify"></span><br /><br />
 
+<form action="/post/editPost/<%=post._id%>" method="POST">
+  <input type="hidden" name="_method" value="PUT" />
 
-<form action="/post/editPost/<%=post._id%>" method='POST'>
-    <input type="hidden" name="_method" value="PUT">
+  <input type="text" placeholder="Title" name="title" value="<%=post.title%>" />
+  <br /><br />
+  <input type="text" placeholder="Body" name="body" value="<%=post.body%>" /><br /><br />
 
-    <input type="text" placeholder="Title" name='title' value="<%=post.title%>"> <br><br>
-    <input type="text" placeholder="Body" name='body' value="<%=post.body%>"><br><br>
-
-    <select id="postType" name="postType">
-        <%
-            let choices = [ "aww", "thankful", "blessing", "heartbroken", "remorseful", "cranky","free", "fortunate", "humbled"  ]
-            choices.forEach(choice => {
-                let selected = post.postType === choice ? "selected" : "";
-                %>
-                 <option value="<%=choice %>" <%=selected %>> <%=choice %> </option><%
-             })
-            %>
-    </select><br><br>
-    <input type="submit">
+  <select id="postType" name="postType">
+    <% let choices = [ "aww", "thankful", "blessing", "heartbroken",
+    "remorseful", "cranky","free", "fortunate", "humbled" ]
+    choices.forEach(choice => { let selected = post.postType === choice ?
+    "selected" : ""; %>
+    <option value="<%=choice %>" <%="selected" %>> <%=choice %></option>
+    <% }) %></select><br /><br />
+  <input type="submit" />
 </form>
 
 <a href="/post/dashboard">Dashboard</a>

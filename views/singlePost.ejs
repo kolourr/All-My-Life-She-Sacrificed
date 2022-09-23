@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+<h1>Home Page</h1>
+<a href="/auth/logout">Logout</a><br /><br />
+<a href="/updatedindex">Make a Post</a>
+<a class="count" href="/post/dashboard">Dashboard</a>
+<a href="/wall">Wall</a>
+<br><br>
+<button class="checkMe">CHECK ME</button> 
+<span id="push-notify"></span><br><br>
+
+<h1>HOME - Public Stories</h1>
+<h2>Comment on stories you find interesting</h2>
+
+<ul>
+       
+ 
+        <li><%=post.title%></li>
+        <li><%=post.body%></li>
+        <li><%=post.postType%></li>
+        
+
+        <button class='heartIncreaseDecrease' data-PostHeartID='<%=post._id%>'  > 
+                <i class="bi bi-heart-fill"></i>   <%=post.heart.length%>
+        </button>
+ 
+        <button class='heartBreakIncreaseDecrease' data-PostHeartBreakID='<%=post._id%>'  > 
+                <i class="bi bi-heartbreak-fill"></i>   <%=post.heartBreak.length%>
+        </button><br><br>
+
+
+
+        <br>    <span><b>Add a Comment</b></span>
+        <form action="/comment/<%=post._id%>/createComment" method="POST">
+                <input type="text" placeholder="Body" name="body" required/><br /><br />
+                <input type="submit" /> <br /><br />
+                <br /><br />
+        </form>
+
+
+        <!-- Can also add a get request link here that once the user clicks on, only then are comments shown -->
+        <% postComments.forEach(reply => {%> 
+                <% if(post._id.toString() === reply.post.toString()){%>
+        
+                <li><%=reply.body%></li>
+        
+                <button class='heartIncreaseDecreaseComment' data-CommentHeartID='<%=reply._id%>'  > 
+                        <i class="bi bi-heart-fill"></i>   <%=reply.heart.length%>
+                </button>
+         
+                <button class='heartBreakIncreaseDecreaseComment' data-CommentHeartBreakID='<%=reply._id%>'  > 
+                        <i class="bi bi-heartbreak-fill"></i>   <%=reply.heartBreak.length%>
+                </button>
+        
+        
+                <% } %> <% })%>
+          
+
+            
+   
+</ul>
+
+<%- include('partials/footer') %>

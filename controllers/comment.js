@@ -21,7 +21,8 @@ createComment: async (req, res) => {
     post.comments.push(comment)
 
       console.log(`Comment added to post ${req.params.id}`)
-      res.redirect('/loggedinindex')
+      res.redirect(`/post/${req.params.id}`)
+
     } catch (err) {
       console.log(err)
       res.render('error/500')

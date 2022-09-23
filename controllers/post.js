@@ -119,6 +119,29 @@ module.exports = {
     }
   },
 
+  getSinglePost:  async (req, res) => {
+
+    try{
+
+      let post = await Post.findById({
+        _id: req.params.id,
+      }).lean();
+  
+      let postComments = await Comments.find().lean()
+  
+        res.render('singlePost', {
+          post: post,
+          postComments: postComments
+         })
+
+    }
+    catch (err) {
+      console.error(err);
+      return res.render("error/500");
+    }
+
+  },
+
   postHeartIncreaseDecreaseID: async (req, res) => {
     try {
       let post = await Post.find({

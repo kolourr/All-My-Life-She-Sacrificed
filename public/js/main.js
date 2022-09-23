@@ -62,7 +62,7 @@ Array.from(wallPostCommentHeartBreakIncreaseDecreaseButton).forEach((post)=>{
 async function wallPostCommentHeartBreakIncreaseDecrease(){
     const postID = this.getAttribute('data-wallPostCommentHeartBreakID') 
     try{
-        const response = await fetch('/wall/wallPostCommentHeartBreakIncreaseDecreaseID', {
+        const response = await fetch('../wall/wallPostCommentHeartBreakIncreaseDecreaseID', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -80,7 +80,7 @@ async function wallPostCommentHeartBreakIncreaseDecrease(){
 async function wallPostCommentHeartIncreaseDecrease(){
     const postID = this.getAttribute('data-WallPostCommentHeartID') 
     try{
-        const response = await fetch('/wall/wallPostCommentHeartIncreaseDecreaseID', {
+        const response = await fetch('../wall/wallPostCommentHeartIncreaseDecreaseID', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -100,7 +100,7 @@ async function wallPostCommentHeartIncreaseDecrease(){
 async function wallPostHeartIncreaseDecrease(){
     const postID = this.getAttribute('data-WallPostHeartID') 
     try{
-        const response = await fetch('/wall/wallPostHeartIncreaseDecreaseID', {
+        const response = await fetch('../wall/wallPostHeartIncreaseDecreaseID', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -118,7 +118,7 @@ async function wallPostHeartIncreaseDecrease(){
 async function wallPostHeartBreakIncreaseDecrease(){
     const postID = this.getAttribute('data-wallPostHeartBreakID') 
     try{
-        const response = await fetch('/wall/wallPostHeartBreakIncreaseDecreaseID', {
+        const response = await fetch('../wall/wallPostHeartBreakIncreaseDecreaseID', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -138,7 +138,7 @@ async function wallPostHeartBreakIncreaseDecrease(){
 async function deletePost(){
     const postID = this.getAttribute('data-DeleteID') 
     try{
-        const response = await fetch('deletePost', {
+        const response = await fetch('../post/deletePost', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -156,7 +156,7 @@ async function deletePost(){
 async function deleteWallPost(){
     const wallPostID = this.getAttribute('data-DeleteWallPostID') 
     try{
-        const response = await fetch('/wall/deleteWallPost', {
+        const response = await fetch('../wall/deleteWallPost', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -194,7 +194,7 @@ async function deleteComment(){
 async function postHeartIncreaseDecrease(){
     const postHeartIncreaseDecreaseID = this.getAttribute('data-PostHeartID') 
     try{
-        const response = await fetch('post/postHeartIncreaseDecreaseID', {
+        const response = await fetch('../post/postHeartIncreaseDecreaseID', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -214,7 +214,7 @@ async function postHeartIncreaseDecrease(){
 async function postHeartBreakIncreaseDecrease(){
     const postHeartBreakIncreaseDecreaseID = this.getAttribute('data-PostHeartBreakID') 
     try{
-        const response = await fetch('post/postHeartBreakIncreaseDecreaseID', {
+        const response = await fetch('../post/postHeartBreakIncreaseDecreaseID', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
