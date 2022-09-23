@@ -18,6 +18,7 @@ checkoutButton.addEventListener("click", () => {
       })
       .then(({ url }) => {
         window.location = url
+       
       })
       .catch(e => {
         console.error(e.error)

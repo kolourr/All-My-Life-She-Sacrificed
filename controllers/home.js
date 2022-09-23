@@ -3,6 +3,7 @@ const User = require("../models/user");
 const Wall = require("../models/wall");
 const WallComments = require("../models/wallComments");
 const Post = require("../models/post");
+const Mom = require("../models/mom");
 const Comments = require("../models/comment");
 const upload = require("../middleware/upload");
 const uploadbase64 = require("../middleware/uploadbase64");
@@ -11,11 +12,10 @@ const mailOptions = require("../middleware/nodemailer");
 const imageCompressionUpload = require("../middleware/imageCompressionUpload");
 const webpush = require("web-push")
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
-
- var fs = require("fs")
+let fs = require("fs")
 
 const storeItems = new Map([
-  [1, { priceInCents: 1999, name: "Wish My Mom Every Year for Mother's Day" }],
+  [1, { priceInCents: 2000, name: "Wish My Mom Every Year for Mother's Day" }],
 ])
 
 
@@ -250,8 +250,40 @@ module.exports = {
   createcheckoutsession: async (req, res) => {
     try {
 
+      //Checking to see if the mom and child already exist in the database 
+      //If not, then adding the mom and the child to the database 
 
-      const session = await stripe.checkout.sessions.create({
+      let mom = await Mom.find({
+        paymentEmail: req.body.paymentEmail,
+      },
+      {
+        childFirstName: req.user.firstName,
+      }
+      )
+
+      let momCreation
+
+      if(mom === undefined){
+         momCreation = await Mom.create({
+          momName: req.body.momName,
+          momEmail: req.body.momEmail,
+          childName: req.body.childName,
+          childFirstName: req.user.firstName,
+        })
+      }
+      else{
+        momCreation = Mom.find({
+          paymentEmail: req.body.paymentEmail,
+        },
+        {
+          childFirstName: req.user.firstName,
+        }
+        )
+      }
+
+      //User's Information is then sent to stripe to complete payment 
+
+       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         customer_email: req.user.email,
         mode: "payment",
@@ -269,10 +301,11 @@ module.exports = {
             quantity: item.quantity,
           }
         }),
-        success_url: `${process.env.SERVER_URL}/mothersdaysuccess`,
+        success_url: `${process.env.SERVER_URL}/mothersdaysuccess?session_id={CHECKOUT_SESSION_ID}`,
+
         cancel_url: `${process.env.SERVER_URL}/mothersdayfailure`,
       })
-      res.json({ url: session.url })
+       res.json({ url: session.url })
   
         
     } catch (err) {
@@ -286,11 +319,32 @@ module.exports = {
     res.render("mothersday");
   },
 
-  mothersdaysuccess: (req, res) => {
+  mothersdaysuccess: async(req, res) => {
 
-    //Need to add details of the email and they can work with it here 
+    //Getting the mom's information from the database 
 
-    res.render("mothersdaysuccess");
+    let mom = await Mom.find({
+      paymentEmail: req.body.paymentEmail,
+    },
+    {
+      childFirstName: req.user.firstName,
+    }
+    )
+
+    //Getting Payment information and receeipt from Stripe 
+    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+    const customer = await stripe.customers.retrieve(session.customer);
+
+  
+
+ 
+
+    res.render("mothersdaysuccess", {
+      mom,
+      email: customer.email,
+      id: customer.id,
+      invoice_prefix: customer.invoice_prefix,
+    });
   },
 
   mothersdayfailure: (req, res) => {
