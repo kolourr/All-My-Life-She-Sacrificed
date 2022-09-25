@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ 
+.footer {
+
+   place-items: center;
+}
+
+ 
+/* 
+ .profile-picture {
+    border-radius: 50%
+ }
+ 
+ #canvas {
+    margin: auto;
+    background: #cec9c9;
+    width: 100%;
+  }
+
+  */
+
+  /* .btn {
+   @apply rounded-full;
+ }
+  */
