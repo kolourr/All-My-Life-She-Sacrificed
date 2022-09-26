@@ -3,13 +3,13 @@
 @tailwind utilities;
 
  
-.footer {
+/* .footer {
 
    place-items: center;
 }
 
  
-/* 
+
  .profile-picture {
     border-radius: 50%
  }
@@ -20,9 +20,9 @@
     width: 100%;
   }
 
-  */
+ 
 
-  /* .btn {
+  .btn {
    @apply rounded-full;
  }
   */
