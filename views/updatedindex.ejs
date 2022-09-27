@@ -1,5 +1,8 @@
 <%- include('partials/header') %>
-<div class="flex-grow">
+<div class="grow overflow-y-scroll">
+    <div class="grid grid-cols-8 gap-4">
+        <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
+
     <h1>Share a Post About Your Mom!</h1>
 
     <form action="/post/createPost" method="POST">
@@ -20,6 +23,8 @@
 
         <input type="submit" />
     </form>
+    </div>
+    </div>
 </div>
 
 <%- include('partials/footer') %>

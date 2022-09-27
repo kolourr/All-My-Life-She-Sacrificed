@@ -1,5 +1,8 @@
 <%- include('partials/header') %>
-<div class="flex-grow">
+<div class="grow overflow-y-scroll">
+    <div class="grid grid-cols-8 gap-4">
+        <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
+
 
 <h1>Click to Logout</h1>
 <a href="/auth/logout">Logout</a><br /><br />
@@ -9,12 +12,14 @@
 <a href="/updatedindex">Make a Post</a>
 <a href="/message">Contact Us</a>
 <br><br>
-<button class="checkMe">CHECK ME</button> 
+<button class="checkMe">CHECK ME</button>
 <span id="push-notify"></span><br><br>
 
 <h1>Wall</h1>
 
 <a href="/wall/create">Create a Wall Post</a><br>
 </div>
- 
+</div>
+</div>
+
 <%- include('partials/footer') %>

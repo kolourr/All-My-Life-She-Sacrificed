@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="/css/output.css">
 </head>
 <body class="flex flex-col h-screen ">
-  <header class=" sticky z-10 top-0  ">
-    <div class="navbar">
-      <div class="flex w-1/2 justify-center lg:hidden">
+  <header class="sticky lg:mt-4 z-10 ">
+    <div class="navbar top-0">
+      <div class="flex w-1/2 justify-between lg:hidden">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -19,11 +19,6 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </label>
           <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <li tabindex="0">
-              <a href="/" class="justify-between">
-                Home
-              </a>
-            </li>
             <li tabindex="0">
               <a class="justify-between">
                 Feed
@@ -42,8 +37,8 @@
                   <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
               </a>
               <ul class="p-2 bg-base-100">
-                <li class="hover-bordered"><a href="/wall/create">Make Image Post</a> </li>
-                <li class="hover-bordered"><a href="/updatedindex">Make Text Post</a></li>
+                <li class="hover-bordered"><a href="/wall/create">Share a Picture</a> </li>
+                <li class="hover-bordered"><a href="/updatedindex">Share a Story</a></li>
               </ul>
             </li>
             <li tabindex="0">
@@ -53,6 +48,7 @@
                   <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
               </a>
               <ul class="p-2 bg-base-100">
+                <li class="hover-bordered"><a class="count" href="/mothersday">Mother's Day Wish</a></li>
                 <li class="hover-bordered"><a class="count" href="/post/dashboard">Dashboard</a></li>
                 <li class="hover-bordered"><a href="/profile">Profile</a></li>
                 <li class="hover-bordered"><a class="hover-bordered" href='/editButton'>Edit Profile</a></li>
@@ -64,16 +60,11 @@
           </ul>
         </div>
       </div>
-      <div class="sm:flex sm:justify-self-center lg:flex lg:w-1/2 lg:justify-center   	">
+      <div class="sm:flex justify-between  lg:flex lg:w-1/2 lg:justify-center   	">
         <a href="/loggedinindex" class="btn btn-ghost btn-primary   uppercase">All My Life She Sacrificed</a>
       </div>
       <div class="flex w-1/2 justify-center invisible lg:visible ">
         <ul class="menu menu-horizontal p-0">
-          <li tabindex="0">
-            <a href="/" class="justify-between">
-              Home
-            </a>
-          </li>
           <li tabindex="0">
             <a class="justify-between">
               Feed
@@ -92,8 +83,8 @@
                 <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
             </a>
             <ul class="p-2 bg-base-100">
-              <li class="hover-bordered"><a href="/wall/create">Make Image Post</a> </li>
-              <li class="hover-bordered"><a href="/updatedindex">Make Text Post</a></li>
+              <li class="hover-bordered"><a href="/wall/create">Share a Picture</a> </li>
+              <li class="hover-bordered"><a href="/updatedindex">Share a Story</a></li>
             </ul>
           </li>
           <li tabindex="0">
@@ -103,6 +94,7 @@
                 <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
             </a>
             <ul class="p-2 bg-base-100">
+              <li class="hover-bordered"><a class="count" href="/mothersday">Mother's Day Wish</a></li>
               <li class="hover-bordered"><a class="count" href="/post/dashboard">Dashboard</a></li>
               <li class="hover-bordered"><a href="/profile">Profile</a></li>
               <li class="hover-bordered"><a class="hover-bordered" href='/editButton'>Edit Profile</a></li>

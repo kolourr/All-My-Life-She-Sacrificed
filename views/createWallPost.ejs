@@ -1,17 +1,14 @@
 <%- include('partials/header') %>
-<div class="flex-grow">
+<div class="grow overflow-y-scroll">
+    <div class="grid grid-cols-8 gap-4">
+        <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
     <h1>Share a Picture & Story About Your Mom!</h1>
     <h4 class="text-center my-3">Images will be resized to 1000px x 1000px</h4>
-
     <!-- <form action="/wall/createWallPost" method='POST' enctype="multipart/form-data"> -->
-
     <input type="file" name="image" id="wallImage" required /><br /><br />
     <span style="color: red" type="hidden" id="msgFile"></span><br /><br />
-
     <canvas id="canvas"></canvas>
-
     <h4 class="text-center my-3">Filter Effects</h4>
-
     <button class="filters vintage">Vintage</button>
     <button class="filters concentrate">Concentrate</button>
     <button class="filters sinCity">Sin City</button>
@@ -28,20 +25,17 @@
     <button class="filters herMajesty">Her Majesty</button>
     <button class="filters nostalgia">Nostalgia</button>
     <button class="filters clarity">Clarity</button><br /><br />
-
     <div class="col-md-6">
         <button id="remove-filters" class="btn btn-danger btn-block">
             Clear Filter</button><br /><br />
     </div>
-
     <h4 class="text-center my-3">Add a Caption</h4>
     <span>Required</span>
-
     <textarea type="text" rows="4" cols="40" placeholder="Enter your caption..." name="caption" id="caption"
         required></textarea><br /><br />
-
     <span style="color: red" type="hidden" id="msg"></span><br /><br />
-
     <button id="submit-wallImage">Submit</button><br /><br />
+    </div>
+    </div>
 </div>
 <%- include('partials/footer') %>

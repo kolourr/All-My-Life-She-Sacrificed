@@ -1,5 +1,7 @@
 <%- include('partials/header') %>
-<div class="flex-grow">
+<div class="grow overflow-y-scroll">
+  <div class="grid grid-cols-8 gap-4">
+    <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
   <h1>DASHBOARD</h1>
   <h2>All User's Stories</h2>
   <ul>
@@ -12,18 +14,13 @@
       <i class="bi bi-heartbreak-fill"></i> <%=post.heartBreak.length%>
     </button>
     <button>
-      <a
-        style="color: black; text-decoration: none"
-        href="editButton/<%=post._id%>"
-        >Edit</a
-      >
+      <a style="color: black; text-decoration: none" href="editButton/<%=post._id%>">Edit</a>
     </button>
     <button class="deletePost" data-DeleteID="<%=post._id%>">Delete</button>
     <br />
     <br />
     <% }) %>
   </ul>
-
   <h2>User's Story Comments</h2>
   <ul>
     <% postsWithUserComments.forEach(postWithComment => { %>
@@ -38,29 +35,20 @@
         <%=postWithComment.heartBreak.length%>
       </button>
       <button>
-        <a
-          style="color: black; text-decoration: none"
-          href="../comment/editCommentButton/<%=postWithComment._id%>"
-          >Edit</a
-        >
+        <a style="color: black; text-decoration: none"
+          href="../comment/editCommentButton/<%=postWithComment._id%>">Edit</a>
       </button>
-      <button
-        class="deleteComment"
-        data-DeleteCommentID="<%=postWithComment._id%>"
-      >
+      <button class="deleteComment" data-DeleteCommentID="<%=postWithComment._id%>">
         Delete
       </button>
     </li>
     <% }) %>
   </ul>
-
   <h2>Wall Posts</h2>
-
   <ul>
     <% wallPosts.forEach(wallPost => { %>
     <a href="/wall/<%= wallPost._id%>">
-      <img src="<%=wallPost.image%>" loading="lazy" width="50%"
-    /></a>
+      <img src="<%=wallPost.image%>" loading="lazy" width="50%" /></a>
     <br /><br />
     <li>
       <%=wallPost.caption%><br />
@@ -71,11 +59,11 @@
         <i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak.length%>
       </button>
       <button class="deleteWallPost" data-DeleteWallPostID="<%=wallPost._id%>">
-        Delete</button
-      ><br /><br />
+        Delete</button><br /><br />
     </li>
     <% }) %>
   </ul>
+  </div>
+  </div>
 </div>
-
 <%- include('partials/footer') %>

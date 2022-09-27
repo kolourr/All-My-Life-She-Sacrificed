@@ -1,82 +1,41 @@
 <%- include('partials/header') %>
-<div class="flex-grow">
-
-<h1>Edit your Profile</h1>
-<div class="container" style="margin-top: 20px; padding: 20px">
-  <div class="card">
-    <div class="card-header">Upload and Crop Your Profile Picture</div>
-    <div class="card-body">
-      <h5 class="card-title">Select Image</h5>
-      <input type="file" name="imageUploaded" id="upload_image" />
+<div class="grow overflow-y-scroll">
+  <div class="grid grid-cols-8 gap-4">
+    <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
+      <h1>Edit your Profile</h1>
+      <div class="container" style="margin-top: 20px; padding: 20px">
+        <div class="card">
+          <div class="card-header">Upload and Crop Your Profile Picture</div>
+          <div class="card-body">
+            <h5 class="card-title">Select Image</h5>
+            <input type="file" name="imageUploaded" id="upload_image" />
+          </div>
+        </div>
+        <div class="card text-center" id="uploadimage" style="display: none">
+          <div class="card-header">Upload & Crop Image</div>
+          <div class="card-body">
+            <div id="image_demo" style="width: 350px; margin-top: 30px"></div>
+          </div>
+          <div class="card-footer text-muted">
+            <button id="crop_image">Adjust & Crop Picture</button>
+          </div>
+        </div>
+      </div>
+      <% user.forEach(user => { %>
+      <form action="/editProfile/<%=user._id%>" method="POST" id="" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="PUT" />
+        <label for="image">Select New Profile Picture</label><br /><br />
+        <img class="img-thumbnail profile-picture img-responsive img-rounded" src="<%=user.image%>" /><br /><br />
+        <input type="text" placeholder="First Name" name="firstName" value="<%=user.firstName%>" required />
+        <br /><br />
+        <input type="text" placeholder="Last Name" name="lastName" value="<%=user.lastName%>" required /><br /><br />
+        <input type="text" placeholder="Display Name" name="displayName" value="<%=user.displayName%>" required />
+        <br /><br />
+        <input type="text" placeholder="Email" name="email" value="<%=user.email%>" required /><br /><br />
+        <input type="submit" />
+      </form>
+      <% }) %>
     </div>
-  </div>
-
-  <div class="card text-center" id="uploadimage" style="display: none">
-    <div class="card-header">Upload & Crop Image</div>
-    <div class="card-body">
-      <div id="image_demo" style="width: 350px; margin-top: 30px"></div>
-
- 
     </div>
-    <div class="card-footer text-muted">
-      <button id="crop_image">Adjust & Crop Picture</button>
     </div>
-  </div>
-</div>
-
-<% user.forEach(user => { %>
-<form
-  action="/editProfile/<%=user._id%>"
-  method="POST"
-  id=""
-  enctype="multipart/form-data"
->
-  <input type="hidden" name="_method" value="PUT" />
-  <label for="image">Select New Profile Picture</label><br /><br />
-
-  <img
-    class="img-thumbnail profile-picture img-responsive img-rounded"
-    src="<%=user.image%>"
-  /><br /><br />
-
-  <input
-    type="text"
-    placeholder="First Name"
-    name="firstName"
-    value="<%=user.firstName%>"
-    required
-  />
-  <br /><br />
-
-  <input
-    type="text"
-    placeholder="Last Name"
-    name="lastName"
-    value="<%=user.lastName%>"
-    required
-  /><br /><br />
-
-  <input
-    type="text"
-    placeholder="Display Name"
-    name="displayName"
-    value="<%=user.displayName%>"
-    required
-  />
-  <br /><br />
-
-  <input
-    type="text"
-    placeholder="Email"
-    name="email"
-    value="<%=user.email%>"
-    required
-  /><br /><br />
-
-  <input type="submit" />
-</form>
-<% }) %>
-
-
-</div
-<%- include('partials/footer') %>
+    <%- include('partials/footer') %>

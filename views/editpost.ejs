@@ -1,14 +1,13 @@
 <%- include('partials/header') %>
-<div class="flex-grow">
-
+<div class="grow overflow-y-scroll">
+  <div class="grid grid-cols-8 gap-4">
+    <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
 <h1>Edit a Post About Your Mom!</h1>
 <form action="/post/editPost/<%=post._id%>" method="POST">
   <input type="hidden" name="_method" value="PUT" />
-
   <input type="text" placeholder="Title" name="title" value="<%=post.title%>" />
   <br /><br />
   <input type="text" placeholder="Body" name="body" value="<%=post.body%>" /><br /><br />
-
   <select id="postType" name="postType">
     <% let choices = [ "aww", "thankful", "blessing", "heartbroken",
     "remorseful", "cranky","free", "fortunate", "humbled" ]
@@ -18,8 +17,7 @@
     <% }) %></select><br /><br />
   <input type="submit" />
 </form>
-
-
 </div>
-
+</div>
+</div>
 <%- include('partials/footer') %>
