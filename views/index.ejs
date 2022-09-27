@@ -1,36 +1,22 @@
-<%- include('partials/header') %>
+<%if (typeof user === 'undefined') { %>
+  <%- include('partials/header-preauth') %>
+  <% } else { %>
+  <%- include('partials/header-postauth') %>
+  <%  } %>
 <div class="grow overflow-y-scroll">
-        <div class="grid grid-cols-8 gap-4">
-                <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
+    <div class="grid grid-cols-8 gap-4">
+        <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
 
-  <h1
-    class="bg-yellow-200 text-3xl font-bold underline text-purple-200 hover:text-blue-600"
-  >
-    Login to All My Life She Sacrificed
-  </h1>
-  <h2>This will be all the Public Posts Made</h2>
 
-  <ul>
-    <% allPosts.forEach(post => { %>
-    <li><%=post.title%></li>
-    <li><%=post.body%></li>
-    <li><%=post.postType%></li>
-    <button class="heartIncreaseDecrease" data-PostHeartID="<%=post._id%>">
-      <i class="bi bi-heart-fill"></i> <%=post.heart.length%>
-    </button>
-
-    <button
-      class="heartBreakIncreaseDecrease"
-      data-PostHeartBreakID="<%=post._id%>"
-    >
-      <i class="bi bi-heartbreak-fill"></i> <%=post.heartBreak.length%>
-    </button>
-
-    <br />
-
-    <% }) %>
-  </ul>
-  </div>
-  </div>
+          <!-- <div class="grow overflow-y-scroll">
+    <div class="grid grid-cols-8 gap-4">
+        <div class="col-span-4 sm:col-start-1 sm:col-end-4 card bg-base-300 rounded-box place-items-center">PART 1</div>
+                  <div class="col-span-4 sm:col-start-5 sm:col-end-8 card bg-base-300 rounded-box place-items-center">PART 2</div> -->
 </div>
-<%- include('partials/footer') %>
+</div>
+</div>
+<%if (typeof user === 'undefined') { %>
+  <%- include('partials/footer-preauth') %>
+  <% } else { %>
+  <%- include('partials/footer-postauth') %>
+  <%  } %>

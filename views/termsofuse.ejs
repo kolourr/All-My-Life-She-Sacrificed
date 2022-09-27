@@ -1,9 +1,16 @@
-<%- include('partials/header') %>
+<%if (typeof user === 'undefined') { %>
+    <%- include('partials/header-preauth') %>
+    <% } else { %>
+    <%- include('partials/header-postauth') %>
+    <%  } %>
 <div class="grow overflow-y-scroll">
     <div class="grid grid-cols-8 gap-4">
         <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
+        </div>
+    </div>
 </div>
-</div>
-
-</div>
-<%- include('partials/footer') %>
+<%if (typeof user === 'undefined') { %>
+    <%- include('partials/footer-preauth') %>
+    <% } else { %>
+    <%- include('partials/footer-postauth') %>
+    <%  } %>

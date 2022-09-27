@@ -149,7 +149,7 @@ module.exports = {
 
       let userMessage = `
                 <h3>Contact Details</h3>
-                <ul>  
+                <ul>
                 <li>Name: ${userName}</li>
                 <li>Email: ${userEmail}</li>
                 </ul>
@@ -307,7 +307,7 @@ module.exports = {
   },
 
   mothersday: (req, res) => {
-    res.render("mothersday");
+    res.render("mothersday", {user: req.user});
   },
 
   mothersdaysuccess: async (req, res) => {
@@ -325,7 +325,7 @@ module.exports = {
         childFirstName: req.user.firstName,
       }
     )
-    
+
     //Subscribing the mom to the Sendy Email List and sending payment confirmation to the child
     sendMomtoSendy(mom.momName,mom.momEmail,mom.childEmail,mom.childName, mom.childFirstName)
 
@@ -336,11 +336,11 @@ module.exports = {
   },
 
   mothersdayfailure: (req, res) => {
-    res.render("mothersdayfailure");
+    res.render("mothersdayfailure", {user: req.user});
   },
 
   message: (req, res) => {
-    res.render("message");
+    res.render("message", {user: req.user});
   },
 
   messageSentSuccessfully: (req, res) => {
@@ -349,26 +349,36 @@ module.exports = {
     });
   },
 
+  login: (req, res) => {
+    res.render("login", {user: req.user});
+  },
+
   updatedindex: (req, res) => {
-    res.render("updatedindex.ejs");
+    res.render("updatedindex.ejs", {user: req.user});
+  },
+  nft: (req, res) => {
+    res.render("nft", {user: req.user});
+  },
+  song: (req, res) => {
+    res.render("song", {user: req.user});
   },
 
   about: (req, res) => {
-    res.render("about.ejs");
+    res.render("about.ejs", {user: req.user});
   },
-  cover: (req, res) => {
-    res.render("cover.ejs");
-  },
+
   termsofuse: (req, res) => {
-    res.render("termsofuse.ejs");
+    res.render("termsofuse.ejs", {
+      user: req.user
+    });
   },
   privacypolicy: (req, res) => {
-    res.render("privacypolicy.ejs");
+    res.render("privacypolicy.ejs", {user: req.user});
   },
   error404: (req, res) => {
-    res.render("error/404.ejs");
+    res.render("error/404.ejs", {user: req.user});
   },
   error500: (req, res) => {
-    res.render("error/500.ejs");
+    res.render("error/500.ejs", {user: req.user});
   },
 };
