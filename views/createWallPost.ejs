@@ -1,13 +1,13 @@
 <%- include('partials/header') %>
-<h1>Share a Picture & Story About Your Mom!</h1>
-<h4 class="text-center my-3">Images will be resized to 1000px x 1000px</h4>
-  
+<div class="flex-grow">
+    <h1>Share a Picture & Story About Your Mom!</h1>
+    <h4 class="text-center my-3">Images will be resized to 1000px x 1000px</h4>
 
-<!-- <form action="/wall/createWallPost" method='POST' enctype="multipart/form-data"> -->
+    <!-- <form action="/wall/createWallPost" method='POST' enctype="multipart/form-data"> -->
 
-    <input type="file" name="image" id="wallImage"    required /><br><br>
-    <span style='color: red;' type="hidden" id="msgFile"></span><br><br>
-    
+    <input type="file" name="image" id="wallImage" required /><br /><br />
+    <span style="color: red" type="hidden" id="msgFile"></span><br /><br />
+
     <canvas id="canvas"></canvas>
 
     <h4 class="text-center my-3">Filter Effects</h4>
@@ -15,40 +15,33 @@
     <button class="filters vintage">Vintage</button>
     <button class="filters concentrate">Concentrate</button>
     <button class="filters sinCity">Sin City</button>
-    <button class="filters sunrise">Sunrise</button><br><br>
+    <button class="filters sunrise">Sunrise</button><br /><br />
     <button class="filters crossProcess">Cross Process</button>
     <button class="filters orangePeel">Orange Peel</button>
     <button class="filters love">Love</button>
-    <button class="filters hemingway">Hemingway</button><br><br>
+    <button class="filters hemingway">Hemingway</button><br /><br />
     <button class="filters jarques">Jarques</button>
     <button class="filters pinhole">Pinhole</button>
     <button class="filters oldBoot">Old Boot</button>
-    <button class="filters glowingSun">Glowing Sun</button><br><br>
+    <button class="filters glowingSun">Glowing Sun</button><br /><br />
     <button class="filters hazyDays">Hazy Days</button>
     <button class="filters herMajesty">Her Majesty</button>
     <button class="filters nostalgia">Nostalgia</button>
-    <button class="filters clarity">Clarity</button><br><br>
+    <button class="filters clarity">Clarity</button><br /><br />
 
     <div class="col-md-6">
-        <button id="remove-filters" class="btn btn-danger btn-block">Clear Filter</button><br><br>
-      </div>
+        <button id="remove-filters" class="btn btn-danger btn-block">
+            Clear Filter</button><br /><br />
+    </div>
 
-      <h4 class="text-center my-3">Add a Caption</h4>
-      <span>Required</span>
+    <h4 class="text-center my-3">Add a Caption</h4>
+    <span>Required</span>
 
-    <textarea type="text" rows="4" cols="40" placeholder="Enter your caption..." name='caption' id='caption' required></textarea><br><br>
+    <textarea type="text" rows="4" cols="40" placeholder="Enter your caption..." name="caption" id="caption"
+        required></textarea><br /><br />
 
-<span style='color: red;' type="hidden" id="msg"></span><br><br>
+    <span style="color: red" type="hidden" id="msg"></span><br /><br />
 
-
-    <button id="submit-wallImage">Submit</button><br><br>
-
-  
-
-
-
-<a href="/post/dashboard">Dashboard</a>
-<a href="/wall">Wall</a>
-<a href="/auth/logout">Logout</a>
-
+    <button id="submit-wallImage">Submit</button><br /><br />
+</div>
 <%- include('partials/footer') %>

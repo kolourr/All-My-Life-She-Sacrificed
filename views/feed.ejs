@@ -1,27 +1,37 @@
 <%- include('partials/header') %>
-<h1>Picture Feed</h1>
-<p>Click on a post to comment. Heart or Heartbreak the posts you think are interesting!</p>
+<div class="flex-grow">
+  <h1>Picture Feed</h1>
+  <p>
+    Click on a post to comment. Heart or Heartbreak the posts you think are
+    interesting!
+  </p>
 
-<ul>
-        <% allWallPosts.forEach(wallPost => { %>
-        
-        <a href="/wall/<%= wallPost._id%>">
-         <img src="<%=wallPost.image%>" loading="lazy"  width="50%"   /></a><br />
-                
-     
-         
-         <button  class='wallPostHeartIncreaseDecrease' data-WallPostHeartID='<%= wallPost._id%>' ><i class="bi bi-heart-fill"></i> <%=wallPost.heart.length%>
-         </button>
-         
-         
-         <button class='wallPostHeartBreakIncreaseDecrease' data-wallPostHeartBreakID='<%= wallPost._id%>'><i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak.length%>
-         </button> <br><br>
+  <ul>
+    <% allWallPosts.forEach(wallPost => { %>
 
-                <li> <%=wallPost.caption%><br><br>
-                
-        </li>
+    <a href="/wall/<%= wallPost._id%>">
+      <img src="<%=wallPost.image%>" loading="lazy" width="50%" /></a
+    ><br />
 
-        <% }) %>
-</ul>
+    <button
+      class="wallPostHeartIncreaseDecrease"
+      data-WallPostHeartID="<%= wallPost._id%>"
+    >
+      <i class="bi bi-heart-fill"></i> <%=wallPost.heart.length%>
+    </button>
+
+    <button
+      class="wallPostHeartBreakIncreaseDecrease"
+      data-wallPostHeartBreakID="<%= wallPost._id%>"
+    >
+      <i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak.length%>
+    </button>
+    <br /><br />
+
+    <li><%=wallPost.caption%><br /><br /></li>
+
+    <% }) %>
+  </ul>
+</div>
 
 <%- include('partials/footer') %>

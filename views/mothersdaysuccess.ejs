@@ -1,22 +1,21 @@
 <%- include('partials/header') %>
-<h1>Success</h1>
-<h2>Email Details</h2>
+<div class="flex-grow">
+  <h1>Success</h1>
+  <h2>Email Details</h2>
 
-<ul>
+  <ul>
     <li>MomName: <%=mom.momName%></li>
     <li>MomEmail: <%=mom.momEmail%></li>
     <li>ChildName: <%=mom.childName%></li>
     <li>ChildEmail: <%=mom.childEmail%></li>
     <li>ChildFirstName: <%=mom.childFirstName%></li>
+  </ul>
 
-</ul>
- 
-
-<h2>Transaction Details</h2>
-<ul>
+  <h2>Transaction Details</h2>
+  <ul>
     <li>Customer Email: <%=customer.email%></li>
     <li>Transaction ID: <%=customer.id%></li>
     <li>Invoice Prefix: <%=customer.invoice_prefix%></li>
-
-</ul>
+  </ul>
+</div>
 <%- include('partials/footer') %>

@@ -1,4 +1,6 @@
 <%- include('partials/header') %>
+<div class="flex-grow">
+
 <h1>Login to All My Life She Sacrificed</h1>
 <% user.forEach(us => { %>
 <a href="/post/dashboard">Dashboard</a> <a href='/editButton'>Edit Profile</a>
@@ -15,5 +17,6 @@
 
 <% }) %>    
 </ul>
+</div>
 
 <%- include('partials/footer') %>

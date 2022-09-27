@@ -1,18 +1,19 @@
 <%- include('partials/header') %>
-<h1>Contact Us</h1>
+<div class="flex-grow">
+    <h1>Contact Us</h1>
 
-<div class="sendmessage">
+    <div class="sendmessage">
 
         <form id="contact-us" action="/sendmessage" method='POST'>
- 
-        <label>Name</label>
-        <input type="text" name="name" required><br><br>
- 
-        <label>Email</label>
-        <input type="email" name="email" required><br><br>
- 
-        <label>Message</label>
-        <textarea name="message" rows="10"></textarea required><br><br>
+
+            <label>Name</label>
+            <input type="text" name="name" required><br><br>
+
+            <label>Email</label>
+            <input type="email" name="email" required><br><br>
+
+            <label>Message</label>
+            <textarea name="message" rows="10"></textarea required><br><br>
  
             <input type="submit" />
 
@@ -22,6 +23,6 @@
  
   
     </div>
-    
+</div>
 
 <%- include('partials/footer') %>

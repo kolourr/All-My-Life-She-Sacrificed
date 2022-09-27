@@ -1,4 +1,6 @@
 <%- include('partials/header') %>
+<div class="flex-grow">
+
 <h1>Edit a Post About Your Mom!</h1>
 <form action="/comment/editComment/<%=comment._id%>" method='POST'>
     <input type="hidden" name="_method" value="PUT">
@@ -7,8 +9,6 @@
     <input type="submit">
 </form>
 
-<a href="/post/dashboard">Dashboard</a>
-
-<a href="/auth/logout">Logout</a>
+</div>
 
 <%- include('partials/footer') %>

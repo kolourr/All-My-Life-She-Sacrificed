@@ -1,31 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="night">
-
-
 <head>
   <meta charset="utf-8">
   <title>All My Life She Sacrificied</title>
-      
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
-
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
-
-
-
   <link rel="stylesheet" href="/css/output.css">
 </head>
-
-<body class="flex flex-col w-full border-opacity-50">
-
-  <div class="navbar">
-    <div class="flex w-1/2 justify-center lg:hidden">
-      <div class="dropdown">
-        <label tabindex="0" class="btn btn-ghost lg:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-        </label>
-        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+<body class="flex flex-col h-screen ">
+  <header class=" sticky z-10 top-0  ">
+    <div class="navbar">
+      <div class="flex w-1/2 justify-center lg:hidden">
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+          </label>
+          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li tabindex="0">
+              <a href="/" class="justify-between">
+                Home
+              </a>
+            </li>
+            <li tabindex="0">
+              <a class="justify-between">
+                Feed
+                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+              </a>
+              <ul class="p-2 bg-base-100">
+                <li class="hover-bordered"><a href="/wall/feed">Image Feed</a></li>
+                <li class="hover-bordered"><a href="/loggedinindex">Story Feed</a></li>
+              </ul>
+            </li>
+            <li tabindex="0">
+              <a class="justify-between">
+                Post
+                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+              </a>
+              <ul class="p-2 bg-base-100">
+                <li class="hover-bordered"><a href="/wall/create">Make Image Post</a> </li>
+                <li class="hover-bordered"><a href="/updatedindex">Make Text Post</a></li>
+              </ul>
+            </li>
+            <li tabindex="0">
+              <a class="justify-between">
+                Settings
+                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+              </a>
+              <ul class="p-2 bg-base-100">
+                <li class="hover-bordered"><a class="count" href="/post/dashboard">Dashboard</a></li>
+                <li class="hover-bordered"><a href="/profile">Profile</a></li>
+                <li class="hover-bordered"><a class="hover-bordered" href='/editButton'>Edit Profile</a></li>
+                <li class="hover-bordered"><a class="checkMe">Check My Status</a></li>
+                <li class="hover-bordered"><a href="/auth/google">Login</a></li>
+                <li class="hover-bordered"><a href="/auth/logout">Logout</a> </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="sm:flex sm:justify-self-center lg:flex lg:w-1/2 lg:justify-center   	">
+        <a href="/loggedinindex" class="btn btn-ghost btn-primary   uppercase">All My Life She Sacrificed</a>
+      </div>
+      <div class="flex w-1/2 justify-center invisible lg:visible ">
+        <ul class="menu menu-horizontal p-0">
           <li tabindex="0">
             <a href="/" class="justify-between">
               Home
@@ -53,7 +96,6 @@
               <li class="hover-bordered"><a href="/updatedindex">Make Text Post</a></li>
             </ul>
           </li>
-
           <li tabindex="0">
             <a class="justify-between">
               Settings
@@ -69,63 +111,6 @@
               <li class="hover-bordered"><a href="/auth/logout">Logout</a> </li>
             </ul>
           </li>
-        </ul>
       </div>
     </div>
-
-    <div class="flex w-1/2 justify-center invisible lg:visible  	">
-      <a href="/loggedinindex" class="btn btn-ghost btn-primary normal-case text-xl">All My Life She Sacrificed</a>
-    </div>
-
-    <div class="flex  justify-center   lg:hidden 	">
-      <a href="/loggedinindex" class="btn btn-ghost btn-primary normal-case text-xl">All My Life She Sacrificed</a>
-    </div>
-
-    <div class="flex w-1/2 justify-center invisible lg:visible ">
-
-
-      <ul class="menu menu-horizontal p-0">
-        <li tabindex="0">
-          <a href="/" class="justify-between">
-            Home
-          </a>
-        </li>
-        <li tabindex="0">
-          <a class="justify-between">
-            Feed
-            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-          </a>
-          <ul class="p-2 bg-base-100">
-            <li class="hover-bordered"><a href="/wall/feed">Image Feed</a></li>
-            <li class="hover-bordered"><a href="/loggedinindex">Story Feed</a></li>
-          </ul>
-        </li>
-        <li tabindex="0">
-          <a class="justify-between">
-            Post
-            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-          </a>
-          <ul class="p-2 bg-base-100">
-            <li class="hover-bordered"><a href="/wall/create">Make Image Post</a> </li>
-            <li class="hover-bordered"><a href="/updatedindex">Make Text Post</a></li>
-          </ul>
-        </li>
-        <li tabindex="0">
-          <a class="justify-between">
-            Settings
-            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-          </a>
-          <ul class="p-2 bg-base-100">
-            <li class="hover-bordered"><a class="count" href="/post/dashboard">Dashboard</a></li>
-            <li class="hover-bordered"><a href="/profile">Profile</a></li>
-            <li class="hover-bordered"><a class="hover-bordered" href='/editButton'>Edit Profile</a></li>
-            <li class="hover-bordered"><a class="checkMe">Check My Status</a></li>
-            <li class="hover-bordered"><a href="/auth/google">Login</a></li>
-            <li class="hover-bordered"><a href="/auth/logout">Logout</a> </li>
-          </ul>
-        </li>
-    </div>
-  </div>
+  </header>

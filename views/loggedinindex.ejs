@@ -1,25 +1,28 @@
 <%- include('partials/header') %>
+<div class="grow overflow-y-scroll">
+
 <h1>HOME - Public Text Stories</h1>
 <h2>Comment on stories you find interesting</h2>
 
 <ul>
-        <% allPosts.forEach(post => { %>
-        <li><%=post.title%></li>
-        <li><%=post.postType%></li>
-<a href="/post/<%= post._id%>"><li><%=post.body%></li></a>
-        
+  <% allPosts.forEach(post => { %>
+  <li><%=post.title%></li>
+  <li><%=post.postType%></li>
+  <a href="/post/<%= post._id%>"><li><%=post.body%></li></a>
 
-        <button class='heartIncreaseDecrease' data-PostHeartID='<%=post._id%>'  > 
-                <i class="bi bi-heart-fill"></i>   <%=post.heart.length%>
-        </button>
- 
-        <button class='heartBreakIncreaseDecrease' data-PostHeartBreakID='<%=post._id%>'  > 
-                <i class="bi bi-heartbreak-fill"></i>   <%=post.heartBreak.length%>
-        </button><br><br>
+  <button class="heartIncreaseDecrease" data-PostHeartID="<%=post._id%>">
+    <i class="bi bi-heart-fill"></i> <%=post.heart.length%>
+  </button>
 
+  <button
+    class="heartBreakIncreaseDecrease"
+    data-PostHeartBreakID="<%=post._id%>"
+  >
+    <i class="bi bi-heartbreak-fill"></i> <%=post.heartBreak.length%></button
+  ><br /><br />
 
-
-        <% }) %>
+  <% }) %>
 </ul>
+</div>
 
 <%- include('partials/footer') %>
