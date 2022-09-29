@@ -7,16 +7,43 @@
     <div class="grid grid-cols-8 gap-4">
         <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
 
+          <div class="hero  min-h-fit	 bg-base-200  lg:mt-12 sm:mt-6">
+            <div class="hero-content flex-col lg:flex-row-reverse">
+              <img src="https://images.theconversation.com/files/289198/original/file-20190823-170935-df25h.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop" class="min-w-0	     shadow-2xl" />
+              <div>
+                <h1 class="text-4xl font-bold text-center lg:text-left	 ">This is a Catchy Heading</h1>
+                <p class="py-6 text-lg">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                <button class="btn btn-primary mx-auto lg:mx-0	 block">Come Share in the Fun</button>
+              </div>
+            </div>
+          </div>
+          <div class="hero min-h-screen" style="background-image: url(https://placeimg.com/1000/800/arch);">
+            <div class="hero-overlay bg-opacity-60"></div>
+            <div class="hero-content text-center text-neutral-content">
+              <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+                <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                <button class="btn btn-primary">Get Started</button>
+              </div>
+            </div>
+          </div>
 
-          <!-- <div class="grow overflow-y-scroll">
-    <div class="grid grid-cols-8 gap-4">
-        <div class="col-span-4 sm:col-start-1 sm:col-end-4 card bg-base-300 rounded-box place-items-center">PART 1</div>
-                  <div class="col-span-4 sm:col-start-5 sm:col-end-8 card bg-base-300 rounded-box place-items-center">PART 2</div> -->
-</div>
-</div>
+
+        </div>
+      </div>
 </div>
 <%if (typeof user === 'undefined') { %>
   <%- include('partials/footer-preauth') %>
   <% } else { %>
   <%- include('partials/footer-postauth') %>
   <%  } %>
+
+
+
+
+
+
+          <!-- <div class="grow overflow-y-scroll">
+    <div class="grid grid-cols-8 gap-4">
+        <div class="col-span-4 sm:col-start-1 sm:col-end-4 card bg-base-300 rounded-box place-items-center">PART 1</div>
+                <div class="col-span-4 sm:col-start-5 sm:col-end-8 card bg-base-300 rounded-box place-items-center">PART 2</div> -->
