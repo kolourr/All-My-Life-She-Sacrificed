@@ -1,56 +1,183 @@
 <%if (typeof user === 'undefined') { %>
-  <%- include('partials/header-preauth') %>
-  <% } else { %>
-  <%- include('partials/header-postauth') %>
-  <%  } %>
+<%- include('partials/header-preauth') %>
+<% } else { %>
+<%- include('partials/header-postauth') %>
+<%  } %>
 <div class="grow overflow-y-scroll">
-    <div class="grid grid-cols-8 gap-4">
-        <div class="col-span-8 sm:col-start-2 sm:col-end-8 card rounded-box place-items-center">
+  <div class="grid grid-cols-8 gap-4">
+    <div class="col-span-8 sm:cols-start-2 sm:cols-end-8 card rounded-box place-items-center bg-base-100">
+      <div class="hero  min-h-fit	 sm:mt-2">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+          <img
+            src="https://images.theconversation.com/files/289198/original/file-20190823-170935-df25h.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop"
+            class="min-w-0	     shadow-2xl" />
+          <div>
+            <h1 class="text-4xl  font-bold text-center lg:text-left	 ">This is a Catchy Heading</h1>
+            <p class="py-6 text-lg">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
+              exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <button class="btn btn-primary mx-auto lg:mx-0	 block">Come Share in the Fun</button>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <h2 class="text-4xl  font-bold text-center lg:text-left	 ">Features</h2>
 
-          <div class="hero  min-h-fit	  lg:mt-12 sm:mt-6">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-              <img src="https://images.theconversation.com/files/289198/original/file-20190823-170935-df25h.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop" class="min-w-0	     shadow-2xl" />
-              <div>
-                <h1 class="text-4xl font-bold text-center lg:text-left	 ">This is a Catchy Heading</h1>
-                <p class="py-6 text-lg">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-
-                <button class="btn btn-primary mx-auto lg:mx-0	 block">Come Share in the Fun</button>
+      <div class="grid xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-1  lg:grid-flow-cols ">
+        <div class="p-4 m-2 bg-base-200  ">
+          <div class="card w-96 bg-base-100 shadow-xl h-full">
+            <div class="avatar-group -space-x-6 mx-auto block">
+              <div class="avatar">
+                <div class="w-12">
+                  <img src="https://placeimg.com/192/192/people" />
+                </div>
+              </div>
+              <div class="avatar">
+                <div class="w-12">
+                  <img src="https://placeimg.com/192/192/people" />
+                </div>
+              </div>
+              <div class="avatar">
+                <div class="w-12">
+                  <img src="https://placeimg.com/192/192/people" />
+                </div>
+              </div>
+              <div class="avatar">
+                <div class="w-12">
+                  <img src="https://placeimg.com/192/192/people" />
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title mx-auto block">
+                Shoes!
+                <div class="badge badge-secondary">NEW</div>
+              </h2>
+              <p class="text-base-content/70 my-3 text-sm text-center">Strategic Art Manager<br>
+                Global Illustration Observer<br>
+                Business Alignment Developer</p>
+              <div class="card-actions justify-center">
+                <div class="badge badge-outline">Fashion</div>
+                <div class="badge badge-outline">Products</div>
+              </div>
+              <button class="btn btn-secondary btn-block space-x-2 mt-6"><svg xmlns="http://www.w3.org/2000/svg"
+                  fill="none" viewBox="0 0 24 24" class="h-6 w-6 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Subscribe</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 m-2 bg-base-200 ">
+          <div class="card w-96 bg-base-100 shadow-xl h-full">
+            <div class="bg-base-100 grid w-full flex-grow gap-3 rounded-xl rounded-tl-none p-6 shadow-xl">
+              <div class="flex flex-col items-center space-x-2">
+                <div class="online avatar">
+                  <div class="w-24 rounded-full"><img src="https://placeimg.com/192/192/people"
+                      alt="Avatar Tailwind CSS Component" class="mask mask-hexagon">
+                  </div>
+                </div>
+                <div class="text-lg  font-extrabold">Beatrice Thurman</div>
+                <div class="text-base-content/70 text-sm flex-col">220 Followers</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="text-base-content/70 my-3 text-sm text-center">This is just test sample information</p>
+              <div class="dropdown w-full flex-1">
+                <div class="divider text-base-content/60 m-0">Reports</div>
+                <div class="text-lg font-extrabold mt-4">Audience Report</div>
+                <div class="grid gap-3">
+                  <div class="dropdown dropdown-top">
+                    <div tabindex="0">
+                      <div class="flex items-center p-1"><span class="text-base-content/70 w-48 text-xs">Search
+                          Engines</span><progress max="100" value="50" class="progress progress-success"></progress>
+                      </div>
+                      <div class="flex items-center p-1"><span
+                          class="text-base-content/70 w-48 text-xs">Direct</span><progress max="100" value="30"
+                          class="progress progress-primary"></progress>
+                      </div>
+                      <div class="flex items-center p-1"><span class="text-base-content/70 w-48 text-xs">Social
+                          Media</span><progress max="100" value="70" class="progress progress-secondary"></progress>
+                      </div>
+                      <div class="flex items-center p-1"><span
+                          class="text-base-content/70 w-48 text-xs">Emails</span><progress max="100" value="90"
+                          class="progress progress-accent"></progress>
+                      </div>
+                      <div class="flex items-center p-1"><span class="text-base-content/70 w-48 text-xs">Ad
+                          campaigns</span><progress max="100" value="65" class="progress progress-warning"></progress>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div class="p-4 m-2 bg-base-200  ">
+          <div class="card w-96 bg-base-100 shadow-xl h-full">
+            <div class="flex flex-col items-center space-x-2">
 
-          <div class="divider"></div>
-          <div class="grid grid-col-3 grid-flow-col ">
+                <h2 class="card-title mx-auto block">
+                  Superpower Settings
+                  <div class="badge badge-secondary">NEW</div>
+                </h2>
 
-            <div class="p-4 m-2">
-              <div class="text-2xl text-center">Heading 1</div>
-              <div class="grid w-32 h-20 rounded bg-primary text-primary-content place-content-center">1</div>
-              <div class="grid w-32 h-20 rounded bg-accent text-accent-content place-content-center">2</div>
-              <div class="grid w-32 h-20 rounded bg-secondary text-secondary-content place-content-center">3</div>
             </div>
 
-            <div class="p-4 m-2"> <div class="text-2xl text-center">Heading 2</div><p class="py-2 text-sm">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p></div>
-            <div class="p-4 m-2"> <div class="text-2xl text-center">Heading 3</div><p class="py-2 text-sm">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p></div>
+
+            <div class="card-body">
+              <p class="text-base-content/70 my-3 text-sm text-center">This is just test sample information<br>This is just test sample information<br>This is just test sample information</p>
+
+
+              <div class="dropdown w-full flex-1">
+                <div tabindex="0">
+                  <div class="form-control"><label class="label cursor-pointer"><span class="label-text">Enable
+                        teleportation</span>
+                      <input type="checkbox" checked class="toggle toggle-primary"></label></div>
+                  <div class="form-control"><label class="label cursor-pointer"><span class="label-text">Enable time
+                        travel</span>
+                      <input type="checkbox" checked class="toggle toggle-secondary"></label></div>
+                  <div class="form-control"><label class="label cursor-pointer"><span class="label-text">Enable laser
+                        eyes</span>
+                      <input type="checkbox" checked class="toggle toggle-accent"></label></div>
+                  <div class="form-control"><label class="label cursor-pointer"><span class="label-text">Enable
+                        immortality</span>
+                      <input type="checkbox" checked class="toggle"></label>
+                  </div>
+                  <button class="btn btn-secondary btn-block space-x-2 mt-6"><svg xmlns="http://www.w3.org/2000/svg"
+                      fill="none" viewBox="0 0 24 24" class="h-6 w-6 stroke-current">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>Apply settings</span></button>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+
+      </div>
+      <div class="divider"></div>
+
+      <div class="hero  min-h-fit	 sm:mt-2">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+           <img
+          src="https://images.theconversation.com/files/289198/original/file-20190823-170935-df25h.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop"
+          class="min-w-0	     shadow-2xl" />
+          <div>
+            <h2 class="text-4xl font-bold text-center lg:text-left	 ">Never miss Mother's Day again. Ever.</h2>
+            <p class="py-6 text-lg">We'll will wish your mom <span class=" font-bold text-red-300 italic ">every single year</span> on Mother's Day on your behalf <span class=" font-bold text-green-300 italic">for the rest of her life</span></p>
+            <button class="btn btn-primary mx-auto lg:mx-0	 block">Your mom earned this</button>
 
           </div>
-
-
         </div>
       </div>
+
+    </div>
+  </div>
 </div>
 <%if (typeof user === 'undefined') { %>
-  <%- include('partials/footer-preauth') %>
-  <% } else { %>
-  <%- include('partials/footer-postauth') %>
-  <%  } %>
-
-
-
-
-
-
-          <!-- <div class="grow overflow-y-scroll">
-    <div class="grid grid-cols-8 gap-4">
-        <div class="col-span-4 sm:col-start-1 sm:col-end-4 card bg-base-300 rounded-box place-items-center">PART 1</div>
-                <div class="col-span-4 sm:col-start-5 sm:col-end-8 card bg-base-300 rounded-box place-items-center">PART 2</div> -->
+<%- include('partials/footer-preauth') %>
+<% } else { %>
+<%- include('partials/footer-postauth') %>
+<%  } %>
