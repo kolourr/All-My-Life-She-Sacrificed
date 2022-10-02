@@ -2,25 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
- 
+#canvas {
+   margin: auto;
+   background: rgba(18, 36, 65, 0.5);
+   width: 75%;
+ }
+
+
 /* .footer {
 
    place-items: center;
 }
 
- 
+
 
  .profile-picture {
     border-radius: 50%
  }
- 
- #canvas {
-    margin: auto;
-    background: #cec9c9;
-    width: 100%;
-  }
 
- 
+
+
+
 
   .btn {
    @apply rounded-full;

@@ -17,7 +17,7 @@ const imageCompressionUpload = async function(key, imgWidth, imgheight){
   const response = await s3.getObject({
     Bucket: 'ilovguitars-amlss-mom',
     Key: key,
-    }).promise() 
+    }).promise()
 
     const compressedImagePromise = sharp(response.Body)
     .toFormat('jpeg')
@@ -37,9 +37,9 @@ const imageCompressionUpload = async function(key, imgWidth, imgheight){
   }
     await s3.putObject(data, function (err, result) {
       if (err) console.error(err)
-    }); 
+    });
 
-    return `https://${data.Bucket}.s3.${process.env.AWS_DEFAULT_REGION}.amazonaws.com/${data.Key}` 
+    return `https://${data.Bucket}.s3.${process.env.AWS_DEFAULT_REGION}.amazonaws.com/${data.Key}`
 }
 
 

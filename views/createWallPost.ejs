@@ -2,40 +2,61 @@
 <div class="grow overflow-y-scroll">
     <div class="grid grid-cols-8 gap-4">
         <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
-    <h1>Share a Picture & Story About Your Mom!</h1>
-    <h4 class="text-center my-3">Images will be resized to 1000px x 1000px</h4>
-    <!-- <form action="/wall/createWallPost" method='POST' enctype="multipart/form-data"> -->
-    <input type="file" name="image" id="wallImage" required /><br /><br />
-    <span style="color: red" type="hidden" id="msgFile"></span><br /><br />
-    <canvas id="canvas"></canvas>
-    <h4 class="text-center my-3">Filter Effects</h4>
-    <button class="filters vintage">Vintage</button>
-    <button class="filters concentrate">Concentrate</button>
-    <button class="filters sinCity">Sin City</button>
-    <button class="filters sunrise">Sunrise</button><br /><br />
-    <button class="filters crossProcess">Cross Process</button>
-    <button class="filters orangePeel">Orange Peel</button>
-    <button class="filters love">Love</button>
-    <button class="filters hemingway">Hemingway</button><br /><br />
-    <button class="filters jarques">Jarques</button>
-    <button class="filters pinhole">Pinhole</button>
-    <button class="filters oldBoot">Old Boot</button>
-    <button class="filters glowingSun">Glowing Sun</button><br /><br />
-    <button class="filters hazyDays">Hazy Days</button>
-    <button class="filters herMajesty">Her Majesty</button>
-    <button class="filters nostalgia">Nostalgia</button>
-    <button class="filters clarity">Clarity</button><br /><br />
-    <div class="col-md-6">
-        <button id="remove-filters" class="btn btn-danger btn-block">
-            Clear Filter</button><br /><br />
-    </div>
-    <h4 class="text-center my-3">Add a Caption</h4>
-    <span>Required</span>
-    <textarea type="text" rows="4" cols="40" placeholder="Enter your caption..." name="caption" id="caption"
-        required></textarea><br /><br />
-    <span style="color: red" type="hidden" id="msg"></span><br /><br />
-    <button id="submit-wallImage">Submit</button><br /><br />
-    </div>
+            <h1 class="text-2xl text-center font-bold m-4 ">Share a Photo & Story About Your Mom</h1>
+            <input type="file"
+                class="  text-sm text-gray-900 bg-slate-500 rounded-lg border border-slate-500 cursor-pointer dark:text-slate-400 focus:outline-none dark:bg-slate-500 dark:border-slate-600 dark:placeholder-slate-400"
+                name="image" id="wallImage" required />
+            <p class="mt-2 text-sm text-secondary">PNG, JPG or GIF (Image will be resized to 800x600px)</p>
+
+
+
+            <span  type="hidden" id="msgFile"></span>
+
+
+
+
+            <canvas id="canvas"></canvas>
+            <h4 class="text-center my-3 text-xl font-bold">Choose an Image Filter</h4>
+            <div class="grid grid-cols-4 gap-2">
+                <div class="flex flex-col">
+                    <button class="btn btn-outline btn-info filters vintage">Vintage</button>
+                    <button class="btn btn-outline btn-info filters concentrate">Concentrate</button>
+                    <button class="btn btn-outline btn-info filters sinCity">Sin City</button>
+                    <button class="btn btn-outline btn-info filters sunrise">Sunrise</button>
+                </div>
+                <div class="flex flex-col">
+                    <button class="btn btn-outline btn-info filters crossProcess">Cross Process</button>
+                    <button class="btn btn-outline btn-info filters orangePeel">Orange Peel</button>
+                    <button class="btn btn-outline btn-info filters love">Love</button>
+                    <button class="btn btn-outline btn-info filters hemingway">Hemingway</button>
+                </div>
+                <div class="flex flex-col">
+                    <button class="btn btn-outline btn-info filters jarques">Jarques</button>
+                    <button class="btn btn-outline btn-info filters pinhole">Pinhole</button>
+                    <button class="btn btn-outline btn-info filters oldBoot">Old Boot</button>
+                    <button class="btn btn-outline btn-info filters glowingSun">Glowing Sun</button>
+                </div>
+                <div class="flex flex-col">
+                    <button class="btn btn-outline btn-info filters hazyDays">Hazy Days</button>
+                    <button class="btn btn-outline btn-info filters herMajesty">Her Majesty</button>
+                    <button class="btn btn-outline btn-info filters nostalgia">Nostalgia</button>
+                    <button class="btn btn-outline btn-info filters clarity">Clarity</button>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4">
+                <button id="remove-filters" class="btn btn-danger btn-block">
+                    Clear Filter</button><br /><br />
+            </div>
+            <h4 class="text-center my-3 text-xl font-bold">Share your Story (Required)</h4>
+            <span type="hidden" id="msg"></span>
+
+            <textarea class="textarea textarea-success mx-6" type="text" rows="4" cols="60"
+                placeholder="Your story can be about the image you shared or something else entirely that is close to your heart. Just start typing in here and this message will disappear..."
+                name="caption" id="caption" required></textarea><br /><br />
+            <div class="col-md-6 -mt-2 mb-6">
+                <button id="submit-wallImage" class=" btn btn-primary btn-block uppercase text-xl">Submit</button>
+            </div>
+        </div>
     </div>
 </div>
 <%- include('partials/footer-postauth') %>

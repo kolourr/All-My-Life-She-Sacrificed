@@ -1,9 +1,9 @@
-//Adding and removing hearts, and deleting posts/comments 
+//Adding and removing hearts, and deleting posts/comments
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
 let img = new Image()
 
-//Upload Image to Canvas 
+//Upload Image to Canvas
 document.getElementById('wallImage').addEventListener('change', uploadImgToCanvas)
 
 function uploadImgToCanvas(){
@@ -19,7 +19,7 @@ function uploadImgToCanvas(){
         img.src = reader.result
         img.onload = function() {
             canvas.width = img.width
-            canvas.height = img.height 
+            canvas.height = img.height
             ctx.drawImage(img, 0, 0, img.width, img.height)
             canvas.removeAttribute('data-caman-id')
         }
@@ -27,7 +27,7 @@ function uploadImgToCanvas(){
     }, false)
 }
 
-//Remove filter from image 
+//Remove filter from image
 document.getElementById('remove-filters').addEventListener('click', removeFilter)
 
 function removeFilter(){
@@ -36,7 +36,7 @@ function removeFilter(){
       });
 }
 
-//Adding various filters using Caman to the image on the Canvas 
+//Adding various filters using Caman to the image on the Canvas
 document.addEventListener('click', e => {
     if(e.target.classList.contains('filters')){
         if(e.target.classList.contains('vintage')){
@@ -134,7 +134,7 @@ else if(e.target.classList.contains('clarity')){
     Caman('#canvas', img, function(){
         this.clarity().render()
     })
-}    
+}
     }
 })
 
@@ -143,27 +143,41 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
 
  function submitWallImage(){
     const imageBase64 = canvas.toDataURL("image/jpeg", 0.8)
-    const caption = document.getElementById('caption').value 
+    const caption = document.getElementById('caption').value
     const fileLength = document.getElementById('wallImage').files.length
 
     if(caption === '' && fileLength === 0 ){
-        document.getElementById("msg").innerHTML = "Caption is required!";
-        document.getElementById("msgFile").innerHTML = "Please upload an image!";
+        document.getElementById("msg").innerHTML = "Caption is required";
+        document.getElementById("msg").classList.add('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
+
+        document.getElementById("msgFile").innerHTML = "Please upload an image"
+        document.getElementById("msgFile").classList.add('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
     }
-    
+
     else if(caption === '' && fileLength === 1){
-        document.getElementById("msg").innerHTML = "Caption is required!";
+        document.getElementById("msg").innerHTML = "Caption is required";
+        document.getElementById("msg").classList.add('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
+
         document.getElementById("msgFile").innerHTML = "";
+        document.getElementById("msgFile").classList.remove('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
+
 
     }
     else if(fileLength === 0 && caption !== ''){
-        document.getElementById("msgFile").innerHTML = "Please upload an image!";
+        document.getElementById("msgFile").innerHTML = "Please upload an image";
+        document.getElementById("msgFile").classList.add('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
         document.getElementById("msg").innerHTML = "";
+        document.getElementById("msg").classList.remove('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
+
     }
     else
     {
         document.getElementById("msg").innerHTML = "";
+        document.getElementById("msg").classList.remove('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
+
         document.getElementById("msgFile").innerHTML = "";
+        document.getElementById("msgFile").classList.remove('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
+
 
 
      fetch('../wall/createWallPost', {
@@ -178,4 +192,3 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
         window.location.href = "../post/dashboard"
     }
 }
- 

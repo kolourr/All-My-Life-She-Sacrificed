@@ -1,8 +1,8 @@
 const User = require("../models/user");
 const Wall = require("../models/wall");
 const WallComments = require("../models/wallComments");
-const upload = require("../middleware/upload"); 
-const imageCompressionUpload = require("../middleware/imageCompressionUpload"); 
+const upload = require("../middleware/upload");
+const imageCompressionUpload = require("../middleware/imageCompressionUpload");
 const uploadbase64 = require("../middleware/uploadbase64")
 
 
@@ -14,7 +14,7 @@ module.exports = {
         } catch (err) {
             console.log(err)
             res.render('error/500')
-        }        
+        }
     },
 
     create: async(req,res)=>{
@@ -23,13 +23,13 @@ module.exports = {
       } catch (err) {
           console.log(err)
           res.render('error/500')
-      }        
+      }
   },
 
   createWallPost: async(req,res)=>{
     try {
-    
-      
+
+
       let name = Date.now().toString() + Math.floor(Math.random() * 1250) + '.jpg'
       let imageUrl = uploadbase64(req.body.imageBase64, name)
 
@@ -42,12 +42,12 @@ module.exports = {
 
 
       res.sendStatus(200);
- 
 
- 
+
+
     } catch (err) {
       console.log(err);
-      res.render("error/500");    
+      res.render("error/500");
     }
 },
 
@@ -104,9 +104,9 @@ editWallPostButton: async (req, res) => {
 //   if(req.file === undefined){
 //     imageUrl = wallPost.image
 //   }else{
-//     imageUrl = await imageCompressionUpload(req.file.key, 600, 800)   
+//     imageUrl = await imageCompressionUpload(req.file.key, 600, 800)
 //   }
- 
+
 //   await Wall.findOneAndUpdate(
 //       {
 //       _id: req.params.id,
@@ -138,7 +138,7 @@ feed: async(req,res)=>{
   } catch (err) {
       console.log(err)
       res.render('error/500')
-  }        
+  }
 },
 
 getWallPost: async(req,res)=>{
@@ -156,7 +156,7 @@ getWallPost: async(req,res)=>{
   } catch (err) {
       console.log(err)
       res.render('error/500')
-  }        
+  }
 },
 
 createComment: async (req, res) => {

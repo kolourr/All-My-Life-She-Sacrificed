@@ -13,9 +13,9 @@ const s3 = new aws.S3({
 
 let s3Bucket = new aws.S3({  region: 'ca-central-1' })
 
-const uploadbase64 = function(image,FileName) {  
+const uploadbase64 = function(image,FileName) {
   let buf = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ""),'base64')
- 
+
    let data = {
       Key: FileName,
       Body: buf,
@@ -30,8 +30,8 @@ const uploadbase64 = function(image,FileName) {
     else {
       console.log(`Cropped Image Uploaded Successfully to AWS S3`)
     }
-  }); 
-        let returnUrl = `https://${data.Bucket}.s3.${process.env.AWS_DEFAULT_REGION}.amazonaws.com/${data.Key}` 
+  });
+        let returnUrl = `https://${data.Bucket}.s3.${process.env.AWS_DEFAULT_REGION}.amazonaws.com/${data.Key}`
         return returnUrl
 };
 
