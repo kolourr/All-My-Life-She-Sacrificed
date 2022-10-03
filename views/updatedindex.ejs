@@ -3,14 +3,25 @@
     <div class="grid grid-cols-8 gap-4">
         <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
 
-    <h1>Share a Post About Your Mom!</h1>
+            <h1 class="text-2xl text-center font-bold m-4 ">Share a Story About Your Mom</h1>
+
 
     <form action="/post/createPost" method="POST">
-        <input type="text" placeholder="Title" name="title" /> <br /><br />
-        <input type="text" placeholder="Body" name="body" /><br /><br />
+        <div class="flex flex-col">
 
-        <select id="postType" name="postType">
-            <option value="aww" selected>Aww</option>
+
+        <input type="text" rows="6"  class="input input-bordered input-primary w-full mb-4  "  placeholder="Title of the story" name="title" required/>
+
+        <textarea class="textarea textarea-success mb-4" type="text" rows="10" cols="60"
+        placeholder="Your story can be anyting that is close to your heart. Just start typing in here and this message will disappear..."
+        name="body"  id="caption" required></textarea>
+
+
+
+
+        <select class="select select-warning " id="postType" name="postType" required>
+            <option disabled selected>Choose a Category</option>
+            <option value="aww">Aww</option>
             <option value="thankful">Thankful</option>
             <option value="blessing">Blessing</option>
             <option value="heartbroken">Heartbroken</option>
@@ -21,7 +32,13 @@
             <option value="humbled">Humbled</option>
         </select><br /><br />
 
-        <input type="submit" />
+
+        <div class="col-md-6 -mt-2 mb-2">
+            <button id="submit-wallImage" class=" btn btn-primary btn-block uppercase text-xl">Submit</button>
+        </div>
+
+
+        </div>
     </form>
     </div>
     </div>

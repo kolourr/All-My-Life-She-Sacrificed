@@ -3,8 +3,8 @@ const Post = require("../models/post");
 const Comments = require("../models/comment")
 const Wall = require("../models/wall");
 const WallComments = require("../models/wallComments");
-const upload = require("../middleware/upload"); 
-const imageCompressionUpload = require("../middleware/imageCompressionUpload"); 
+const upload = require("../middleware/upload");
+const imageCompressionUpload = require("../middleware/imageCompressionUpload");
 
 module.exports = {
   dashboard: async (req, res) => {
@@ -18,7 +18,7 @@ module.exports = {
 
       let wallPosts = await Wall.find({
         loginID: req.user.loginID,
-      }) 
+      })
 
       res.render("dashboard.ejs", {
         allUserPosts,
@@ -26,7 +26,7 @@ module.exports = {
         wallPosts
       });
     } catch (err) {
-      console.log(err);  
+      console.log(err);
       res.render("error/500");
     }
   },
@@ -40,7 +40,7 @@ module.exports = {
         loginID: req.user.loginID,
       });
       console.log("Post created");
-      res.redirect("/updatedindex");
+      res.redirect("/post/dashboard");
     } catch (err) {
       console.log(err);
       res.render("error/500");
@@ -126,9 +126,9 @@ module.exports = {
       let post = await Post.findById({
         _id: req.params.id,
       }).lean();
-  
+
       let postComments = await Comments.find().lean()
-  
+
         res.render('singlePost', {
           post: post,
           postComments: postComments

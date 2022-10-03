@@ -147,7 +147,7 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
     const fileLength = document.getElementById('wallImage').files.length
 
     if(caption === '' && fileLength === 0 ){
-        document.getElementById("msg").innerHTML = "Caption is required";
+        document.getElementById("msg").innerHTML = "Story is required";
         document.getElementById("msg").classList.add('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
 
         document.getElementById("msgFile").innerHTML = "Please upload an image"
@@ -155,7 +155,7 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
     }
 
     else if(caption === '' && fileLength === 1){
-        document.getElementById("msg").innerHTML = "Caption is required";
+        document.getElementById("msg").innerHTML = "Story is required";
         document.getElementById("msg").classList.add('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
 
         document.getElementById("msgFile").innerHTML = "";

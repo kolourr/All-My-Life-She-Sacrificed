@@ -11,9 +11,28 @@
       <span class="text-xs">Copyright © 2022 - I Lov Guitars Inc.</span>
   </footer>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+
+
+<script>
+  ClassicEditor
+      .create( document.querySelector( '#editor' ), {
+      removePlugins: ['CKFinderUploadAdapter', 'CKFinder', 'EasyImage', 'Image', 'Link', 'ImageCaption', 'ImageStyle', 'ImageToolbar', 'ImageUpload', 'MediaEmbed'],
+    })
+      .catch( error => {
+          console.error( error );
+      } );
+</script>
+
+
+
+
+
+
 <script src="/js/caman.js"></script>
 <script src="/js/croppie.js"></script>
 <script src="/js/pushnotification.js"></script>

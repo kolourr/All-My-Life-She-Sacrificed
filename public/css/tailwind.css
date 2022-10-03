@@ -8,6 +8,12 @@
    width: 75%;
  }
 
+ .ck.ck-content:not(.ck-comment__input *) {
+   height: 400px;
+   overflow-y: auto;
+ }
+
+
 
 /* .footer {
 
