@@ -189,6 +189,6 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
             })
         })
         //redirecting from client after sending the 200
-        window.location.href = "../post/dashboard"
+        window.location.href = "../wall/feed"
     }
 }
