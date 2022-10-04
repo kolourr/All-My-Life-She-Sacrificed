@@ -1,42 +1,36 @@
 <%- include('partials/header-postauth') %>
 <div class="grow overflow-y-scroll">
-        <div class="grid grid-cols-8 gap-4">
-                <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
-
-  <h1>Picture Feed</h1>
-  <p>
-    Click on a post to comment. Heart or Heartbreak the posts you think are
-    interesting!
-  </p>
-
-  <ul>
-    <% allWallPosts.forEach(wallPost => { %>
-
-    <a href="/wall/<%= wallPost._id%>">
-      <img src="<%=wallPost.image%>" loading="lazy" width="50%" /></a
-    ><br />
-
-    <button
-      class="wallPostHeartIncreaseDecrease"
-      data-WallPostHeartID="<%= wallPost._id%>"
-    >
-      <i class="bi bi-heart-fill"></i> <%=wallPost.heart.length%>
-    </button>
-
-    <button
-      class="wallPostHeartBreakIncreaseDecrease"
-      data-wallPostHeartBreakID="<%= wallPost._id%>"
-    >
-      <i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak.length%>
-    </button>
-    <br /><br />
-
-    <li><%=wallPost.caption%><br /><br /></li>
-
-    <% }) %>
-  </ul>
-  </div>
+  <div class="grid grid-cols-8 gap-4">
+    <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center ">
+      <h1 class="text-4xl  font-bold text-center lg:text-left	 "> Mama Picture & Story Time</h1>
+      <p class="py-6 text-lg">Click on the image to comment, heart or heartbreak!</p>
+      <% allWallPosts.forEach(wallPost => { %>
+      <div class=" bg-base-200 md:w-8/12 lg:w-5/12 border-2 border-accent  py-2 rounded-md shadow-md mb-6">
+        <div class="card  bg-base-100 shadow-xl h-full">
+          <div class="bg-base-100  grid w-full flex-grow gap-3 rounded-xl rounded-tl-none  shadow-xl">
+            <div class="flex flex-col items-center space-x-2">
+              <div class=" avatar">
+                <div class="w-24 rounded-full  ">
+                  <% users.forEach(user => { %>
+                  <% if(wallPost.loginID.toString() === user.loginID.toString()){%>
+                  <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon"> <%  } %>
+                  <% }) %>
+                </div>
+              </div>
+              <% users.forEach(user => { %>
+              <% if(wallPost.loginID.toString() === user.loginID.toString()){%>
+              <div class="text-lg  font-extrabold"><%=user.firstName%></div><%  } %> <% }) %>
+            </div>
+          </div>
+          <a href="/wall/<%= wallPost._id%>">
+            <img src="<%=wallPost.image%>" loading="lazy" width="100%" class="" /></a>
+          <div class="bg-base-100 ">
+            <p class="p-2 m-2 text-primary text-lg rounded-md"><%=wallPost.caption%></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
   </div>
 </div>
-
 <%- include('partials/footer-postauth') %>

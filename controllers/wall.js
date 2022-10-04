@@ -131,10 +131,14 @@ editWallPostButton: async (req, res) => {
 feed: async(req,res)=>{
   try {
       let allWallPosts = await Wall.find({}).lean()
+      let users = await User.find({}).lean()
+
+
 
       res.render('feed', {
-        allWallPosts: allWallPosts
-      })
+        allWallPosts: allWallPosts,
+        users: users
+       })
   } catch (err) {
       console.log(err)
       res.render('error/500')
