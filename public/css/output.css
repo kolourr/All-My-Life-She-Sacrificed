@@ -3580,6 +3580,18 @@ body[dir="rtl"] .checkbox:checked,
   margin-top: -0.25rem;
 }
 
+.-mt-4 {
+  margin-top: -1rem;
+}
+
+.-mt-6 {
+  margin-top: -1.5rem;
+}
+
+.-mt-10 {
+  margin-top: -2.5rem;
+}
+
 .block {
   display: block;
 }
@@ -4193,6 +4205,10 @@ body[dir="rtl"] .checkbox:checked,
 
   .sm\:mt-2 {
     margin-top: 0.5rem;
+  }
+
+  .sm\:mt-0 {
+    margin-top: 0px;
   }
 
   .sm\:grid-cols-1 {
