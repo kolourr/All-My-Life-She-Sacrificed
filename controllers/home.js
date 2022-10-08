@@ -130,10 +130,13 @@ module.exports = {
     try {
       let allPosts = await Post.find({}).lean();
       let allComments = await Comments.find({});
+      let users = await User.find({}).lean()
+
 
       res.render("loggedinindex.ejs", {
         allPosts: allPosts,
         allComments: allComments,
+        users: users
       });
     } catch (err) {
       console.log(err);

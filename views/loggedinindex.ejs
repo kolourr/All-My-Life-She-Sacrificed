@@ -1,25 +1,59 @@
 <%- include('partials/header-postauth') %>
-<div class="grow overflow-y-scroll -mt-10 sm:mt-0	 ">
-        <div class="grid grid-cols-8 gap-4">
-                <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
-                        <h1>HOME - Public Text Stories</h1>
-                        <h2>Comment on stories you find interesting</h2>
-                        <ul>
-                                <% allPosts.forEach(post => { %>
-                                <li><%=post.title%></li>
-                                <li><%=post.postType%></li>
-                                <a href="/post/<%= post._id%>">
-                                        <li><%=post.body%></li>
-                                </a>
-                                <button class="heartIncreaseDecrease" data-PostHeartID="<%=post._id%>">
-                                        <i class="bi bi-heart-fill"></i> <%=post.heart.length%>
-                                </button>
-                                <button class="heartBreakIncreaseDecrease" data-PostHeartBreakID="<%=post._id%>">
-                                        <i class="bi bi-heartbreak-fill"></i>
-                                        <%=post.heartBreak.length%></button><br /><br />
-                                <% }) %>
-                        </ul>
+<div class="grow overflow-y-scroll -mt-10 sm:mt-0">
+  <div class="grid grid-cols-8 gap-4">
+    <div
+      class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center"
+    >
+      <h1 class="text-4xl font-bold text-center lg:text-left">
+        Mama Story Time
+      </h1>
+      <p class="py-6 text-lg">
+        Click on a story to comment, heart or heartbreak!
+      </p>
+      <% allPosts.forEach(post => { %>
+      <div
+        class="bg-base-200 w-10/12 lg:w-7/12   py-2 rounded-md shadow-md mb-6"
+      >
+        <div class="card bg-base-100 shadow-xl h-full">
+          <div
+            class="bg-base-100 grid w-full flex-grow gap-3 rounded-xl rounded-tl-none shadow-xl"
+          >
+            <div class="flex flex-col items-center space-x-2">
+              <div class="avatar">
+                <div class="w-24 rounded-full">
+                  <% users.forEach(user => { %> <% if(post.loginID.toString()
+                  === user.loginID.toString()){%>
+                  <img
+                    src="<%=user.image%>"
+                    alt="Avatar Tailwind CSS Component"
+                    class="mask mask-hexagon"
+                  />
+                  <% } %> <% }) %>
                 </div>
+              </div>
+              <% users.forEach(user => { %> <% if(post.loginID.toString() ===
+              user.loginID.toString()){%>
+              <div class="text-lg text-base-content/70"><%=user.firstName%></div>
+              <% } %> <% }) %>
+            </div>
+          </div>
+          <div class="divider text-lg text-primary font-extrabold mt-4">
+                 <%=post.title%>
+              </div>
+        <div class="text-md text-base-content/70 text-center -mt-3 ">Category: <span class="underline"><%=post.postType%></span></div>
+
+
+          <div class="bg-base-200 p-6 m-6 rounded-md ">
+            <a href="/post/<%= post._id%>">
+              <p class="p-2 m-2   text-md ">
+                <%=post.body%>
+              </p>
+            </a>
+          </div>
         </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
 </div>
 <%- include('partials/footer-postauth') %>
