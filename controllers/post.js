@@ -126,12 +126,15 @@ module.exports = {
       let post = await Post.findById({
         _id: req.params.id,
       }).lean();
+      let users = await User.find({}).lean()
+
 
       let postComments = await Comments.find().lean()
 
         res.render('singlePost', {
           post: post,
-          postComments: postComments
+          postComments: postComments,
+          users: users
          })
 
     }
