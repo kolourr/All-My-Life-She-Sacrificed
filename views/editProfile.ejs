@@ -1,40 +1,138 @@
 <%- include('partials/header-postauth') %>
 <div class="grow overflow-y-scroll -mt-10 sm:mt-0	 ">
   <div class="grid grid-cols-8 gap-4">
-    <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
-      <h1>Edit your Profile</h1>
-      <div class="container" style="margin-top: 20px; padding: 20px">
+      <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
+      <% user.forEach(user => { %>
+        <h1 class="text-3xl font-bold text-center lg:text-left ">
+          Edit <%=user.firstName%>'s Profile
+        </h1>
+
+      <div>
         <div class="card">
-          <div class="card-header">Upload and Crop Your Profile Picture</div>
-          <div class="card-body">
-            <h5 class="card-title">Select Image</h5>
-            <input type="file" name="imageUploaded" id="upload_image" />
+           <div class="card-body">
+            <h5 class="card-title">Upload and Crop Your Profile Picture</h5>
+            <input type="file" class="text-sm text-gray-900 bg-slate-500 rounded-lg border border-slate-500 cursor-pointer dark:text-slate-400 focus:outline-none dark:bg-slate-500 dark:border-slate-600 dark:placeholder-slate-400"name="imageUploaded" id="upload_image" />
           </div>
         </div>
         <div class="card text-center" id="uploadimage" style="display: none">
-          <div class="card-header">Upload & Crop Image</div>
+          <div class="card-header text-xl">Adjust & Crop Your Picture</div>
           <div class="card-body">
-            <div id="image_demo" style="width: 350px; margin-top: 30px"></div>
+            <div id="image_demo" ></div>
           </div>
           <div class="card-footer text-muted">
-            <button id="crop_image">Adjust & Crop Picture</button>
+            <button id="crop_image" class="btn btn-outline btn-info -mt-4 mb-4">Crop My Picture</button>
           </div>
         </div>
       </div>
-      <% user.forEach(user => { %>
+
+
+
+
+        <div class="bg-base-200 w-10/12 lg:w-7/12 pt-2 rounded-md shadow-md">
+          <div class="card bg-base-100 shadow-xl h-full">
+
       <form action="/editProfile/<%=user._id%>" method="POST" id="" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT" />
-        <label for="image">Select New Profile Picture</label><br /><br />
-        <img class="img-thumbnail profile-picture img-responsive img-rounded" src="<%=user.image%>" /><br /><br />
-        <input type="text" placeholder="First Name" name="firstName" value="<%=user.firstName%>" required />
-        <br /><br />
-        <input type="text" placeholder="Last Name" name="lastName" value="<%=user.lastName%>" required /><br /><br />
-        <input type="text" placeholder="Display Name" name="displayName" value="<%=user.displayName%>" required />
-        <br /><br />
-        <input type="text" placeholder="Email" name="email" value="<%=user.email%>" required /><br /><br />
-        <input type="submit" />
+            <div class="bg-base-100 grid w-full flex-grow gap-3 rounded-xl rounded-tl-none shadow-xl">
+
+              <div class="flex flex-col items-center space-x-2">
+
+                <div class="avatar">
+                  <div class="w-24 rounded-full">
+                    <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon" />
+                  </div>
+                </div>
+                <div class="text-lg text-base-content/70">
+                  <%=user.firstName%>
+                </div>
+              </div>
+            </div>
+            <div class="divider       text-lg text-primary font-extrabold mt-4">
+              <button class=" btn bg-base-200 w-60 sm:min-w-max"
+              >
+              <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-arrow-clockwise  w-6 h-6" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+              </svg>
+
+              <span class="refresh-profile m-2 ">Refresh Profile</span>
+            </button>
+
+
+            </div>
+
+            <div class="bg-base-200 p-6 m-6 rounded-md">
+              <div class="grid grid-rows-4">
+                <div>
+                  <div class="flex flex-row">
+
+                    <div class="basis-1/2 mx-auto my-auto block text-md align-center   font-extrabold uppercase">First Name</div>
+                    <div class="basis-1/2">
+
+                      <input type="text" class="textarea textarea-success  m-4" placeholder="First Name" name="firstName" value="<%=user.firstName%>" required />
+
+
+
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex flex-row">
+
+                      <div class="basis-1/2 mx-auto my-auto block text-md align-center   font-extrabold uppercase">Last Name</div>
+
+
+                    <div class="basis-1/2">
+                      <input type="text" class="textarea textarea-success  m-4" placeholder="Last Name" name="lastName" value="<%=user.lastName%>" required />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex flex-row">
+                    <div class="basis-1/2 mx-auto my-auto block text-md align-center   font-extrabold uppercase">Full Name</div>
+
+                    <div class="basis-1/2 ">
+
+                      <input type="text" class="textarea textarea-success  m-4" placeholder="Display Name" name="displayName" value="<%=user.displayName%>" required />
+
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex flex-row">
+                    <div class="basis-1/2 mx-auto my-auto block text-md align-center   font-extrabold uppercase">Email</div>
+
+                    <div class="basis-1/2  ">
+                      <input type="text" placeholder="Email" name="email"  class="textarea textarea-success  m-4" value="<%=user.email%>" required />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 py-2 rounded-md shadow-md mb-6">
+          <div class="mx-auto block">
+            <button class=" btn bg-base-200 w-80 lg:min-w-max" type="submit"
+              >
+              <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-check-circle w-6 h-6" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+              </svg>
+
+              <span class="m-2 text-xl">Update Profile</span>
+            </button>
+          </div>
+        </div>
+
       </form>
       <% }) %>
+
+
+
     </div>
     </div>
     </div>

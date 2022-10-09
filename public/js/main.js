@@ -1,3 +1,8 @@
+document.querySelector('.refresh-profile').addEventListener('click', () => {
+    window.location.reload();
+
+})
+
 const deletePostButton = document.querySelectorAll('.deletePost')
 const deleteWallPostButton = document.querySelectorAll('.deleteWallPost')
 const deleteCommentButton = document.querySelectorAll('.deleteComment')
@@ -60,7 +65,7 @@ Array.from(wallPostCommentHeartBreakIncreaseDecreaseButton).forEach((post)=>{
 
 
 async function wallPostCommentHeartBreakIncreaseDecrease(){
-    const postID = this.getAttribute('data-wallPostCommentHeartBreakID') 
+    const postID = this.getAttribute('data-wallPostCommentHeartBreakID')
     try{
         const response = await fetch('../wall/wallPostCommentHeartBreakIncreaseDecreaseID', {
             method: 'put',
@@ -78,7 +83,7 @@ async function wallPostCommentHeartBreakIncreaseDecrease(){
 }
 
 async function wallPostCommentHeartIncreaseDecrease(){
-    const postID = this.getAttribute('data-WallPostCommentHeartID') 
+    const postID = this.getAttribute('data-WallPostCommentHeartID')
     try{
         const response = await fetch('../wall/wallPostCommentHeartIncreaseDecreaseID', {
             method: 'put',
@@ -98,7 +103,7 @@ async function wallPostCommentHeartIncreaseDecrease(){
 
 
 async function wallPostHeartIncreaseDecrease(){
-    const postID = this.getAttribute('data-WallPostHeartID') 
+    const postID = this.getAttribute('data-WallPostHeartID')
     try{
         const response = await fetch('../wall/wallPostHeartIncreaseDecreaseID', {
             method: 'put',
@@ -116,7 +121,7 @@ async function wallPostHeartIncreaseDecrease(){
 }
 
 async function wallPostHeartBreakIncreaseDecrease(){
-    const postID = this.getAttribute('data-wallPostHeartBreakID') 
+    const postID = this.getAttribute('data-wallPostHeartBreakID')
     try{
         const response = await fetch('../wall/wallPostHeartBreakIncreaseDecreaseID', {
             method: 'put',
@@ -133,10 +138,10 @@ async function wallPostHeartBreakIncreaseDecrease(){
     }
 }
 
- 
+
 
 async function deletePost(){
-    const postID = this.getAttribute('data-DeleteID') 
+    const postID = this.getAttribute('data-DeleteID')
     try{
         const response = await fetch('../post/deletePost', {
             method: 'delete',
@@ -154,7 +159,7 @@ async function deletePost(){
 }
 
 async function deleteWallPost(){
-    const wallPostID = this.getAttribute('data-DeleteWallPostID') 
+    const wallPostID = this.getAttribute('data-DeleteWallPostID')
     try{
         const response = await fetch('../wall/deleteWallPost', {
             method: 'delete',
@@ -173,7 +178,7 @@ async function deleteWallPost(){
 
 
 async function deleteComment(){
-    const commentID = this.getAttribute('data-DeleteCommentID') 
+    const commentID = this.getAttribute('data-DeleteCommentID')
     try{
         const response = await fetch('../comment/deleteComment', {
             method: 'delete',
@@ -192,7 +197,7 @@ async function deleteComment(){
 
 
 async function postHeartIncreaseDecrease(){
-    const postHeartIncreaseDecreaseID = this.getAttribute('data-PostHeartID') 
+    const postHeartIncreaseDecreaseID = this.getAttribute('data-PostHeartID')
     try{
         const response = await fetch('../post/postHeartIncreaseDecreaseID', {
             method: 'put',
@@ -212,7 +217,7 @@ async function postHeartIncreaseDecrease(){
 
 
 async function postHeartBreakIncreaseDecrease(){
-    const postHeartBreakIncreaseDecreaseID = this.getAttribute('data-PostHeartBreakID') 
+    const postHeartBreakIncreaseDecreaseID = this.getAttribute('data-PostHeartBreakID')
     try{
         const response = await fetch('../post/postHeartBreakIncreaseDecreaseID', {
             method: 'put',
@@ -232,7 +237,7 @@ async function postHeartBreakIncreaseDecrease(){
 
 
 async function commentHeartIncreaseDecrease(){
-    const commentHeartIncreaseDecreaseID = this.getAttribute('data-CommentHeartID') 
+    const commentHeartIncreaseDecreaseID = this.getAttribute('data-CommentHeartID')
     try{
         const response = await fetch('../comment/commentHeartIncreaseDecreaseID', {
             method: 'put',
@@ -252,7 +257,7 @@ async function commentHeartIncreaseDecrease(){
 
 
 async function commentHeartBreakIncreaseDecrease(){
-    const commentHeartBreakIncreaseDecreaseID = this.getAttribute('data-CommentHeartBreakID') 
+    const commentHeartBreakIncreaseDecreaseID = this.getAttribute('data-CommentHeartBreakID')
     try{
         const response = await fetch('../comment/commentHeartBreakIncreaseDecreaseID', {
             method: 'put',

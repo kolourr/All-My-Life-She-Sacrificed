@@ -3745,6 +3745,10 @@ body[dir="rtl"] .checkbox:checked,
   flex: 1 1 0%;
 }
 
+.flex-auto {
+  flex: 1 1 auto;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -3781,8 +3785,20 @@ body[dir="rtl"] .checkbox:checked,
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
+.grid-rows-4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+
+.grid-rows-5 {
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+}
+
 .flex-row {
   flex-direction: row;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
 }
 
 .flex-col {
@@ -3829,8 +3845,28 @@ body[dir="rtl"] .checkbox:checked,
   margin-left: calc(-1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-visible {
+  overflow: visible;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-y-visible {
+  overflow-y: visible;
+}
+
 .overflow-y-scroll {
   overflow-y: scroll;
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
 }
 
 .rounded-lg {
@@ -4418,6 +4454,12 @@ body[dir="rtl"] .checkbox:checked,
 
   .sm\:w-9\/12 {
     width: 75%;
+  }
+
+  .sm\:min-w-max {
+    min-width: -webkit-max-content;
+    min-width: -moz-max-content;
+    min-width: max-content;
   }
 
   .sm\:grid-cols-1 {
