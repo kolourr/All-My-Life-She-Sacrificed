@@ -150,12 +150,16 @@ getWallPost: async(req,res)=>{
     let wallPost = await Wall.findById({
       _id: req.params.id,
     }).lean();
+    let users = await User.find({}).lean()
+
 
     let wallPostComments = await WallComments.find().lean()
 
       res.render('wallPost', {
         wallPost: wallPost,
-        wallPostComments: wallPostComments
+        wallPostComments: wallPostComments,
+        users: users
+
        })
   } catch (err) {
       console.log(err)

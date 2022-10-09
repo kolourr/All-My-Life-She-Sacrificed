@@ -3,61 +3,147 @@
   <div class="grid grid-cols-8 gap-4">
     <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center">
 
-  <h1>Wall Post</h1>
+      <% users.forEach(user => { %> <% if(wallPost.loginID.toString() ===
+        user.loginID.toString()){%>
+        <h1 class="text-3xl font-bold text-center lg:text-left">
+          <%=user.firstName%>'s Mama Picture & Story Time
+        </h1>
+        <% } %> <% }) %>
+      <p class="py-6 text-lg">Feel free to comment, heart or heartbreak!</p>
+      <div class=" bg-base-200 w-10/12 lg:w-6/12   py-2 rounded-md shadow-md mb-6">
+        <div class="card  bg-base-100 shadow-xl h-full">
+          <div class="bg-base-100  grid w-full flex-grow gap-3 rounded-xl rounded-tl-none  shadow-xl">
+            <div class="flex flex-col items-center space-x-2">
+              <div class=" avatar">
+                <div class="w-24 rounded-full  ">
+                  <% users.forEach(user => { %>
+                  <% if(wallPost.loginID.toString() === user.loginID.toString()){%>
+                  <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon"> <%  } %>
+                  <% }) %>
+                </div>
+              </div>
+              <% users.forEach(user => { %>
+              <% if(wallPost.loginID.toString() === user.loginID.toString()){%>
+              <div class="text-lg  font-extrabold"><%=user.firstName%></div><%  } %> <% }) %>
+            </div>
+          </div>
+          <div class="divider  "></div>
 
-  <ul>
-    <img src="<%=wallPost.image%>" width="50%" />
+             <img src="<%=wallPost.image%>" loading="lazy" width="100%" class="" />
+          <div class="bg-base-200 p-6 m-6 rounded-md ">
+            <a href="/wall/<%= wallPost._id%>">
+            <p class="p-2 m-2 text-md "><%=wallPost.caption%></a></p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 py-2 rounded-md shadow-md mb-6">
+        <div class="mx-auto block">
+          <button class="wallPostHeartIncreaseDecrease btn bg-base-200 w-48 lg:min-w-max"
+          data-WallPostHeartID="<%=wallPost._id%>">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heart w-6 h-6" viewBox="0 0 16 16">
+              <path
+                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+            </svg><span class="m-2 text-lg"><%=wallPost.heart.length%></span>
+          </button>
+        </div>
+        <div class="mx-auto block">
+          <button class="wallPostHeartBreakIncreaseDecrease btn bg-base-200 w-48 lg:min-w-max"
+          data-wallPostHeartBreakID="<%=wallPost._id%>" >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heartbreak w-6 h-6"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8.867 14.41c13.308-9.322 4.79-16.563.064-13.824L7 3l1.5 4-2 3L8 15a38.094 38.094 0 0 0 .867-.59Zm-.303-1.01c6.164-4.4 6.91-7.982 6.22-9.921C14.031 1.37 11.447.42 9.587 1.368L8.136 3.18l1.3 3.468a1 1 0 0 1-.104.906l-1.739 2.608.971 3.237Zm-1.25 1.137a36.027 36.027 0 0 1-1.522-1.116C-5.077 4.97 1.842-1.472 6.454.293c.314.12.618.279.904.477L5.5 3 7 7l-1.5 3 1.815 4.537Zm-2.3-3.06C.895 7.797.597 4.875 1.308 3.248c.756-1.73 2.768-2.577 4.456-2.127L4.732 2.36a1 1 0 0 0-.168.991L5.91 6.943l-1.305 2.61a1 1 0 0 0-.034.818l.442 1.106Z" />
+            </svg><span class="m-2 text-lg"><%=wallPost.heartBreak.length%></span>
+          </button>
+        </div>
+      </div>
 
-    <br />
-    <li><%=wallPost.caption%></li>
 
-    <button
-      class="wallPostHeartIncreaseDecrease"
-      data-WallPostHeartID="<%=wallPost._id%>"
-    >
-      <i class="bi bi-heart-fill"></i> <%=wallPost.heart.length%>
-    </button>
 
-    <button
-      class="wallPostHeartBreakIncreaseDecrease"
-      data-wallPostHeartBreakID="<%=wallPost._id%>"
-    >
-      <i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak.length%>
-    </button>
-    <br /><br />
 
-    <span><b>Add a Comment</b></span>
+      <% users.forEach(user => { %> <% if(wallPost.loginID.toString() ===
+      user.loginID.toString()){%>
+      <h2 class="py-6 text-center my-3 text-xl font-bold">
+        Show some love to <%=user.firstName%>'s mom!
+      </h2>
+      <% } %> <% }) %>
 
     <form action="/wall/<%=wallPost._id%>/createComment" method="POST">
-      <input type="text" placeholder="Body" name="captionComment" required />
-      <input type="submit" />
+      <textarea class="textarea textarea-success m-6 -mt-4" type="text" rows="6" cols="60"
+          placeholder="Please be kind and share something positive. Just start typing in here and this message will disappear..."
+          name="captionComment"   required></textarea><br /><br />
+        <div class="mx-auto block -mt-4 w-40">
+          <button    class="btn btn-primary btn-block uppercase text-xl">
+            Submit
+          </button>
+        </div>
     </form>
-    <br /><br />
+    <div class="flex flex-row">
+        <h3 class="flex-1 py-6 my-3 text-2xl font-bold uppercase">Comments</h3>
+      </div>
 
-    <span><b>Comments</b></span>
+      <% wallPostComments.forEach(reply => {%> <% if(wallPost._id.toString() ===
+      reply.wall.toString()){%>
+      <div class="grid grid-rows-2 bg-base-100 w-10/12 lg:w-7/12 rounded-md shadow-md mb-4">
+        <div>
+          <div class="flex flex-row">
+            <div class="basis-1/4 bg-base-200 text-center rounded-full">
+              <div class="w-20 mx-auto block">
+                <% users.forEach(user => { %> <% if(reply.loginID.toString() ===
+                user.loginID.toString()){%>
+                <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon w-20" />
+              </div>
+            </div>
+            <div class="basis-3/4 bg-base-300 p-2 m-2 rounded-md">
+              <%=reply.captionComment%>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-row">
+            <div class="basis-1/4 text-md text-center my-auto block">
+              <%=user.firstName%> <% } %> <% }) %>
+            </div>
+            <div class="basis-3/4">
+              <div class="flex flex-row">
+                <div class="basis-1/2 mx-auto block">
+                  <button class="wallPostCommentHeartIncreaseDecrease btn bg-base-200 w-40 lg:min-w-max"
+                  data-WallPostCommentHeartID="<%=reply._id%>">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heart w-6 h-6"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg><span class="m-2 text-lg"><%=reply.heart.length%></span>
+                  </button>
+                </div>
+                <div class="basis-1/2 mx-auto block">
+                  <button class="wallPostCommentHeartBreakIncreaseDecrease btn bg-base-200 w-40 lg:min-w-max"
+                  data-wallPostCommentHeartBreakID="<%=reply._id%>">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heartbreak w-6 h-6"
+                      viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M8.867 14.41c13.308-9.322 4.79-16.563.064-13.824L7 3l1.5 4-2 3L8 15a38.094 38.094 0 0 0 .867-.59Zm-.303-1.01c6.164-4.4 6.91-7.982 6.22-9.921C14.031 1.37 11.447.42 9.587 1.368L8.136 3.18l1.3 3.468a1 1 0 0 1-.104.906l-1.739 2.608.971 3.237Zm-1.25 1.137a36.027 36.027 0 0 1-1.522-1.116C-5.077 4.97 1.842-1.472 6.454.293c.314.12.618.279.904.477L5.5 3 7 7l-1.5 3 1.815 4.537Zm-2.3-3.06C.895 7.797.597 4.875 1.308 3.248c.756-1.73 2.768-2.577 4.456-2.127L4.732 2.36a1 1 0 0 0-.168.991L5.91 6.943l-1.305 2.61a1 1 0 0 0-.034.818l.442 1.106Z" />
+                    </svg><span class="m-2 text-lg"><%=reply.heartBreak.length%></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %> <% })%>
 
-    <% wallPostComments.forEach(reply => {%> <% if(wallPost._id.toString() ===
-    reply.wall.toString()){%>
 
-    <li><%=reply.captionComment%></li>
 
-    <button
-      class="wallPostCommentHeartIncreaseDecrease"
-      data-WallPostCommentHeartID="<%=reply._id%>"
-    >
-      <i class="bi bi-heart-fill"></i> <%=reply.heart.length%>
-    </button>
 
-    <button
-      class="wallPostCommentHeartBreakIncreaseDecrease"
-      data-wallPostCommentHeartBreakID="<%=reply._id%>"
-    >
-      <i class="bi bi-heartbreak-fill"></i> <%=reply.heartBreak.length%>
-    </button>
-    <br /><br />
 
-    <% } %> <% })%>
-  </ul>
+
+
+
+
+
+
+
   </div>
   </div>
 </div>
