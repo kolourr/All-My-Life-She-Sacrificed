@@ -9,12 +9,14 @@
   <br /><br />
   <input type="text" placeholder="Body" name="body" value="<%=post.body%>" /><br /><br />
   <select id="postType" name="postType">
-    <% let choices = [ "aww", "thankful", "blessing", "heartbroken",
-    "remorseful", "cranky","free", "fortunate", "humbled" ]
+    <% let choices = [ "Aww", "Thankful", "Blessing", "Heartbroken",
+    "Remorseful", "Cranky","Free", "Fortunate", "Humbled" ]
     choices.forEach(choice => { let selected = post.postType === choice ?
     "selected" : ""; %>
     <option value="<%=choice %>" <%="selected" %>> <%=choice %></option>
-    <% }) %></select><br /><br />
+    <% }) %>
+    </select>
+    <br /><br />
   <input type="submit" />
 </form>
 </div>

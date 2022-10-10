@@ -24,16 +24,16 @@
   <h2>User's Story Comments</h2>
   <ul>
     <% postsWithUserComments.forEach(postWithComment => { %>
+      <div class="w-24 rounded-full  ">
+        <% users.forEach(user => { %>
+        <% if(postWithComment.post.loginID.toString() === user.loginID.toString()){%>
+        <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon"> <%  } %>
+        <% }) %>
     <li><%=postWithComment.post.title%></li>
+    <li><%=postWithComment.post.body%></li>
     <li>
       <%=postWithComment.body%><br />
-      <button>
-        <i class="bi bi-heart-fill"></i> <%=postWithComment.heart.length%>
-      </button>
-      <button>
-        <i class="bi bi-heartbreak-fill"></i>
-        <%=postWithComment.heartBreak.length%>
-      </button>
+
       <button>
         <a style="color: black; text-decoration: none"
           href="../comment/editCommentButton/<%=postWithComment._id%>">Edit</a>
@@ -63,6 +63,37 @@
     </li>
     <% }) %>
   </ul>
+
+
+  <h2>Wall Post's User's Story Comments</h2>
+  <ul>
+    <% wallPostsWithUserComments.forEach(postWithComment => { %>
+      <div class="w-24 rounded-full  ">
+        <% users.forEach(user => { %>
+        <% if(postWithComment.wall.loginID.toString() === user.loginID.toString()){%>
+        <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon"> <%  } %>
+        <% }) %>
+
+        <a href="/wall/<%= postWithComment.wall._id%>">
+          <img src="<%=postWithComment.wall.image%>" loading="lazy" width="50%" /></a>
+
+      <li><%=postWithComment.wall.caption%></li>
+    <li>
+      <%=postWithComment.captionComment%><br />
+
+      <button>
+        <a style="color: black; text-decoration: none"
+          href="../wall/editWallPostButton/<%=postWithComment._id%>">Edit</a>
+      </button>
+      <button class="deleteComment" data-DeleteCommentID="<%=postWithComment._id%>">
+        Delete
+      </button>
+    </li>
+    <% }) %>
+  </ul>
+
+
+
   </div>
   </div>
 </div>

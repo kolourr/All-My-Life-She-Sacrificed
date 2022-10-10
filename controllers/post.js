@@ -20,10 +20,19 @@ module.exports = {
         loginID: req.user.loginID,
       })
 
+      let users = await User.find({}).lean()
+
+      let wallPostsWithUserComments = await WallComments.find({
+        loginID: req.user.loginID,
+      }).populate("wall");
+
+
       res.render("dashboard.ejs", {
         allUserPosts,
         postsWithUserComments,
-        wallPosts
+        wallPosts,
+        users,
+        wallPostsWithUserComments,
       });
     } catch (err) {
       console.log(err);

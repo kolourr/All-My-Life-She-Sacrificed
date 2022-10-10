@@ -1,8 +1,3 @@
-document.querySelector('.refresh-profile').addEventListener('click', () => {
-    window.location.reload();
-
-})
-
 const deletePostButton = document.querySelectorAll('.deletePost')
 const deleteWallPostButton = document.querySelectorAll('.deleteWallPost')
 const deleteCommentButton = document.querySelectorAll('.deleteComment')
@@ -14,6 +9,8 @@ const wallPostHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPost
 const wallPostHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostHeartBreakIncreaseDecrease')
 const wallPostCommentHeartIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartIncreaseDecrease')
 const wallPostCommentHeartBreakIncreaseDecreaseButton = document.querySelectorAll('.wallPostCommentHeartBreakIncreaseDecrease')
+
+
 
 Array.from(deletePostButton).forEach((post)=>{
     post.addEventListener('click', deletePost)

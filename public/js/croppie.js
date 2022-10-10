@@ -6,13 +6,13 @@ let vanilla =  new Croppie(document.getElementById('image_demo'), {
     showZoomer: true,
     enableOrientation: true,
     viewport: {
-        width:200, 
+        width:200,
         height:200,
         type:'circle' //circle
     },
     boundary:{
         width:300,
-        height:300 
+        height:300
     }
 })
 
@@ -25,10 +25,10 @@ let reader =  new FileReader();
 reader.onload = function (event) {
     vanilla.bind({
     url: event.target.result
-  }) 
+  })
 }
-reader.readAsDataURL(this.files[0]); 
-document.getElementById('uploadimage').style.display = 'block' 
+reader.readAsDataURL(this.files[0]);
+document.getElementById('uploadimage').style.display = 'block'
 
 }
 
@@ -52,3 +52,9 @@ vanilla.result({
 
   })
 }
+
+
+document.querySelector('.refresh-profile').addEventListener('click', () => {
+    window.location.reload();
+
+})

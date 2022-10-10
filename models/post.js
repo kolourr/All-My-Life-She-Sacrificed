@@ -4,7 +4,7 @@ const postSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        trim: true, 
+        trim: true,
     },
     body: {
         type: String,
@@ -14,8 +14,9 @@ const postSchema = new mongoose.Schema({
     },
     postType: {
         type: String,
-        default: 'aww',
-        enum: ['aww', 'thankful', 'blessing', 'heartbroken', 'remorseful', 'cranky', 'free', 'fortunate', 'humbled'],  
+        default: 'Aww',
+        enum: ["Aww", "Thankful", "Blessing", "Heartbroken",
+        "Remorseful", "Cranky","Free", "Fortunate", "Humbled"],
       },
       heart: [],
 
@@ -28,8 +29,8 @@ const postSchema = new mongoose.Schema({
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment',
-    }],  
-    createdAt: {  
+    }],
+    createdAt: {
         type: Date,
         default: Date.now,
       },
