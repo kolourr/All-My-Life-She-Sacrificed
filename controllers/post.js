@@ -22,6 +22,8 @@ module.exports = {
 
       let users = await User.find({}).lean()
 
+
+
       let wallPostsWithUserComments = await WallComments.find({
         loginID: req.user.loginID,
       }).populate("wall");

@@ -13,6 +13,10 @@
    overflow-y: auto;
  }
 
+ .menu-horizontal > :where(li) > :where(ul) {
+   top: 100%;
+   left: none;
+}
 
 
 /* .footer {

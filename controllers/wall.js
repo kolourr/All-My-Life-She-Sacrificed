@@ -420,6 +420,70 @@ createComment: async (req, res) => {
     }
   },
 
+  deleteWallPostComment: async (req, res) => {
+    try {
+      await WallComments.findOneAndDelete({
+        _id: req.body.deleteWallPostCommentID
+      })
+      console.log('Deleted Wall Post Comment')
+      res.json('Deleted Wall Post Comment')
+
+    } catch (err) {
+      console.log(err)
+      res.render('error/500')
+    }
+  },
+
+  wallPostCommentButton: async (req, res) => {
+    try {
+
+      let wallPostComment = await WallComments.findById({
+        _id: req.params.id,
+      }).lean()
+
+      if (!wallPostComment) {
+        return res.render('error/404')
+      }
+
+      if (wallPostComment.loginID !== req.user.loginID) {
+        res.redirect('/post/dashboard')
+      } else {}
+      res.render('editWallPostComment', {
+        wallPostComment
+      })
+
+    } catch (err) {
+      console.error(err)
+      return res.render('error/500')
+    }
+  },
+
+  wallPostEditComment: async (req, res) => {
+    try {
+      let comment = await WallComments.findOne({
+        _id: req.params.id,
+      }).lean()
+      if (!comment) {
+        return res.render('error/404')
+      }
+
+      if (comment.loginID !== req.user.loginID) {
+        res.redirect('/post/dashboard')
+      } else {
+        comment = await WallComments.findOneAndUpdate({
+          _id: req.params.id
+        }, req.body, {
+          new: true,
+          runValidators: true,
+        })
+        res.redirect("/post/dashboard")
+       }
+    } catch (err) {
+      console.error(err)
+      return res.render('error/500')
+    }
+  },
+
 
 
 }

@@ -88,7 +88,7 @@ createComment: async (req, res) => {
           new: true,
           runValidators: true,
         })
-        res.redirect('/post/dashboard')
+        res.redirect(`/post/dashboard`)
       }
     } catch (err) {
       console.error(err)
@@ -202,7 +202,7 @@ createComment: async (req, res) => {
         );
       }
 
-      
+
 
       res.json(
         `Comment ${req.body.commentHeartBreakIncreaseDecreaseID} heartbreak's updated`
