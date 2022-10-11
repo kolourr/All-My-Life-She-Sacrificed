@@ -2,24 +2,27 @@
 <div class="grow overflow-y-scroll -mt-10 sm:mt-0	 ">
   <div class="grid grid-cols-8 gap-4">
     <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center ">
-<h1>Edit a Post About Your Mom!</h1>
-<form action="/post/editPost/<%=post._id%>" method="POST">
-  <input type="hidden" name="_method" value="PUT" />
-  <input type="text" placeholder="Title" name="title" value="<%=post.title%>" />
-  <br /><br />
-  <input type="text" placeholder="Body" name="body" value="<%=post.body%>" /><br /><br />
-  <select id="postType" name="postType">
-    <% let choices = [ "Aww", "Thankful", "Blessing", "Heartbroken",
+      <h1 class="text-2xl text-center font-bold m-4 ">Edit Your Mama's Story</h1>
+      <form action="/post/editPost/<%=post._id%>" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+        <div class="flex flex-col">
+          <input type="text" rows="6" class="input input-bordered input-primary w-full mb-4  " placeholder="Title"
+            name="title" value="<%=post.title%>" required />
+          <textarea class="textarea textarea-success mb-4" type="text" rows="10" cols="60" name="body"
+            required><%=post.body%></textarea>
+          <select class="select select-warning " id="postType" name="postType">
+            <% let choices = [ "Aww", "Thankful", "Blessing", "Heartbroken",
     "Remorseful", "Cranky","Free", "Fortunate", "Humbled" ]
     choices.forEach(choice => { let selected = post.postType === choice ?
     "selected" : ""; %>
-    <option value="<%=choice %>" <%="selected" %>> <%=choice %></option>
-    <% }) %>
-    </select>
-    <br /><br />
-  <input type="submit" />
-</form>
-</div>
-</div>
+            <option value="<%=choice %>" <%="selected" %>> <%=choice %></option>
+            <% }) %>
+          </select>
+          <div class="col-md-6   my-4 ">
+            <button id="submit-wallImage" class=" btn btn-primary btn-block uppercase text-xl">Submit</button>
+          </div>
+      </form>
+    </div>
+  </div>
 </div>
 <%- include('partials/footer-postauth') %>

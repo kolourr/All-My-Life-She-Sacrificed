@@ -1,16 +1,18 @@
 const publicVapidKey =
   "BOptvNlb_hsDkQmAc0fbJhlyvpjIy3rt_bBcU9kcQRnbjx-FrmNq4S3tYSOXkHi37Ex4YovmA7w487z6GOQ4R3g";
 
-document.querySelector(".checkMe").addEventListener("click", checkMe);
+let notification = document.querySelectorAll(".checkMe")
 
-async function checkMe() {
-  document.getElementById("push-notify").innerHTML =
-    "Ensure Your Browser Push Notifications are turned on";
-  // Check for service worker
-  if ("serviceWorker" in navigator) {
-    send().catch((err) => console.error(err));
+Array.from(notification).forEach((touch)=>{
+  touch.addEventListener('click', work)})
+
+async function work() {
+    if ("serviceWorker" in navigator) {
+          send().catch((err) => console.error(err));
+        }
   }
-}
+
+
 
 // // Register SW, Register Push, Send Push
 async function send() {
@@ -19,6 +21,8 @@ async function send() {
     alert("User has blocked push notification.");
     return;
   }
+
+
 
   //Register the Service Worker
   const register = await navigator.serviceWorker.register(

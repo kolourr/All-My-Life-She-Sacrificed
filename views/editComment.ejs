@@ -2,11 +2,16 @@
 <div class="grow overflow-y-scroll -mt-10 sm:mt-0	 ">
     <div class="grid grid-cols-8 gap-4">
       <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center ">
-<h1>Edit Your Comment from a Story you Wrote on</h1>
-<form action="/comment/editComment/<%=comment._id%>" method='POST'>
+<h1 class="text-2xl text-center font-bold m-4 ">Edit Your Comment as Needed</h1>
+    <form action="/comment/editComment/<%=comment._id%>" method='POST'>
     <input type="hidden" name="_method" value="PUT">
-    <input type="text" placeholder="Body" name='body' value="<%=comment.body%>"><br><br>
-    <input type="submit">
+    <textarea class="textarea textarea-success mb-4" placeholder="Body" type="text" rows="10" cols="60" name="body"
+    required><%=comment.body%></textarea>
+
+
+    <div class="col-md-6   my-4 ">
+        <button id="submit-wallImage" class=" btn btn-primary btn-block uppercase text-xl">Submit</button>
+      </div>
 </form>
 </div>
 </div>

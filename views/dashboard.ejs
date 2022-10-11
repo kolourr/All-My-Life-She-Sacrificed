@@ -2,99 +2,275 @@
 <div class="grow overflow-y-scroll -mt-10 sm:mt-0	 ">
   <div class="grid grid-cols-8 gap-4">
     <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center ">
-  <h1>DASHBOARD</h1>
-  <h2>All User's Stories</h2>
-  <ul>
-    <% allUserPosts.forEach(post => { %>
-    <li><%=post.title%></li>
-    <li><%=post.body%></li>
-    <li><%=post.postType%></li>
-    <button><i class="bi bi-heart-fill"></i> <%=post.heart.length%></button>
-    <button>
-      <i class="bi bi-heartbreak-fill"></i> <%=post.heartBreak.length%>
-    </button>
-    <button>
-      <a style="color: black; text-decoration: none" href="editButton/<%=post._id%>">Edit</a>
-    </button>
-    <button class="deletePost" data-DeleteID="<%=post._id%>">Delete</button>
-    <br />
-    <br />
-    <% }) %>
-  </ul>
-  <h2>User's Story Comments</h2>
-  <ul>
-    <% postsWithUserComments.forEach(postWithComment => { %>
-      <div class="w-24 rounded-full  ">
-        <% users.forEach(user => { %>
-        <% if(postWithComment.post.loginID.toString() === user.loginID.toString()){%>
-        <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon"> <%  } %>
-        <% }) %>
-    <li><%=postWithComment.post.title%></li>
-    <li><%=postWithComment.post.body%></li>
-    <li>
-      <%=postWithComment.body%><br />
 
-      <button>
-        <a style="color: black; text-decoration: none"
-          href="../comment/editCommentButton/<%=postWithComment._id%>">Edit</a>
-      </button>
-      <button class="deleteComment" data-DeleteCommentID="<%=postWithComment._id%>">
-        Delete
-      </button>
-    </li>
-    <% }) %>
-  </ul>
-  <h2>Wall Posts</h2>
-  <ul>
-    <% wallPosts.forEach(wallPost => { %>
-    <a href="/wall/<%= wallPost._id%>">
-      <img src="<%=wallPost.image%>" loading="lazy" width="50%" /></a>
-    <br /><br />
-    <li>
-      <%=wallPost.caption%><br />
-      <button>
-        <i class="bi bi-heart-fill"></i> <%=wallPost.heart.length%>
-      </button>
-      <button>
-        <i class="bi bi-heartbreak-fill"></i> <%=wallPost.heartBreak.length%>
-      </button>
-      <button class="deleteWallPost" data-DeleteWallPostID="<%=wallPost._id%>">
-        Delete</button><br /><br />
-    </li>
-    <% }) %>
-  </ul>
-
-
-  <h2>Wall Post's User's Story Comments</h2>
-  <ul>
-    <% wallPostsWithUserComments.forEach(postWithComment => { %>
-      <div class="w-24 rounded-full  ">
-        <% users.forEach(user => { %>
-        <% if(postWithComment.wall.loginID.toString() === user.loginID.toString()){%>
-        <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon"> <%  } %>
-        <% }) %>
-
-        <a href="/wall/<%= postWithComment.wall._id%>">
-          <img src="<%=postWithComment.wall.image%>" loading="lazy" width="50%" /></a>
-
-      <li><%=postWithComment.wall.caption%></li>
-    <li>
-      <%=postWithComment.captionComment%><br />
-
-      <button>
-        <a style="color: black; text-decoration: none"
-          href="../wall/wallPostCommentButton/<%=postWithComment._id%>">Edit</a>
-      </button>
-      <button class="deleteWallPostComment" data-DeleteWallPostCommentID="<%=postWithComment._id%>">
-        Delete
-      </button>
-    </li>
-    <% }) %>
-  </ul>
+      <% allUserPosts.forEach(post => { %>
+      <% users.forEach(user => { %> <% if(post.loginID.toString() ===
+        user.loginID.toString()){%>
+      <h1 class="text-3xl font-bold text-center lg:text-left ">
+        <%=user.firstName%>'s Dashboard
+      </h1>
+      <% } %> <% }) %>
+      <p class="pb-2 text-lg">Use the dropdown menu to see your stories and comments!</p>
 
 
 
-  </div>
+
+      <% users.forEach(user => { %> <% if(post.loginID.toString() ===
+        user.loginID.toString()){%>
+      <h2 class="text-2xl font-bold text-center lg:text-left mb-2 text-primary">
+        <%=user.firstName%>'s Mama Stories
+      </h2>
+      <% } %> <% }) %>
+      <div class="bg-base-200 w-10/12 lg:w-7/12 pt-2 rounded-md shadow-md">
+        <div class="card bg-base-100 shadow-xl h-full">
+          <div class="bg-base-100 grid w-full flex-grow gap-3 rounded-xl rounded-tl-none shadow-xl">
+            <div class="flex flex-col items-center space-x-2">
+              <div class="avatar">
+                <div class="w-24 rounded-full">
+                  <% users.forEach(user => { %> <% if(post.loginID.toString()
+                  === user.loginID.toString()){%>
+                  <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon" />
+                  <% } %> <% }) %>
+                </div>
+              </div>
+              <% users.forEach(user => { %> <% if(post.loginID.toString() ===
+              user.loginID.toString()){%>
+              <div class="text-lg text-base-content/70">
+                <%=user.firstName%>
+              </div>
+              <% } %> <% }) %>
+            </div>
+          </div>
+          <div class="divider       text-lg text-primary font-extrabold mt-4">
+            <%=post.title%>
+          </div>
+          <div class="text-md text-base-content/70 text-center -mt-3">
+            Category: <span class="underline"><%=post.postType%></span>
+          </div>
+          <div class="bg-base-200 p-2 m-2 rounded-md ">
+            <div class="flex flex-row">
+              <div class="p-2 m-2 text-md uppercase basis-1/4  text-left text-primary">Story</div>
+              <div class="p-2 m-2 text-md basis-3/4 text-left text-secondary"> <a
+                  href="/post/<%= post._id%>"><%=post.body%></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 py-2 rounded-md shadow-md mb-6">
+        <div class="mx-auto block">
+          <button class=" btn bg-base-200 w-48 lg:min-w-max">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pencil w-6 h-6" fill="currentColor"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+            </svg>
+            <span class="m-2 text-lg"> <a href="editButton/<%=post._id%>">Edit</a></span>
+          </button>
+        </div>
+        <div class="mx-auto block">
+          <button class="deletePost btn bg-base-200 w-48 lg:min-w-max" data-DeleteID="<%=post._id%>">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash3 w-6 h-6" fill="currentColor"
+              viewBox="0 0 16 16">
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+            </svg>
+            <span class="m-2 text-lg uppercase">Delete</span>
+          </button>
+        </div>
+      </div>
+      <% }) %>
+
+
+
+
+      <% postsWithUserComments.forEach(postWithComment => { %>
+      <% users.forEach(user => { %> <% if(postWithComment.loginID.toString() ===
+        user.loginID.toString()){%>
+      <h2 class="text-2xl font-bold text-center lg:text-left mb-2 text-primary">
+        <%=user.firstName%>'s comment on other Mama Stories
+      </h2>
+      <% } %> <% }) %>
+      <div class="bg-base-200 w-10/12 lg:w-7/12 pt-2 rounded-md shadow-md">
+        <div class="card bg-base-100 shadow-xl h-full">
+          <div class="bg-base-100 grid w-full flex-grow gap-3 rounded-xl rounded-tl-none shadow-xl">
+            <div class="flex flex-col items-center space-x-2">
+              <div class="avatar">
+                <div class="w-24 rounded-full">
+                  <% users.forEach(user => { %> <% if(postWithComment.post.loginID.toString()
+                  === user.loginID.toString()){%>
+                  <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon" />
+                  <% } %> <% }) %>
+                </div>
+              </div>
+              <% users.forEach(user => { %> <% if(postWithComment.post.loginID.toString() ===
+              user.loginID.toString()){%>
+              <div class="text-lg text-base-content/70">
+                <%=user.firstName%>
+              </div>
+              <% } %> <% }) %>
+            </div>
+          </div>
+          <div class="divider       text-lg text-primary font-extrabold mt-4">
+            <%=postWithComment.post.title%>
+          </div>
+          <div class="text-md text-base-content/70 text-center -mt-3">
+            Category: <span class="underline"><%=postWithComment.post.postType%></span>
+          </div>
+          <div class="bg-base-200 p-6 m-6 mb-0 pb-2 rounded-md">
+            <div class="flex flex-row">
+              <div class="p-2 m-2 text-md uppercase basis-1/4  text-left text-primary">Story</div>
+              <div class="p-2 m-2 text-md basis-3/4 text-left text-secondary"><a
+                  href="../post/<%=postWithComment.post._id%>"><%=postWithComment.post.body%></a></div>
+            </div>
+          </div>
+          <div class="bg-base-300 p-6 m-6 mt-0 pt-2 rounded-md">
+            <div class="flex flex-row">
+              <div class="p-2 m-2 text-md uppercase basis-1/4  text-left text-primary">Comment</div>
+              <div class="p-2 m-2 text-md basis-3/4 text-left text-secondary">
+                <a href="../post/<%=postWithComment.post._id%>"><%=postWithComment.body%> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 py-2 rounded-md shadow-md mb-6">
+        <div class="mx-auto block">
+          <button class=" btn bg-base-200 w-48 lg:min-w-max">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pencil w-6 h-6" fill="currentColor"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+            </svg>
+            <span class="m-2 text-lg"> <a href="../comment/editCommentButton/<%=postWithComment._id%>">Edit</a></span>
+          </button>
+        </div>
+        <div class="mx-auto block">
+          <button class="deleteComment btn bg-base-200 w-48 lg:min-w-max"
+            data-DeleteCommentID="<%=postWithComment._id%>">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash3 w-6 h-6" fill="currentColor"
+              viewBox="0 0 16 16">
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+            </svg>
+            <span class="m-2 text-lg uppercase">Delete</span>
+          </button>
+        </div>
+      </div>
+      <% }) %>
+      <% wallPosts.forEach(wallPost => { %>
+      <% users.forEach(user => { %> <% if(wallPost.loginID.toString() ===
+        user.loginID.toString()){%>
+      <h2 class="text-2xl font-bold text-center lg:text-left mb-2 text-primary">
+        <%=user.firstName%>'s Mama Image Stories
+      </h2>
+      <% } %> <% }) %>
+      <div class=" bg-base-200 w-10/12 lg:w-6/12   py-2 rounded-md shadow-md mb-6">
+        <div class="card  bg-base-100 shadow-xl h-full">
+          <div class="bg-base-100  grid w-full flex-grow gap-3 rounded-xl rounded-tl-none  shadow-xl">
+            <div class="flex flex-col items-center space-x-2">
+              <div class=" avatar">
+                <div class="w-24 rounded-full  ">
+                  <% users.forEach(user => { %>
+                  <% if(wallPost.loginID.toString() === user.loginID.toString()){%>
+                  <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon"> <%  } %>
+                  <% }) %>
+                </div>
+              </div>
+              <% users.forEach(user => { %>
+              <% if(wallPost.loginID.toString() === user.loginID.toString()){%>
+              <div class="text-lg  font-extrabold"><%=user.firstName%></div><%  } %> <% }) %>
+            </div>
+          </div>
+          <div class="divider  "></div>
+          <a href="/wall/<%= wallPost._id%>"> <img src="<%=wallPost.image%>" loading="lazy" width="100%" class="" /></a>
+          <div class="bg-base-200 p-2 m-2 rounded-md ">
+            <div class="flex flex-row">
+              <div class="p-2 m-2 text-md uppercase basis-1/4  text-left text-primary">Story</div>
+              <div class="p-2 m-2 text-md basis-3/4 text-left text-secondary"> <a
+                  href="/wall/<%= wallPost._id%>"><%=wallPost.caption%></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 pb-2 rounded-md shadow-md mb-4 -mt-4">
+        <div class="mx-auto block">
+          <button class="deleteWallPost btn bg-base-200 w-96 lg:min-w-max" data-DeleteWallPostID="<%=wallPost._id%>">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heart w-6 h-6" viewBox="0 0 16 16">
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+            </svg><span class="m-2 text-lg">Delete</span>
+          </button>
+        </div>
+      </div>
+      <% }) %>
+      <% wallPostsWithUserComments.forEach(postWithComment => { %>
+      <% users.forEach(user => { %> <% if(postWithComment.loginID.toString() ===
+        user.loginID.toString()){%>
+      <h2 class="text-2xl font-bold text-center lg:text-left mb-2 text-primary">
+        <%=user.firstName%>'s Image Story Comments
+      </h2><%  } %>
+      <% }) %>
+      <div class=" bg-base-200 w-10/12 lg:w-6/12   py-2 rounded-md shadow-md mb-6">
+        <div class="card  bg-base-100 shadow-xl h-full">
+          <div class="bg-base-100  grid w-full flex-grow gap-3 rounded-xl rounded-tl-none  shadow-xl">
+            <div class="flex flex-col items-center space-x-2">
+              <div class=" avatar">
+                <div class="w-24 rounded-full  ">
+                  <% users.forEach(user => { %>
+                  <% if(postWithComment.wall.loginID.toString() === user.loginID.toString()){%>
+                  <img src="<%=user.image%>" alt="Avatar Tailwind CSS Component" class="mask mask-hexagon"> <%  } %>
+                  <% }) %>
+                </div>
+              </div>
+              <% users.forEach(user => { %>
+              <% if(postWithComment.wall.loginID.toString() === user.loginID.toString()){%>
+              <div class="text-lg  font-extrabold"><%=user.firstName%></div><%  } %> <% }) %>
+            </div>
+          </div>
+          <div class="divider  "></div>
+          <a href="/wall/<%= postWithComment.wall._id%>"> <img src="<%=postWithComment.wall.image%>" loading="lazy"
+              width="100%" class="" /></a>
+          <div class="bg-base-200 p-2 m-2 rounded-md ">
+            <div class="flex flex-row">
+              <div class="p-2 m-2 text-md uppercase basis-1/4  text-left text-primary">Story</div>
+              <div class="p-2 m-2 text-md basis-3/4 text-left text-secondary"><a
+                  href="/wall/<%= postWithComment.wall._id%>"><%=postWithComment.wall.caption%></a></div>
+            </div>
+          </div>
+          <div class="bg-base-200  p-2 m-2 rounded-md ">
+            <div class="flex flex-row">
+              <div class="p-2 m-2 text-md uppercase basis-1/4  text-left text-primary">Comment</div>
+              <div class="p-2 m-2 text-md basis-3/4 text-left text-secondary"><a
+                  href="/wall/<%= postWithComment.wall._id%>"><%=postWithComment.captionComment%></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 py-2 rounded-md shadow-md mb-6">
+        <div class="mx-auto block">
+          <button class=" btn bg-base-200 w-48 lg:min-w-max">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pencil w-6 h-6" fill="currentColor"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+            </svg>
+            <span class="m-2 text-lg"> <a href="../wall/wallPostCommentButton/<%=postWithComment._id%>">Edit</a></span>
+          </button>
+        </div>
+        <div class="mx-auto block">
+          <button class="deleteWallPostComment btn bg-base-200 w-48 lg:min-w-max"
+            data-DeleteWallPostCommentID="<%=postWithComment._id%>">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash3 w-6 h-6" fill="currentColor"
+              viewBox="0 0 16 16">
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+            </svg>
+            <span class="m-2 text-lg uppercase">Delete</span>
+          </button>
+        </div>
+      </div>
+      <% }) %>
+    </div>
   </div>
 </div>
 <%- include('partials/footer-postauth') %>

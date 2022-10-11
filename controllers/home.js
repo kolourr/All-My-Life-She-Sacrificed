@@ -239,7 +239,8 @@ module.exports = {
       allWallPosts: allWallPosts.length,
       userTextPosts: userTextPosts.length,
       allTextPosts: allTextPosts.length,
-    });
+    })
+
 
     // Pass object into sendNotification
     webpush

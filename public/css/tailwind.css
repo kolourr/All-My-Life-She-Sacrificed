@@ -15,8 +15,14 @@
 
  .menu-horizontal > :where(li) > :where(ul) {
    top: 100%;
-   left: none;
+   left: inherit;
 }
+
+#push-notify{
+   color: rebeccapurple;
+   font-weight: 400;
+  }
+
 
 
 /* .footer {
