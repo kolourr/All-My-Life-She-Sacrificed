@@ -1,17 +1,26 @@
-<%- include('partials/header-postauth') %>
+<%if (typeof user === 'undefined') { %> <%- include('partials/header-preauth')
+%> <% } else { %> <%- include('partials/header-postauth') %> <% } %>
 <div class="grow overflow-y-scroll -mt-10 sm:mt-0	 ">
     <div class="grid grid-cols-8 gap-4">
       <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center ">
 
+        <h1 class="text-2xl text-center font-bold m-4">Message Confirmation</h1>
+        <p class="sendmessagesuccess py-6 text-lg">The social network dedicated to celebrating and sharing stories on inspiring moms from all corners of the earth.</p>
 
-<h1>Message Confirmation</h1>
-<div class="sendmessagesuccess">
+        <h3 class="text-xl font-bold text-center lg:text-left text-primary">
+          <%=typeof confirmation == 'undefined' ? '' : confirmation%>
+      </h3>
 
-<h3><%=typeof confirmation == 'undefined' ? '' : confirmation%></h3>
+
+
+
 
 </div>
 </div>
-</div>
 
 </div>
-<%- include('partials/footer-postauth') %>
+<%if (typeof user === 'undefined') { %>
+  <%- include('partials/footer-preauth') %>
+  <% } else { %>
+  <%- include('partials/footer-postauth') %>
+  <%  } %>

@@ -4,7 +4,6 @@ const wallController = require('../controllers/wall')
 const { ensureAuth } = require('../middleware/auth')
 const upload = require("../middleware/upload");
 
-router.get('/', ensureAuth, wallController.getHome)
 
 
 router.get('/create', ensureAuth, wallController.create)

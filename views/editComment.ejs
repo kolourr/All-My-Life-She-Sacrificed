@@ -5,7 +5,7 @@
 <h1 class="text-2xl text-center font-bold m-4 ">Edit Your Comment as Needed</h1>
     <form action="/comment/editComment/<%=comment._id%>" method='POST'>
     <input type="hidden" name="_method" value="PUT">
-    <textarea class="textarea textarea-success mb-4" placeholder="Body" type="text" rows="10" cols="60" name="body"
+    <textarea class="textarea textarea-success mb-4" placeholder="Body" type="text" rows="8" cols="40" name="body"
     required><%=comment.body%></textarea>
 
 

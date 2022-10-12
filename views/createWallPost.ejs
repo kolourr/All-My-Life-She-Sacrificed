@@ -6,7 +6,7 @@
             <input type="file"
                 class="  text-sm text-gray-900 bg-slate-500 rounded-lg border border-slate-500 cursor-pointer dark:text-slate-400 focus:outline-none dark:bg-slate-500 dark:border-slate-600 dark:placeholder-slate-400"
                 name="image" id="wallImage" required />
-            <p class="mt-2 text-sm text-secondary">PNG, JPG or GIF (Image will be resized to 800x600px)</p>
+            <p class="mt-2 text-sm text-secondary">(PNG, JPG or GIF Only)</p>
             <span type="hidden" id="msgFile"></span>
             <canvas id="canvas"></canvas>
             <h4 class="text-center my-3 text-xl font-bold">Choose an Image Filter</h4>
@@ -42,7 +42,7 @@
             </div>
             <h4 class="text-center my-3 text-xl font-bold">Share your Story (Required)</h4>
             <span type="hidden" id="msg"></span>
-            <textarea class="textarea textarea-success mx-6" type="text" rows="6" cols="60"
+            <textarea class="textarea textarea-success mx-6" type="text" rows="8" cols="40"
                 placeholder="Your story can be about the image you shared or something else entirely that is close to your heart. Just start typing in here and this message will disappear..."
                 name="caption" id="caption" required></textarea><br /><br />
             <div class="col-md-6 -mt-2 mb-6">

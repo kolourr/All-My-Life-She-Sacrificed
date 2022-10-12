@@ -8,14 +8,6 @@ const uploadbase64 = require("../middleware/uploadbase64")
 
 
 module.exports = {
-  getHome: async(req,res)=>{
-        try {
-            res.render('wall')
-        } catch (err) {
-            console.log(err)
-            res.render('error/500')
-        }
-    },
 
     create: async(req,res)=>{
       try {

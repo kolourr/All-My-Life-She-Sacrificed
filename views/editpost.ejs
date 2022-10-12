@@ -8,7 +8,7 @@
         <div class="flex flex-col">
           <input type="text" rows="6" class="input input-bordered input-primary w-full mb-4  " placeholder="Title"
             name="title" value="<%=post.title%>" required />
-          <textarea class="textarea textarea-success mb-4" type="text" rows="10" cols="60" name="body"
+          <textarea class="textarea textarea-success mb-4" type="text" rows="8" cols="40" name="body"
             required><%=post.body%></textarea>
           <select class="select select-warning " id="postType" name="postType">
             <% let choices = [ "Aww", "Thankful", "Blessing", "Heartbroken",
@@ -20,6 +20,7 @@
           </select>
           <div class="col-md-6   my-4 ">
             <button id="submit-wallImage" class=" btn btn-primary btn-block uppercase text-xl">Submit</button>
+          </div>
           </div>
       </form>
     </div>
