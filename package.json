@@ -28,6 +28,7 @@
     "caman": "^4.1.2",
     "canvas": "^2.10.1",
     "connect-mongo": "^4.6.0",
+    "cors": "^2.8.5",
     "croppie": "^2.6.5",
     "daisyui": "^2.31.0",
     "dotenv": "^16.0.1",

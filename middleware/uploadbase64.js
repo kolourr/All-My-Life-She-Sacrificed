@@ -25,6 +25,8 @@ const uploadbase64 = function(image,FileName) {
 
   };
 
+  console.log(uploadbase64)
+
   s3Bucket.putObject(data, function (err, result) {
     if (err) console.error(err);
     else {

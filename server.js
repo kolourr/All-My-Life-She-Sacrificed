@@ -15,6 +15,9 @@ const postRoutes = require('./routes/post')
 const wallRoutes = require('./routes/wall')
 const commentRoutes = require('./routes/comment')
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
+const cors = require('cors')
+
+
 
 
 
@@ -29,6 +32,10 @@ app.use(express.static('public'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true, limit: '200mb' }))
 app.use(express.json({limit: '50mb'}))
+app.use(cors({
+  origin: '*',
+  credentials: true
+}))
 
 // Method override
 app.use(
