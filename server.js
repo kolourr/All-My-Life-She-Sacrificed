@@ -19,7 +19,7 @@ const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 
 
 
-//Dotenv -- Passport -- Connect Database 
+//Dotenv -- Passport -- Connect Database
 require('dotenv').config({path: './config/.env'})
 require('./config/passport')(passport)
 connectDB()
@@ -27,7 +27,7 @@ connectDB()
 //EJS and Body Parser
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: true, limit: '50mb' }))
+app.use(express.urlencoded({ extended: true, limit: '200mb' }))
 app.use(express.json({limit: '50mb'}))
 
 // Method override
@@ -41,7 +41,7 @@ app.use(
     }
   })
 )
- 
+
 
 // Sessions Middleware
 app.use(
@@ -55,12 +55,12 @@ app.use(
     })
     })
   )
-  
+
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
 
-// Routes   
+// Routes
 app.use('/', homeRoutes)
 app.use('/auth', authRoutes)
 app.use('/post', postRoutes)
@@ -71,4 +71,4 @@ app.use('/wall', wallRoutes)
 
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server is running on PORT ${process.env.PORT}`)
-})    
+})

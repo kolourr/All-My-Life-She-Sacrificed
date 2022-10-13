@@ -11,14 +11,14 @@ module.exports = {
     try {
       let allUserPosts = await Post.find({
         loginID: req.user.loginID,
-      });
+      }).sort({_id:-1}).lean()
       let postsWithUserComments = await Comments.find({
         loginID: req.user.loginID,
-      }).populate("post");
+      }).populate("post").sort({_id:-1}).lean()
 
       let wallPosts = await Wall.find({
         loginID: req.user.loginID,
-      })
+      }).sort({_id:-1}).lean()
 
       let users = await User.find({}).lean()
 

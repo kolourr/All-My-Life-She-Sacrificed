@@ -122,7 +122,7 @@ editWallPostButton: async (req, res) => {
 
 feed: async(req,res)=>{
   try {
-      let allWallPosts = await Wall.find({}).lean()
+      let allWallPosts = await Wall.find({}).sort({_id:-1}).lean()
       let users = await User.find({}).lean()
 
 

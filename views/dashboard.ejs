@@ -3,6 +3,8 @@
   <div class="grid grid-cols-8 gap-4">
     <div class="col-span-8 sm:col-start-2 sm:col-end-8 lg:col-start-3 lg:col-end-7 card bg-base-300 rounded-box place-items-center p-8">
 
+
+
       <% allUserPosts.forEach(post => { %>
       <% users.forEach(user => { %> <% if(post.loginID.toString() ===
         user.loginID.toString()){%>
@@ -21,7 +23,7 @@
         <%=user.firstName%>'s Mama Stories
       </h2>
       <% } %> <% }) %>
-      <div class="bg-base-200 w-10/12 lg:w-7/12 pt-2 rounded-md shadow-md">
+      <div class=" bg-base-200 w-10/12 lg:w-8/12   py-2 rounded-md shadow-md mb-6">
         <div class="card bg-base-100 shadow-xl h-full">
           <div class="bg-base-100 grid w-full flex-grow gap-3 rounded-xl rounded-tl-none shadow-xl">
             <div class="flex flex-col items-center space-x-2">
@@ -58,7 +60,7 @@
       </div>
       <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 py-2 rounded-md shadow-md mb-6">
         <div class="mx-auto block">
-          <button class=" btn bg-base-200 w-48 lg:min-w-max">
+          <button class=" btn bg-base-200   lg:min-w-max">
             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pencil w-6 h-6" fill="currentColor"
               viewBox="0 0 16 16">
               <path
@@ -68,7 +70,7 @@
           </button>
         </div>
         <div class="mx-auto block">
-          <button class="deletePost btn bg-base-200 w-48 lg:min-w-max" data-DeleteID="<%=post._id%>">
+          <button class="deletePost btn bg-base-200   lg:min-w-max" data-DeleteID="<%=post._id%>">
             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash3 w-6 h-6" fill="currentColor"
               viewBox="0 0 16 16">
               <path
@@ -90,7 +92,7 @@
         <%=user.firstName%>'s comment on other Mama Stories
       </h2>
       <% } %> <% }) %>
-      <div class="bg-base-200 w-10/12 lg:w-7/12 pt-2 rounded-md shadow-md">
+      <div class=" bg-base-200 w-10/12 lg:w-8/12   py-2 rounded-md shadow-md mb-6">
         <div class="card bg-base-100 shadow-xl h-full">
           <div class="bg-base-100 grid w-full flex-grow gap-3 rounded-xl rounded-tl-none shadow-xl">
             <div class="flex flex-col items-center space-x-2">
@@ -164,7 +166,7 @@
         <%=user.firstName%>'s Mama Image Stories
       </h2>
       <% } %> <% }) %>
-      <div class=" bg-base-200 w-10/12 lg:w-6/12   py-2 rounded-md shadow-md mb-6">
+      <div class=" bg-base-200 w-10/12 lg:w-8/12   py-2 rounded-md shadow-md mb-6">
         <div class="card  bg-base-100 shadow-xl h-full">
           <div class="bg-base-100  grid w-full flex-grow gap-3 rounded-xl rounded-tl-none  shadow-xl">
             <div class="flex flex-col items-center space-x-2">
@@ -194,7 +196,7 @@
       </div>
       <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 pb-2 rounded-md shadow-md mb-4 -mt-4">
         <div class="mx-auto block">
-          <button class="deleteWallPost btn bg-base-200 w-96 lg:min-w-max" data-DeleteWallPostID="<%=wallPost._id%>">
+          <button class="deleteWallPost btn bg-base-200  lg:min-w-max" data-DeleteWallPostID="<%=wallPost._id%>">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heart w-6 h-6" viewBox="0 0 16 16">
               <path
                 d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
@@ -210,7 +212,7 @@
         <%=user.firstName%>'s Image Story Comments
       </h2><%  } %>
       <% }) %>
-      <div class=" bg-base-200 w-10/12 lg:w-6/12   py-2 rounded-md shadow-md mb-6">
+      <div class=" bg-base-200 w-10/12 lg:w-8/12   py-2 rounded-md shadow-md mb-6">
         <div class="card  bg-base-100 shadow-xl h-full">
           <div class="bg-base-100  grid w-full flex-grow gap-3 rounded-xl rounded-tl-none  shadow-xl">
             <div class="flex flex-col items-center space-x-2">
@@ -248,7 +250,7 @@
       </div>
       <div class="flex flex-row bg-base-200 w-10/12 lg:w-7/12 py-2 rounded-md shadow-md mb-6">
         <div class="mx-auto block">
-          <button class=" btn bg-base-200 w-48 lg:min-w-max">
+          <button class=" btn bg-base-200   lg:min-w-max">
             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pencil w-6 h-6" fill="currentColor"
               viewBox="0 0 16 16">
               <path
@@ -258,7 +260,7 @@
           </button>
         </div>
         <div class="mx-auto block">
-          <button class="deleteWallPostComment btn bg-base-200 w-48 lg:min-w-max"
+          <button class="deleteWallPostComment btn bg-base-200   lg:min-w-max"
             data-DeleteWallPostCommentID="<%=postWithComment._id%>">
             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash3 w-6 h-6" fill="currentColor"
               viewBox="0 0 16 16">

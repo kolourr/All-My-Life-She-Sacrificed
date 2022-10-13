@@ -4457,6 +4457,10 @@ body[dir="rtl"] .checkbox:checked,
     width: 50%;
   }
 
+  .lg\:w-8\/12 {
+    width: 66.666667%;
+  }
+
   .lg\:min-w-max {
     min-width: -webkit-max-content;
     min-width: -moz-max-content;
