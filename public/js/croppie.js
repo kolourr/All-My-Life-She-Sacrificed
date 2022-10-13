@@ -41,11 +41,15 @@ vanilla.result({
     size: 'viewport'
   }).then( function(response){
            fetch('/editProfilePicture', {
+            mode: 'cors',
+            cache: 'default',
               method: 'post',
               headers: {'Content-type': 'application/json'},
               body: JSON.stringify({
                   'base64': response
               })
+
+
 
           })
           location.reload()

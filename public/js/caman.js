@@ -183,7 +183,8 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
 
 
      fetch('../wall/createWallPost', {
-
+        mode: 'cors',
+        cache: 'default',
             method: 'post',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({

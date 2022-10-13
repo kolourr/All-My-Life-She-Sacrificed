@@ -298,3 +298,7 @@ async function commentHeartBreakIncreaseDecrease(){
 
 
 
+document.querySelector('.refresh-page').addEventListener('click', () => {
+    window.location.reload();
+
+})
