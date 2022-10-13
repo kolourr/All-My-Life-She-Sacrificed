@@ -1,34 +1,88 @@
 <%- include('partials/header-postauth') %>
 <div class="grow overflow-y-scroll -mt-10 sm:mt-0	 ">
     <div class="grid grid-cols-8 gap-4">
-      <div class="col-span-8 sm:col-start-2 sm:col-end-8 card bg-base-300 rounded-box place-items-center ">
+      <div class="col-span-8 sm:col-start-2 sm:col-end-8 lg:col-start-3 lg:col-end-7 card bg-base-300 rounded-box place-items-center p-8">
+
+        <h1 class="text-2xl text-primary font-bold text-center lg:text-left ">
+          Ever "Forget" to buy your Mom a gift for ‘Mother’s Day’?
+        </h1>
+
+        <div class="bg-base-200 shadow rounded ">
+        <p class="pb-2 text-lg mx-4 px-8">With prices through the roof on everything from groceries, rent, and living expenses, buying a gift on Mother's Day is tough when you're already  struggling to save money.</p>
+
+        <img
+        src="https://ilovguitars-amlss-mom.s3.ca-central-1.amazonaws.com/broke.png" width="50%"
+        class=" mx-auto block shadow-md" />
+
+        <p class="pb-2 text-lg mx-4 px-8">Yet, deep down, you know how much your mom sacrificed for you and feel the need to reciprocate that love. Any kind gesture goes a long way.</p>
+
+        <p class="pb-2 text-lg mx-4 px-8">Well, you don't have to worry because we got something that will save you time and money!</p>
+        <img
+        src="https://ilovguitars-amlss-mom.s3.ca-central-1.amazonaws.com/lovemom.png" width="50%"
+        class=" mx-auto block shadow-md" />
+
+        <p class="pb-2 text-lg mx-4 px-8">Every year, without fail, we will wish your mom via email on Mother's Day on your behalf <span class="italic text-success">for the rest of her life</span>. The message will be genuine, thoughtful and will keep her beaming throughout the day.</p>
+
+        <img
+        src="https://ilovguitars-amlss-mom.s3.ca-central-1.amazonaws.com/momhappy.png" width="50%"
+        class=" mx-auto block shadow-md" />
 
 
-<h1>Never forget to wish your mom for Mother's Day!</h1>
-<p>dewdwedwd</p>
-<p>dewdwedwd</p>
-<p>dewdwedwd</p>
-<p>dewdwedwd</p>
-<p>dewdwedwd</p>
-
-<spam id="msg" style="color:red"></spam><br><br>
-
-<label>Your Mom's Name</label>
-<input type="text" id="momName" name="momName" required><br><br>
-
-<label>Your Mom's Email</label>
-<input type="text" id="momEmail" name="momEmail"  required>
-<span id="emailvalidate" style="color:red"></span> <br><br>
-
-<label>Name or Nickname</label>
-<input type="text" id="childName" name="childName" required><br><br>
+        <p class="pb-2 text-lg mx-4 px-8">You’ll never have to worry if you are too busy, on vacation, stuck in an elevator or without extra funds that time of the year. Even though the date for Mother’s Day keeps changes every year, without fail, your mom will be wished.</p>
 
 
-<button class="stripebutton">Checkout</button><br><br>
-<p>edwedwdewdwdwew</p>
-<p>edwedwdewdwdwew</p>
-<p>edwedwdewdwdwew</p>
-<p>edwedwdewdwdwew</p>
+        <img
+        src="https://ilovguitars-amlss-mom.s3.ca-central-1.amazonaws.com/vacation.png" width="50%"
+        class=" mx-auto block shadow-md" />
+
+
+        <p class="pb-2 text-lg mx-4 px-8">All you have to do is enter your mom’s name, email and the name you would like to be referred to below and we will take care of the rest. You will be cc’d in every Mother’s Day wish without fail.</p>
+
+
+        <img
+        src="https://ilovguitars-amlss-mom.s3.ca-central-1.amazonaws.com/mothersdaycard.png" width="50%"
+        class=" mx-auto block shadow-md" />
+        <p class="pb-2 text-lg mx-4 px-8">For this service, we only charge $20. That's it. If your mom were to live for another 30 years (though we hope she would live longer), that would equate to just $0.67/wish. A single Hallmark card costs more than $15.</p>
+
+
+        <img
+        src="https://ilovguitars-amlss-mom.s3.ca-central-1.amazonaws.com/stripe.png" width="50%"
+        class=" mx-auto block shadow-md" />
+
+        <p class="pb-2 text-lg mx-4 px-8">You will be directed to a Stripe checkout page upon clicking the button below. The $20 payment is securely handled through Stripe and upon confirmation, a receipt will be emailed to you.</p>
+
+        <p class="pb-2 text-lg mx-4 px-8"></p>
+
+
+      <h3 class="text-xl font-bold text-center bg-base-200 shadow rounded  text-primary m-2">
+        Wish My Mom Every Year for Mother's Day
+    </h3>
+    <span id="msg" class="text-lg text-red-600 text-center mx-auto block   uppercase font-bold "></span>
+  </div>
+
+
+<div class="p-6  selection: m-6">
+
+
+
+<input type="text" id="momName" name="momName" class="input input-bordered input-primary w-full mb-4" placeholder="Your Mom's Name"  required>
+
+
+<input type="text" id="momEmail" name="momEmail" class="input input-bordered input-primary w-full mb-4" placeholder="Your Mom's Email"   required>
+
+<span id="emailvalidate" class="text-md text-red-600 uppercase font-bold mb-4 "></span>
+
+ <input type="text" id="childName" name="childName" class="input input-bordered input-primary w-full mb-4 mx-auto block"    placeholder="Your First Name or Nickname" required>
+
+
+
+
+<div class="col-md-6 ">
+  <button class="stripebutton btn btn-success btn-block uppercase text-xl">Wish My Mom</button>
+</div>
+
+
+</div>
 </div>
 </div>
 </div>
