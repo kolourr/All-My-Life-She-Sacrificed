@@ -1,31 +1,38 @@
 <%- include('partials/header-postauth') %>
-<div class="grow overflow-y-scroll -mt-10 sm:mt-0	 ">
-    <div class="grid grid-cols-8 gap-4">
-      <div class="col-span-8 sm:col-start-2 sm:col-end-8 lg:col-start-3 lg:col-end-7 card bg-base-300 rounded-box place-items-center p-8">
-
-
-<h1>Sorry your transaction failed!</h1>
-
-<h2>Try Again!</h2>
-
-
-<spam id="msg" style="color:red"></spam><br><br>
-
-<label>Your Mom's Name</label>
-<input type="text" id="momName" name="momName" required><br><br>
-
-<label>Your Mom's Email</label>
-<input type="text" id="momEmail" name="momEmail"  required>
-<span id="emailvalidate" style="color:red"></span> <br><br>
-
-<label>Name or Nickname</label>
-<input type="text" id="childName" name="childName" required><br><br>
-
-
-<button class="stripebutton">Checkout</button><br><br>
-
+<div class="grow overflow-y-scroll -mt-10 sm:mt-0">
+  <div class="grid grid-cols-8 gap-4">
+    <div
+      class="col-span-8 sm:col-start-2 sm:col-end-8 lg:col-start-3 lg:col-end-7 card bg-base-300 rounded-box place-items-center p-8">
+      <div class="alert alert-error shadow-lg">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span id="msg" class="text-lg rounded">Sorry your transaction failed. Please try again.</span>
+        </div>
+      </div>
+      <h3 class="text-xl font-bold text-center bg-base-200 shadow rounded pt-4 text-primary m-2">
+        Wish My Mom Every Year for Mother's Day
+      </h3>
+      <span id="msg" class="text-lg text-red-600 text-center mx-auto block uppercase font-bold"></span>
+      <div class="p-6 selection: m-6">
+        <input type="text" id="momName" name="momName" class="input input-bordered input-primary w-full mb-4"
+          placeholder="Your Mom's Name" required />
+        <input type="text" id="momEmail" name="momEmail" class="input input-bordered input-primary w-full mb-4"
+          placeholder="Your Mom's Email" required />
+        <span id="emailvalidate" class="text-md text-red-600 uppercase font-bold mb-4"></span>
+        <input type="text" id="childName" name="childName"
+          class="input input-bordered input-primary w-full mb-4 mx-auto block" placeholder="Your First Name or Nickname"
+          required />
+        <div class="col-md-6">
+          <button class="stripebutton btn btn-success btn-block uppercase text-xl">
+            Wish My Mom
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-
 <%- include('partials/footer-postauth') %>

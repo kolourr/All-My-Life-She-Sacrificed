@@ -256,9 +256,10 @@ module.exports = {
       let mom = await Mom.findOne(
         {
           momEmail: req.body.momEmail,
-          childFirstName: req.user.firstName,
         },
       );
+
+      console.log(mom)
 
       let momCreation;
 
@@ -271,10 +272,9 @@ module.exports = {
           childFirstName: req.user.firstName,
         });
       } else {
-        momCreation = Mom.findOne(
+        momCreation = Mom.find(
           {
             momEmail: req.body.momEmail,
-            childFirstName: req.user.firstName,
           },
         );
       }
@@ -322,13 +322,15 @@ module.exports = {
     );
     const customer = await stripe.customers.retrieve(session.customer);
 
+
     //Getting the mom's information from the database
     let mom = await Mom.findOne(
       {
         childEmail: req.user.email,
-        childFirstName: req.user.firstName,
       }
     )
+
+    console.log(mom)
 
     //Subscribing the mom to the Sendy Email List and sending payment confirmation to the child
     sendMomtoSendy(mom.momName,mom.momEmail,mom.childEmail,mom.childName, mom.childFirstName)

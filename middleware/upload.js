@@ -5,7 +5,7 @@ const multerS3 = require('multer-s3')
 const { defaultProvider } = require("@aws-sdk/credential-provider-node")
 const path = require('path');
 const sharp = require('sharp');
-   
+
 
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -16,14 +16,14 @@ const s3 = new aws.S3({
 
 const fileFilter = (req, file, cb) => {
   let ext = path.extname(file.originalname);
-  if (ext !== ".jpg" && ext !== ".jpeg" && ext !== ".png") {
+  if (ext !== ".jpg" && ext !== ".jpeg" && ext !== ".heif"  && ext !== ".webp" && ext !== ".tiff" && ext !== ".png") {
     cb(new Error("File type is not supported"), false);
     return;
   }
   cb(null, true);
 }
-      
-      
+
+
 const storage2 = multerS3({
     fileFilter,
     s3: s3,
@@ -32,12 +32,12 @@ const storage2 = multerS3({
       cb(null, {fileName: file.fieldname})
     },
     key: (req, file, cb) => {
- 
+
       cb(null, Date.now().toString() + '-' + file.originalname)
     },
 
 })
- 
+
 const upload = multer({ storage:storage2 })
 
 
