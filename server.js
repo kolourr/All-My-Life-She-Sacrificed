@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const passport = require('passport')
 const session = require('express-session')
+const bodyParser = require('body-parser')
 const mongoose = require("mongoose")
 const MongoStore = require("connect-mongo")
 const connectDB = require('./config/database')
@@ -30,13 +31,16 @@ connectDB()
 //EJS and Body Parser
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: true, limit: '200mb' }))
-app.use(express.json({limit: '50mb'}))
 app.use(cors({
-  origin: ['http://localhost:3000','http://allmylifeshesacrificed.com/','https://allmylifeshesacrificed.com/','https://all-my-life-she-sacrificed.onrender.com/','https://www.allmylifeshesacrificed.com/'],
+  origin: ['http://localhost:3000', 'http://localhost:3000/','http://allmylifeshesacrificed.com/','https://allmylifeshesacrificed.com/','https://all-my-life-she-sacrificed.onrender.com/','https://www.allmylifeshesacrificed.com/'],
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
   credentials: true
 }))
+// app.use(express.urlencoded({ extended: false }))
+// app.use(express.json({limit: '200mb'}))
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({limit: '200mb'}));
 
 // Method override
 app.use(

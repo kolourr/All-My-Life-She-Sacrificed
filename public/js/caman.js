@@ -34,7 +34,9 @@ function removeFilter(){
     Caman("#canvas", img, function() {
         this.revert();
       });
+
 }
+
 
 //Adding various filters using Caman to the image on the Canvas
 document.addEventListener('click', e => {
@@ -180,7 +182,8 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
 
 
 
-     fetch('../wall/createWallPost/', {
+     fetch('../wall/createWallPost', {
+            mode: 'cors',
             method: 'post',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
