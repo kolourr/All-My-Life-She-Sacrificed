@@ -8,7 +8,7 @@ const upload = require("../middleware/upload");
 
 router.get('/create', ensureAuth, wallController.create)
 
-router.post('/createWallPost', ensureAuth, wallController.createWallPost)
+router.post('/createWallPost',  ensureAuth, wallController.createWallPost)
 
 router.delete('/deleteWallPost', ensureAuth, wallController.deleteWallPost)
 
