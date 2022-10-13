@@ -31,11 +31,11 @@ connectDB()
 //EJS and Body Parser
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3000/','http://allmylifeshesacrificed.com/','https://allmylifeshesacrificed.com/','https://all-my-life-she-sacrificed.onrender.com/','https://www.allmylifeshesacrificed.com/'],
-  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
-  credentials: true
-}))
+// app.use(cors({
+//   origin: ['http://localhost:3000', 'http://localhost:3000/','http://allmylifeshesacrificed.com/','https://allmylifeshesacrificed.com/','https://all-my-life-she-sacrificed.onrender.com/','https://www.allmylifeshesacrificed.com/'],
+//   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+//   credentials: true
+// }))
 // app.use(express.urlencoded({ extended: false }))
 // app.use(express.json({limit: '200mb'}))
 app.use(express.urlencoded({ extended: true, limit: '50mb' }))
