@@ -180,7 +180,7 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
 
 
 
-     fetch('../wall/createWallPost', {
+     fetch('../wall/createWallPost/', {
             method: 'post',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({

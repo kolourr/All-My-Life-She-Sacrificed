@@ -34,6 +34,7 @@ app.use(express.urlencoded({ extended: true, limit: '200mb' }))
 app.use(express.json({limit: '50mb'}))
 app.use(cors({
   origin: '*',
+  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
   credentials: true
 }))
 
