@@ -33,7 +33,7 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true, limit: '200mb' }))
 app.use(express.json({limit: '50mb'}))
 app.use(cors({
-  origin: '*',
+  origin: ['http://localhost:3000','http://allmylifeshesacrificed.com/','https://allmylifeshesacrificed.com/','https://all-my-life-she-sacrificed.onrender.com/','https://www.allmylifeshesacrificed.com/'],
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
   credentials: true
 }))
