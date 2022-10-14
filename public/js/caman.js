@@ -18,9 +18,9 @@ function uploadImgToCanvas(){
         img = new Image()
         img.src = reader.result
         img.onload = function() {
-            canvas.width = img.width
-            canvas.height = img.height
-            ctx.drawImage(img, 0, 0, img.width, img.height)
+            canvas.width = img.width * 0.20
+            canvas.height = img.height * 0.20
+            ctx.drawImage(img, 0, 0, img.width * 0.20, img.height * 0.20)
             canvas.removeAttribute('data-caman-id')
         }
 
@@ -144,7 +144,11 @@ else if(e.target.classList.contains('clarity')){
 document.getElementById('submit-wallImage').addEventListener('click', submitWallImage)
 
  function submitWallImage(){
-    const imageBase64 = canvas.toDataURL("image/jpeg", 0.8)
+    const imageBase64 = canvas.toDataURL("image/jpeg", 0.5)
+    // const imageBase64 = canvas.toBlob("image/jpeg", 0.5)
+
+    // var file = new File([myBlob], "name");
+
     const caption = document.getElementById('caption').value
     const fileLength = document.getElementById('wallImage').files.length
 
