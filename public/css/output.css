@@ -4427,6 +4427,10 @@ body[dir="rtl"] .checkbox:checked,
     margin-top: 0.5rem;
   }
 
+  .sm\:w-11\/12 {
+    width: 91.666667%;
+  }
+
   .sm\:min-w-max {
     min-width: -webkit-max-content;
     min-width: -moz-max-content;
@@ -4476,6 +4480,10 @@ body[dir="rtl"] .checkbox:checked,
 
   .lg\:w-9\/12 {
     width: 75%;
+  }
+
+  .lg\:w-10\/12 {
+    width: 83.333333%;
   }
 
   .lg\:min-w-max {
