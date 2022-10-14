@@ -18,9 +18,10 @@ function uploadImgToCanvas(){
         img = new Image()
         img.src = reader.result
         img.onload = function() {
-            canvas.width = img.width * 0.20
-            canvas.height = img.height * 0.20
-            ctx.drawImage(img, 0, 0, img.width * 0.20, img.height * 0.20)
+
+            canvas.width = img.width * 0.25
+            canvas.height = img.height * 0.25
+            ctx.drawImage(img, 0, 0, img.width * 0.25, img.height * 0.25)
             canvas.removeAttribute('data-caman-id')
         }
 
@@ -196,9 +197,10 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
                 'caption': caption
             })
         })
+                    //redirecting from client after sending the 200
+                    window.location.href = "/wall/feed"
+
     }
 
-            //redirecting from client after sending the 200
-            window.location.href = "/wall/feed"
 
 }
