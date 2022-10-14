@@ -4442,6 +4442,10 @@ body[dir="rtl"] .checkbox:checked,
   .md\:w-8\/12 {
     width: 66.666667%;
   }
+
+  .md\:w-9\/12 {
+    width: 75%;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -4468,6 +4472,10 @@ body[dir="rtl"] .checkbox:checked,
 
   .lg\:w-8\/12 {
     width: 66.666667%;
+  }
+
+  .lg\:w-9\/12 {
+    width: 75%;
   }
 
   .lg\:min-w-max {

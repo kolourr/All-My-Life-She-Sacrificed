@@ -22,6 +22,9 @@ module.exports = {
     try {
 
 
+
+
+
       let name = Date.now().toString() + Math.floor(Math.random() * 1250) + '.jpg'
       let imageUrl = uploadbase64(req.body.imageBase64, name)
 

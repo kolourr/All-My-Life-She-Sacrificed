@@ -180,17 +180,21 @@ document.getElementById('submit-wallImage').addEventListener('click', submitWall
         document.getElementById("msgFile").innerHTML = "";
         document.getElementById("msgFile").classList.remove('text-lg', 'text-error', 'text-center', 'my-3', 'font-bold', 'uppercase', 'btn', 'btn-outline')
 
-        fetch('../wall/createWallPost', {
+
+
+     fetch('/wall/createWallPost', {
             mode: 'cors',
             cache: 'default',
-                method: 'post',
-                headers: {'Content-type': 'application/json'},
-                body: JSON.stringify({
-                    'imageBase64': imageBase64,
-                    'caption': caption
-                })
+            method: 'post',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'imageBase64': imageBase64,
+                'caption': caption
             })
-            //redirecting from client after sending the 200
-            window.location.href = "../wall/feed"
+        })
     }
+
+            //redirecting from client after sending the 200
+            window.location.href = "/wall/feed"
+
 }
