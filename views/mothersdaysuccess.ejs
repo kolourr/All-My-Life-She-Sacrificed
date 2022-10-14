@@ -3,25 +3,34 @@
   <div class="grid grid-cols-8 gap-4">
     <div class="col-span-8 sm:col-start-2 sm:col-end-8 lg:col-start-3 lg:col-end-7 card bg-base-300 rounded-box place-items-center p-8">
 
-    <h1>Success</h1>
-  <h2>Email Details</h2>
+      <div class="alert alert-success shadow-lg">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>Your 'Mother's Day Wish Package' purchase is confirmed!</span>
+        </div>
+      </div>
 
-  <ul>
-    <li>MomName: <%=mom.momName%></li>
-    <li>MomEmail: <%=mom.momEmail%></li>
-    <li>ChildName: <%=mom.childName%></li>
-    <li>ChildEmail: <%=mom.childEmail%></li>
-    <li>ChildFirstName: <%=mom.childFirstName%></li>
-  </ul>
+      <h3 class="text-xl font-bold text-center bg-base-200 shadow rounded pt-4  m-2">
+        <%=mom.childName%>, your transaction number is: <span class="text-primary"><%=customer.id%></span>
+      </h3>
+      <img
+      src="https://ilovguitars-amlss-mom.s3.ca-central-1.amazonaws.com/momhappypayment.png" width="50%"
+      class=" mx-auto block shadow-md" />
 
-  <h2>Transaction Details</h2>
-  <ul>
-    <li>Customer Email: <%=customer.email%></li>
-    <li>Customer Name: <%=customer.name%></li>
+      <p class="py-2 text-lg">Your mom, <span class="text-primary"><%=mom.momName%></span> will be wished every Mother's Day at <span class="text-primary"><%=mom.momEmail%></span> for the rest of her life.
+      </p>
 
-    <li>Transaction ID: <%=customer.id%></li>
-    <li>Invoice Prefix: <%=customer.invoice_prefix%></li>
-  </ul>
+      <p class="py-2 text-lg">You should be receiving an email with your reciept to your email on file: <span class="text-primary"><%=customer.email%></span>.
+      </p>
+
+      <p class="py-2 text-lg">If you have any questions or concerns at all, feel free to email us at <span class="text-primary">allmylifeshesacrificed@gmail.com</span>. Everything is set. Rest assured, your mom is in safe hands. </p>
+
+
+
+
+
+
+
   </div>
   </div>
 </div>
