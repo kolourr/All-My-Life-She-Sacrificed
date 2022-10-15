@@ -1,0 +1,44 @@
+<%if (typeof user === 'undefined') { %> <%- include('partials/header-preauth')
+%> <% } else { %> <%- include('partials/header-postauth') %> <% } %>
+<div class="grow -mt-20 sm:mt-0">
+  <div class="grid grid-cols-8 gap-4">
+    <div
+      class="col-span-8 sm:col-start-2 sm:col-end-8 lg:col-start-3 lg:col-end-7 card bg-base-300 rounded-box place-items-center p-8">
+      <h1 class="text-4xl font-bold text-center lg:text-left">Features</h1>
+      <h2 class="text-2xl font-bold text-center lg:text-left   mt-4 p-4">
+        Share Inspiring Stories - Add Cool Filters to their Pictures
+      </h2>
+      <img src="https://raw.githubusercontent.com/kolourr/All-My-Life-She-Sacrificed/main/apppages/pic3.gif"
+        class="min-w-0 shadow-md" />
+      <h2 class="text-2xl font-bold text-center lg:text-left   mt-4 p-4">
+        Custom User Dashboards, Feeds and Commenting System
+      </h2>
+      <img src="https://raw.githubusercontent.com/kolourr/All-My-Life-She-Sacrificed/main/apppages/pic4.gif"
+        class="min-w-0 shadow-md" />
+      <h2 class="text-2xl font-bold text-center lg:text-left   mt-4 p-4">
+        Crop and edit Profile Pictures. Check stats via Push Notification
+        Service Worker
+      </h2>
+      <img src="https://raw.githubusercontent.com/kolourr/All-My-Life-She-Sacrificed/main/apppages/pic1.gif"
+        class="min-w-0 shadow-md" />
+      <h2 class="text-2xl font-bold text-center lg:text-left   mt-4 p-4">
+        Buy your mom a lifetime supply of Mother's Day Wishes via Stripe
+        Checkout
+      </h2>
+      <img src="https://raw.githubusercontent.com/kolourr/All-My-Life-She-Sacrificed/main/apppages/pic2.gif"
+        class="min-w-0 shadow-md" />
+      <h2 class="text-2xl font-bold text-center lg:text-left   mt-4 p-4">
+        Welcome email sent via AWS SES and Sendy
+      </h2>
+      <img src="https://raw.githubusercontent.com/kolourr/All-My-Life-She-Sacrificed/main/apppages/welcome.png"
+        class="min-w-0 shadow-md" />
+
+
+        <h2 class="text-2xl font-bold text-center lg:text-left  mt-4 p-4">
+          Fully Opensource: <a class="text-primary" href="https://github.com/kolourr/All-My-Life-She-Sacrificed">Github Repo</a>
+        </h2>
+    </div>
+  </div>
+</div>
+<%if (typeof user === 'undefined') { %> <%- include('partials/footer-preauth')
+%> <% } else { %> <%- include('partials/footer-postauth') %> <% } %>

@@ -23,6 +23,7 @@ router.get('/mothersdaysuccess', ensureAuth, homeController.mothersdaysuccess)
 router.post('/create-checkout-session', ensureAuth, homeController.createcheckoutsession)
 
 
+router.get('/features', homeController.features)
 
 router.get('/loggedinindex', ensureAuth, homeController.getHomeLoggedIn)
 router.get('/updatedindex', ensureAuth, homeController.updatedindex)

@@ -355,6 +355,11 @@ module.exports = {
     });
   },
 
+  features: (req, res) => {
+    res.render("features", {user: req.user});
+  },
+
+
   login: (req, res) => {
     res.render("login", {user: req.user});
   },
